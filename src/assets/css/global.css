@@ -1,0 +1,458 @@
+/* src/styles/global.css */
+
+/* 1. Kích hoạt engine Tailwind v4 */
+@import "tailwindcss";
+@source "../../components/**/*.{js,ts,jsx,tsx}";
+@source "../../pages/**/*.{js,ts,jsx,tsx}";
+@source "../../templates/**/*.{js,ts,jsx,tsx}";
+@source "../../lib/**/*.{js,ts,jsx,tsx}";
+
+/* Kích hoạt plugin Typography (nếu bạn đã cài @tailwindcss/typography) */
+@plugin "@tailwindcss/typography";
+
+/* 2. CẤU HÌNH THEME (Thay thế hoàn toàn tailwind.config.js) */
+@theme {
+  /* --- Khai báo Font Family --- */
+  --font-body: "Raleway", sans-serif;
+  --font-heading: "Montserrat", sans-serif;
+  --font-interface: "Inter", sans-serif;
+  --font-accent: "Crimson Pro", serif;
+
+  /* Nhóm Raleway */
+  --text-t12: 12px;
+  --text-t14: 14px;
+  --text-t16: 16px;
+  --text-t18: 18px;
+  --text-t20: 20px;
+
+  /* Nhóm Montserrat */
+  --text-hs24: 24px;
+  --text-hs32: 32px;
+  --text-hs48: 48px;
+  --text-hs64: 64px;
+  --text-hs40: 40px; /* Dùng: text-s40 */
+
+  --spacing-wrapper: 1920px; /* Dùng: max-w-wrapper */
+  --spacing-body: 1440px; /* Dùng: max-w-body */
+  --spacing-container: 1200px; /* Dùng: max-w-container */
+  --spacing-18: 4.5rem; /* Dùng: p-18, m-18, h-18 */
+
+  --spacing-gutter: 24px; /* Mobile thường là 24px */
+
+  /* Tạo breakpoint nếu muốn padding thay đổi theo màn hình */
+  --spacing-gutter-md: 40px; /* Tablet */
+  --spacing-gutter-lg: 80px; /* Small Desktop */
+  --spacing-gutter-xl: 120px; /* Large Desktop */
+
+  /* --- 4. BORDER RADIUS (Bo góc) --- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-card: 16px; /* Dùng: rounded-card */
+  --radius-pill: 9999px;
+
+  /* --- 5. BREAKPOINTS (Màn hình) --- */
+  /* Ghi đè hoặc thêm màn hình mới */
+  --breakpoint-xs: 480px; /* Dùng: xs:flex */
+  --breakpoint-3xl: 1920px; /* Dùng: 3xl:flex */
+
+  /* --- 6. SHADOWS (Đổ bóng) --- */
+  --shadow-subtle: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-glow: 0 0 10px rgba(0, 123, 255, 0.5); /* Dùng: shadow-glow */
+
+  /* --- 7. ANIMATIONS --- */
+  --animate-float: float 3s ease-in-out infinite;
+
+  /* --- 8. PADDING --- */
+  --padding-gutter: 24px; /* Dùng: px-gutter */
+  --padding-gutter-md: 40px; /* Dùng: px-gutter-md */
+  --padding-gutter-lg: 80px; /* Dùng: px-gutter-lg */
+  --padding-gutter-xl: 120px; /* Dùng: px-gutter-xl */
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /** --- 8. COLORS (Màu sắc) --- */
+  --color-primary: #1d1d1d;
+  --color-secondary: #6d6d6d;
+  --color-red: #c73f2e;
+  --color-red-500: #c73e22;
+  --color-orange: #f15a24;
+  --color-gray: #707174;
+  --color-dark: #1e1f20;
+  --color-gray-50: #ededed;
+  --color-gray-100: #dbdbdc;
+  --color-black: #323232;
+  --color-black-primary: #0c1311;
+  --color-neutral-500: #130d0c;
+
+  /** --- 9. background colors (Màu nền) --- */
+  --bg-red: #c73f2e;
+  --bg-orange: #f15a24;
+  --bg-gray-50: #ededed;
+  --bg-light-blue-400: #edf7fd;
+
+  /** --- 10. border colors (Màu viền) --- */
+  --border-red: #c73f2e;
+  --border-orange: #f15a24;
+  --border-red-500: #c73e22;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 120px !important;
+  }
+
+  /* Fix lỗi header che mất nội dung khi scroll */
+  section[id],
+  div[id] {
+    scroll-margin-top: 170px !important;
+  }
+
+  /* Body Styles */
+  body {
+    /* Sử dụng các biến theme đã khai báo ở trên */
+    @apply text-base text-t18 text-gray font-body antialiased;
+  }
+}
+
+/* 4. COMPONENT LAYER (Custom Classes) */
+@layer components {
+  /* Heading Styles */
+  .heading-h1 {
+    @apply md:text-hs64 text-hs40 leading-[1.2] font-heading font-normal  md:leading-normal;
+  }
+
+  .heading-h1-italic {
+    @apply md:text-hs64 text-hs40 leading-[1.2] font-heading font-normal italic  md:leading-normal;
+  }
+
+  .heading-h3 {
+    @apply md:text-hs32 text-[24px] font-heading leading-[1.2];
+  }
+
+  .heading-h2 {
+    @apply md:text-hs48 text-[32px] font-heading md:leading-[1.4] leading-[1.2];
+  }
+
+  .hs40 {
+    @apply md:text-hs40 text-[24px] font-heading leading-normal;
+  }
+
+  /* Text Styles */
+  .typo-small {
+    @apply text-t12 font-body leading-normal;
+  }
+
+  .typo-caption {
+    @apply md:text-t14 text-[10px] font-body leading-normal;
+  }
+
+  .typo-body {
+    @apply md:text-t16 text-[12px] font-body leading-normal;
+  }
+
+  .typo-title {
+    @apply md:text-t18 text-[14px] font-body leading-normal;
+  }
+
+  .typo-lead {
+    @apply md:text-t20 text-[16px] font-body leading-normal;
+  }
+
+  .typo-heading {
+    @apply md:text-hs24 text-[18px] font-heading leading-normal;
+  }
+
+  /* --- CMS Specifics (.prose) --- */
+  .prose .alignleft {
+    @apply float-left mr-6 mb-6;
+  }
+
+  .prose .alignright {
+    @apply float-right ml-6 mb-6;
+  }
+
+  .prose .aligncenter {
+    @apply block mx-auto mb-6;
+  }
+
+  .prose {
+    @apply text-gray max-w-none!;
+  }
+
+  .prose h1 {
+    @apply text-[#1E1F20]! font-heading font-medium leading-[140%]!;
+  }
+
+  .prose h2 {
+    @apply text-[#1F2164]! font-heading font-medium;
+  }
+
+  .prose h3 {
+    @apply text-[#1F2164]! font-heading font-medium text-hs32 leading-normal;
+  }
+
+  .prose h4 {
+    @apply text-[#4C4D83]! font-heading font-medium text-hs24  leading-normal;
+  }
+
+  .prose h5 {
+    @apply text-secondary! font-heading font-normal leading-normal;
+  }
+
+  .prose p {
+    @apply text-gray leading-relaxed;
+  }
+
+  .prose a,
+  .prose p a,
+  .prose li a,
+  .prose div a {
+    @apply text-[#585C65]! hover:text-orange! transition-colors underline;
+  }
+
+  .prose strong {
+    @apply font-bold text-[#707174]!;
+  }
+
+  .prose em {
+    @apply italic text-secondary;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-orange pl-4 italic text-secondary;
+  }
+
+  .prose code {
+    @apply bg-gray-50 text-primary px-2 py-1 rounded;
+  }
+
+  .prose li {
+    @apply list-none pl-8! relative font-heading my-2!;
+  }
+
+  .prose ul {
+    @apply pl-0!;
+  }
+
+  .prose li::before {
+    content: "";
+    /* background-image: url("../../assets/images/circle-li.png"); */
+    background-size: contain;
+    background-repeat: no-repeat;
+    @apply absolute left-0 top-1 w-5.5 h-5.5;
+  }
+
+  .prose ol {
+    @apply list-decimal pl-5!;
+  }
+
+  .prose ol li {
+    @apply list-decimal pl-1!;
+  }
+
+  .prose ol li::before {
+    content: none !important;
+    display: none !important;
+  }
+
+  .prose ul ul {
+    @apply mt-0!;
+  }
+
+  .prose ul ul li {
+    @apply list-none pl-6! relative font-heading;
+  }
+
+  .prose ul ul li::before {
+    content: "";
+    /* background-image: url("../../assets/images/circle-li-sm.png"); */
+    background-size: contain;
+    background-repeat: no-repeat;
+    @apply absolute left-0 top-[10px]! w-3.5 h-3.5;
+  }
+
+  .prose img {
+    @apply w-full h-auto rounded-[14.27px];
+  }
+
+  .prose img.alignleft,
+  .prose img.alignright,
+  .prose img.aligncenter {
+    @apply w-auto;
+  }
+
+  /* Responsive Iframe */
+  .prose iframe {
+    @apply w-full aspect-video h-auto rounded-lg;
+  }
+
+  .iframe-map iframe {
+    @apply w-full h-[300px] aspect-auto xl:h-[300px] xl:w-[400px] rounded-[15.17px];
+  }
+
+  .footer-link p a {
+    @apply text-[#FFFFFF99]! hover:underline! no-underline! hover:text-orange! transition-colors!;
+  }
+}
+
+/* 5. UTILITY LAYER (Custom Scrollbar) */
+@layer utilities {
+  .scrollbar-custom {
+    &::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+    &::-webkit-scrollbar-track {
+      background: #c2c2c2;
+      border-radius: 3px;
+    }
+    &::-webkit-scrollbar-thumb {
+      @apply bg-white rounded-[3px];
+    }
+  }
+
+  .scrollbar-main {
+    &::-webkit-scrollbar {
+      @apply w-1 h-1;
+    }
+    &::-webkit-scrollbar-track {
+      @apply bg-gray-100  rounded-sm;
+    }
+    &::-webkit-scrollbar-thumb {
+      @apply bg-red rounded-[3px];
+    }
+  }
+
+  /* Ẩn thanh cuộn nhưng vẫn scroll được */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE/Edge */
+    scrollbar-width: none; /* Firefox */
+
+    &::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
+    }
+  }
+
+  .section-container {
+    @apply w-full mx-auto px-gutter;
+
+    /* Responsive padding (nếu cần) */
+    @media (min-width: 768px) {
+      @apply px-gutter-md; /* Hoặc gõ cứng px-10 nếu lười config var */
+    }
+
+    @media (min-width: 1024px) {
+      @apply px-gutter-lg;
+    }
+
+    @media (min-width: 1200px) {
+      @apply px-13;
+    }
+
+    @media (min-width: 1360px) {
+      @apply px-gutter-xl;
+    }
+  }
+
+  .section-container-lg {
+    @apply w-full mx-auto px-gutter;
+
+    /* Responsive padding (nếu cần) */
+    @media (min-width: 768px) {
+      @apply px-gutter-md; /* Hoặc gõ cứng px-10 nếu lười config var */
+    }
+
+    @media (min-width: 1024px) {
+      @apply px-gutter-lg;
+    }
+
+    @media (min-width: 1200px) {
+      @apply px-13;
+    }
+
+    @media (min-width: 1360px) {
+      @apply px-20;
+    }
+  }
+
+  .padding-y-70 {
+    @apply py-17.5;
+  }
+
+  .padding-y-80 {
+    @apply py-20;
+  }
+
+  .padding-y-120 {
+    @apply py-gutter-xl;
+  }
+
+  .pagination-button {
+    @apply flex justify-center items-center gap-2 font-body font-normal text-t14 leading-[140%] text-gray bg-none border-none cursor-pointer p-0 hover:text-dark disabled:text-gray-100 disabled:cursor-not-allowed;
+  }
+
+  .pagination-numbers {
+    @apply flex justify-center items-center gap-1 font-body font-normal text-t14 leading-[140%] text-gray bg-none border-none cursor-pointer p-0 hover:text-dark disabled:text-gray-100 disabled:cursor-not-allowed;
+  }
+  .active-number {
+    @apply bg-[#e4f0ef] text-[#7F56D9];
+  }
+
+  .pagination-button-number {
+    @apply h-10 w-10 rounded-md hover:bg-[#e4f0ef] hover:text-orange cursor-pointer text-[#667085];
+  }
+
+  .button-social {
+    @apply flex justify-center items-center px-[16px] py-[10px] rounded-sm border-none w-[66px] h-[48px] cursor-pointer transition-opacity duration-300 ease-in-out hover:opacity-80;
+  }
+  .facebook {
+    @apply bg-[#3b5998];
+  }
+  .pinterest {
+    @apply bg-[#ff0000];
+  }
+
+  .linked {
+    @apply bg-[#007bb6];
+  }
+
+  .heading-span-red span {
+    @apply italic text-red font-semibold;
+  }
+
+  .heading-h1-48 {
+    @apply text-[#2E2E31] font-[500] text-[32px] md:text-[48px] font-heading leading-normal tracking-[-2%];
+  }
+
+  /* Iframe */
+  .iframe-wrapper iframe {
+    @apply w-full h-full absolute inset-0;
+  }
+  /* Professional Highlights */
+  .professional-highlights hr {
+    @apply mt-[16px] border-0 h-px bg-gray-300;
+  }
+
+  .professional-highlights p {
+    @apply pt-[16px] text-[16px] text-[#707174];
+  }
+}
+
+.margin-t-cl-64-32 {
+  margin-top: clamp(2rem, 1.2958rem + 3.0047vw, 4rem);
+}
+
+.hidden-1440 {
+  @media (min-width: 1280px) and (max-width: 1439px) {
+    display: none;
+  }
+}

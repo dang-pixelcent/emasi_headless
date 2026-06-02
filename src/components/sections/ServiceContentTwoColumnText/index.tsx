@@ -1,0 +1,71 @@
+import { HeadingH3 } from "@/components/common/Heading";
+import Section from "@/components/common/Section";
+import React from "react";
+import { cn } from "@/utils/clsx";
+
+interface Props {
+  acf_fc_layout: string;
+  background_color: string;
+  title: string;
+  description: string;
+  list: List[];
+}
+
+interface List {
+  title: string;
+  content: string;
+}
+const ServiceContentTwoColumnText = ({
+  acf_fc_layout,
+  description,
+  list,
+  title,
+  background_color,
+}: Props) => {
+  return (
+    <Section className={`bg-[${background_color}]`}>
+      <div className="flex flex-col gap-10 md:gap-20">
+        <div
+          className={cn(
+            "flex flex-col gap-4 md:gap-6 items-center text-center justify-center",
+            {
+              "hidden!": !title && !description,
+            },
+          )}
+        >
+          <HeadingH3
+            className={cn("text-[#1E1F20] ", {
+              "hidden!": !title,
+            })}
+          >
+            {title}
+          </HeadingH3>
+          <div className={cn("max-w-[900px]!", { "hidden!": !description })}>
+            <div className="prose prose-sm md:prose-lg text-[#707174]">
+              <p>{description}</p>
+            </div>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-16 md:gap-y-12 w-full">
+          {list &&
+            list.length > 0 &&
+            list.map((item, index) => (
+              <div className="flex flex-col gap-4" key={index}>
+                <HeadingH3 className="text-[#1E1F20] font-medium tracking-[-5%]">
+                  {item.title}
+                </HeadingH3>
+                <div
+                  className="prose prose-sm md:prose-lg text-[#707174]"
+                  dangerouslySetInnerHTML={{
+                    __html: item.content,
+                  }}
+                />
+              </div>
+            ))}
+        </div>
+      </div>
+    </Section>
+  );
+};
+
+export default ServiceContentTwoColumnText;

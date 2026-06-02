@@ -1,0 +1,663 @@
+{
+  "installCommand": "npm install --legacy-peer-deps",
+  "buildCommand": "rm -rf .vercel/output && gatsby clean && gatsby build",
+  "outputDirectory": "public",
+  "git": {
+    "deploymentEnabled": {
+      "development": true
+    }
+  },
+  "redirects": [
+    {
+      "source": "/sign-up-forms/",
+      "destination": "/contact-us/",
+      "permanent": true
+    },
+    {
+      "source": "/send-an-inquiry-thank-you/",
+      "destination": "/contact-thank-you/",
+      "permanent": true
+    },
+    {
+      "source": "/risks-vs-benefits-of-testosterone-therapy/",
+      "destination": "/blog/risks-vs-benefits-of-testosterone-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/longterm-testosterone-therapy/",
+      "destination": "/blog/longterm-testosterone-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-replacement-therapy-androgel/",
+      "destination": "/blog/testosterone-replacement-therapy-androgel/",
+      "permanent": true
+    },
+    {
+      "source": "/best-testosterone-booster-therapy/",
+      "destination": "/blog/best-testosterone-booster-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-therapy-for-older-males/",
+      "destination": "/blog/testosterone-therapy-for-older-males/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-therapy-women-pregnancy/",
+      "destination": "/blog/testosterone-therapy-women-pregnancy/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-therapy-birth-control/",
+      "destination": "/blog/testosterone-therapy-birth-control/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-therapy-body-odor/",
+      "destination": "/blog/testosterone-therapy-body-odor/",
+      "permanent": true
+    },
+    {
+      "source": "/side-effects-of-testosterone-therapy/",
+      "destination": "/blog/side-effects-of-testosterone-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-therapy-vs-testosterone-supplements/",
+      "destination": "/blog/testosterone-therapy-vs-testosterone-supplements/",
+      "permanent": true
+    },
+    {
+      "source": "/best-method-testosterone-replacement-therapy/",
+      "destination": "/blog/best-method-testosterone-replacement-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/donate-blood-testosterone-therapy/",
+      "destination": "/blog/donate-blood-testosterone-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-replacement-therapy-short-term/",
+      "destination": "/blog/testosterone-replacement-therapy-short-term/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-therapy-causes-cancer/",
+      "destination": "/blog/testosterone-therapy-causes-cancer/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-therapy-medications/",
+      "destination": "/blog/testosterone-therapy-medications/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-pellet-therapy-procedure/",
+      "destination": "/blog/testosterone-pellet-therapy-procedure/",
+      "permanent": true
+    },
+    {
+      "source": "/anti-aging-testosterone-therapy-cost/",
+      "destination": "/blog/anti-aging-testosterone-therapy-cost/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-therapy-and-blood-clots/",
+      "destination": "/blog/testosterone-therapy-and-blood-clots/",
+      "permanent": true
+    },
+    {
+      "source": "/pcos-and-testosterone-therapy/",
+      "destination": "/blog/pcos-and-testosterone-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/indications-for-testosterone-replacement-therapy/",
+      "destination": "/blog/indications-for-testosterone-replacement-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-replacement-therapy-for-female-dosage/",
+      "destination": "/blog/testosterone-replacement-therapy-for-female-dosage/",
+      "permanent": true
+    },
+    {
+      "source": "/can-testosterone-therapy-cause-frequent-urination/",
+      "destination": "/blog/can-testosterone-therapy-cause-frequent-urination/",
+      "permanent": true
+    },
+    {
+      "source": "/when-testosterone-therapy-doesnt-work/",
+      "destination": "/blog/when-testosterone-therapy-doesnt-work/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-replacement-therapy-cream-2/",
+      "destination": "/blog/testosterone-replacement-therapy-cream-2/",
+      "permanent": true
+    },
+    {
+      "source": "/is-testosterone-replacement-therapy-steroids/",
+      "destination": "/blog/is-testosterone-replacement-therapy-steroids/",
+      "permanent": true
+    },
+    {
+      "source": "/natural-therapy-for-low-testosterone/",
+      "destination": "/blog/natural-therapy-for-low-testosterone/",
+      "permanent": true
+    },
+    {
+      "source": "/self-administered-testosterone-injection-therapy/",
+      "destination": "/blog/self-administered-testosterone-injection-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/side-effects-testosterone-therapy-women-2/",
+      "destination": "/blog/side-effects-testosterone-therapy-women-2/",
+      "permanent": true
+    },
+    {
+      "source": "/low-testosterone-therapy-men-2/",
+      "destination": "/blog/low-testosterone-therapy-men-2/",
+      "permanent": true
+    },
+    {
+      "source": "/herbal-testosterone-therapy-2/",
+      "destination": "/blog/herbal-testosterone-therapy-2/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-replacement-therapy-and-epilepsy/",
+      "destination": "/blog/testosterone-replacement-therapy-and-epilepsy/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-therapy-immune-system/",
+      "destination": "/blog/testosterone-therapy-immune-system/",
+      "permanent": true
+    },
+    {
+      "source": "/managing-trt-blood-cell-risks/",
+      "destination": "/blog/managing-trt-blood-cell-risks/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-therapy-acne/",
+      "destination": "/blog/testosterone-therapy-acne/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-therapy-after-radical-prostatectomy/",
+      "destination": "/blog/testosterone-therapy-after-radical-prostatectomy/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-therapy-for-osteoporosis/",
+      "destination": "/blog/testosterone-therapy-for-osteoporosis/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-replacement-therapy-and-gynecomastia/",
+      "destination": "/blog/testosterone-replacement-therapy-and-gynecomastia/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-therapy-multiple-sclerosis/",
+      "destination": "/blog/testosterone-therapy-multiple-sclerosis/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-therapy-and-iron-levels/",
+      "destination": "/blog/testosterone-therapy-and-iron-levels/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-therapy-for-trans-men/",
+      "destination": "/blog/testosterone-therapy-for-trans-men/",
+      "permanent": true
+    },
+    {
+      "source": "/is-testosterone-therapy-reversible/",
+      "destination": "/blog/is-testosterone-therapy-reversible/",
+      "permanent": true
+    },
+    {
+      "source": "/homeopathic-testosterone-therapy/",
+      "destination": "/blog/homeopathic-testosterone-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-therapy-female-side-effects/",
+      "destination": "/blog/testosterone-therapy-female-side-effects/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-replacement-therapy-cardiovascular-risk/",
+      "destination": "/blog/testosterone-replacement-therapy-cardiovascular-risk/",
+      "permanent": true
+    },
+    {
+      "source": "/low-dose-estrogen-testosterone-combination-therapy/",
+      "destination": "/blog/low-dose-estrogen-testosterone-combination-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/elevated-hematocrit-testosterone-therapy/",
+      "destination": "/blog/elevated-hematocrit-testosterone-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/clomid-for-testosterone-therapy/",
+      "destination": "/blog/clomid-for-testosterone-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-replacement-therapy-cpt-code/",
+      "destination": "/blog/testosterone-replacement-therapy-cpt-code/",
+      "permanent": true
+    },
+    {
+      "source": "/does-testosterone-therapy-increase-penis-size/",
+      "destination": "/blog/does-testosterone-therapy-increase-penis-size/",
+      "permanent": true
+    },
+    {
+      "source": "/exogenous-testosterone-therapy/",
+      "destination": "/blog/exogenous-testosterone-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-replacement-therapy-medications/",
+      "destination": "/blog/testosterone-replacement-therapy-medications/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-therapy-for-veterans/",
+      "destination": "/blog/testosterone-therapy-for-veterans/",
+      "permanent": true
+    },
+    {
+      "source": "/safest-testosterone-therapy/",
+      "destination": "/blog/safest-testosterone-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/does-testosterone-replacement-therapy-cause-weight-gain/",
+      "destination": "/blog/does-testosterone-replacement-therapy-cause-weight-gain/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-replacement-therapy-bodybuilding/",
+      "destination": "/blog/testosterone-replacement-therapy-bodybuilding/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-therapy-for-rheumatoid-arthritis/",
+      "destination": "/blog/testosterone-therapy-for-rheumatoid-arthritis/",
+      "permanent": true
+    },
+    {
+      "source": "/sermorelin-and-testosterone-therapy/",
+      "destination": "/blog/sermorelin-and-testosterone-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-qualify-for-testosterone-replacement-therapy/",
+      "destination": "/blog/how-to-qualify-for-testosterone-replacement-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-replacement-therapy-and-sleep-apnea/",
+      "destination": "/blog/testosterone-replacement-therapy-and-sleep-apnea/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-replacement-therapy-for-male-hypogonadism/",
+      "destination": "/blog/testosterone-replacement-therapy-for-male-hypogonadism/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-optimization-therapy/",
+      "destination": "/blog/testosterone-optimization-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/can-testosterone-therapy-cause-joint-pain/",
+      "destination": "/blog/can-testosterone-therapy-cause-joint-pain/",
+      "permanent": true
+    },
+    {
+      "source": "/working-out-while-on-testosterone-replacement-therapy/",
+      "destination": "/blog/working-out-while-on-testosterone-replacement-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/the-critical-role-of-lab-testing-in-testosterone-replacement-therapy/",
+      "destination": "/blog/the-critical-role-of-lab-testing-in-testosterone-replacement-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/how-long-does-testosterone-replacement-therapy-last/",
+      "destination": "/blog/how-long-does-testosterone-replacement-therapy-last/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-therapy-and-creatinine-levels/",
+      "destination": "/blog/testosterone-therapy-and-creatinine-levels/",
+      "permanent": true
+    },
+    {
+      "source": "/arimidex-and-testosterone-therapy/",
+      "destination": "/blog/arimidex-and-testosterone-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-replacement-therapy-and-cholesterol-an-essential-guide/",
+      "destination": "/blog/testosterone-replacement-therapy-and-cholesterol-an-essential-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-therapy-injections-vs-pellets/",
+      "destination": "/blog/testosterone-therapy-injections-vs-pellets/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-replacement-therapy-and-diabetes/",
+      "destination": "/blog/testosterone-replacement-therapy-and-diabetes/",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-manage-polycythemia-caused-by-testosterone-replacement-therapy/",
+      "destination": "/blog/how-to-manage-polycythemia-caused-by-testosterone-replacement-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/peptide-therapy-vs-testosterone-therapy-a-complete-comparison/",
+      "destination": "/blog/peptide-therapy-vs-testosterone-therapy-a-complete-comparison/",
+      "permanent": true
+    },
+    {
+      "source": "/how-long-does-it-take-for-testosterone-therapy-to-work/",
+      "destination": "/blog/how-long-does-it-take-for-testosterone-therapy-to-work/",
+      "permanent": true
+    },
+    {
+      "source": "/risks-of-testosterone-therapy-for-ftms-a-comprehensive-guide/",
+      "destination": "/blog/risks-of-testosterone-therapy-for-ftms-a-comprehensive-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-replacement-therapy-gel/",
+      "destination": "/blog/testosterone-replacement-therapy-gel/",
+      "permanent": true
+    },
+    {
+      "source": "/endocrinologist-testosterone-therapy/",
+      "destination": "/blog/endocrinologist-testosterone-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/starting-testosterone-therapy-what-to-expect/",
+      "destination": "/blog/starting-testosterone-therapy-what-to-expect/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-therapy-in-boca-raton-a-complete-guide/",
+      "destination": "/blog/testosterone-therapy-in-boca-raton-a-complete-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/alcohol-use-and-testosterone-replacement-therapy/",
+      "destination": "/blog/alcohol-use-and-testosterone-replacement-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/progesterone-and-testosterone-replacement-therapy/",
+      "destination": "/blog/progesterone-and-testosterone-replacement-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/examination-of-testosterone-pellet-therapy-costs/",
+      "destination": "/blog/examination-of-testosterone-pellet-therapy-costs/",
+      "permanent": true
+    },
+    {
+      "source": "/will-testosterone-replacement-therapy-build-muscle/",
+      "destination": "/blog/will-testosterone-replacement-therapy-build-muscle/",
+      "permanent": true
+    },
+    {
+      "source": "/does-testosterone-therapy-reduce-heart-attack-and-stroke/",
+      "destination": "/blog/does-testosterone-therapy-reduce-heart-attack-and-stroke/",
+      "permanent": true
+    },
+    {
+      "source": "/bioidentical-testosterone-replacement-therapy/",
+      "destination": "/blog/bioidentical-testosterone-replacement-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/hypothyroidism-and-testosterone-replacement-therapy-the-connection/",
+      "destination": "/blog/hypothyroidism-and-testosterone-replacement-therapy-the-connection/",
+      "permanent": true
+    },
+    {
+      "source": "/does-medicare-cover-testosterone-replacement-therapy/",
+      "destination": "/blog/does-medicare-cover-testosterone-replacement-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/what-is-hgh-testosterone-therapy-a-comprehensive-overview/",
+      "destination": "/blog/what-is-hgh-testosterone-therapy-a-comprehensive-overview/",
+      "permanent": true
+    },
+    {
+      "source": "/does-medicaid-cover-testosterone-replacement-therapy/",
+      "destination": "/blog/does-medicaid-cover-testosterone-replacement-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/otc-testosterone-replacement-therapy/",
+      "destination": "/blog/otc-testosterone-replacement-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/can-testosterone-therapy-cause-high-blood-pressure/",
+      "destination": "/blog/can-testosterone-therapy-cause-high-blood-pressure/",
+      "permanent": true
+    },
+    {
+      "source": "/low-testosterone-therapy/",
+      "destination": "/blog/low-testosterone-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/prostate-cancer-testosterone-therapy/",
+      "destination": "/blog/prostate-cancer-testosterone-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/when-to-start-testosterone-therapy/",
+      "destination": "/blog/when-to-start-testosterone-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-replacement-therapy-guidelines/",
+      "destination": "/blog/testosterone-replacement-therapy-guidelines/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-pellet-therapy-for-women/",
+      "destination": "/blog/testosterone-pellet-therapy-for-women/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-replacement-therapy-and-fertility/",
+      "destination": "/blog/testosterone-replacement-therapy-and-fertility/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-replacement-therapy-alternatives/",
+      "destination": "/blog/testosterone-replacement-therapy-alternatives/",
+      "permanent": true
+    },
+    {
+      "source": "/role-of-hcg-in-testosterone-therapy/",
+      "destination": "/blog/role-of-hcg-in-testosterone-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/natural-testosterone-replacement-therapy/",
+      "destination": "/blog/natural-testosterone-replacement-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-replacement-therapy-reviews-and-their-implications/",
+      "destination": "/blog/testosterone-replacement-therapy-reviews-and-their-implications/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-replacement-therapy-for-weight-loss/",
+      "destination": "/blog/testosterone-replacement-therapy-for-weight-loss/",
+      "permanent": true
+    },
+    {
+      "source": "/understanding-post-cycle-therapy-for-testosterone/",
+      "destination": "/blog/understanding-post-cycle-therapy-for-testosterone/",
+      "permanent": true
+    },
+    {
+      "source": "/oral-testosterone-replacement-therapy/",
+      "destination": "/blog/oral-testosterone-replacement-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-replacement-therapy-options/",
+      "destination": "/blog/testosterone-replacement-therapy-options/",
+      "permanent": true
+    },
+    {
+      "source": "/best-online-testosterone-replacement-therapy-for-men-over-50/",
+      "destination": "/blog/best-online-testosterone-replacement-therapy-for-men-over-50/",
+      "permanent": true
+    },
+    {
+      "source": "/types-of-testosterone-therapy/",
+      "destination": "/blog/types-of-testosterone-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/does-testosterone-therapy-cause-testicular-shrinkage/",
+      "destination": "/blog/does-testosterone-therapy-cause-testicular-shrinkage/",
+      "permanent": true
+    },
+    {
+      "source": "/does-testosterone-therapy-cause-hair-loss/",
+      "destination": "/blog/does-testosterone-therapy-cause-hair-loss/",
+      "permanent": true
+    },
+    {
+      "source": "/pros-and-cons-of-testosterone-replacement-therapy/",
+      "destination": "/blog/pros-and-cons-of-testosterone-replacement-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/at-home-testosterone-therapy/",
+      "destination": "/blog/at-home-testosterone-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-get-testosterone-without-therapy-ftm/",
+      "destination": "/blog/how-to-get-testosterone-without-therapy-ftm/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-replacement-therapy-results/",
+      "destination": "/blog/testosterone-replacement-therapy-results/",
+      "permanent": true
+    },
+    {
+      "source": "/stopping-testosterone-therapy/",
+      "destination": "/blog/stopping-testosterone-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-pellet-therapy/",
+      "destination": "/blog/testosterone-pellet-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/is-testosterone-replacement-therapy-covered-by-insurance/",
+      "destination": "/blog/is-testosterone-replacement-therapy-covered-by-insurance/",
+      "permanent": true
+    },
+    {
+      "source": "/benefits-of-testosterone-therapy/",
+      "destination": "/blog/benefits-of-testosterone-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-replacement-therapy-dosage/",
+      "destination": "/blog/testosterone-replacement-therapy-dosage/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-replacement-therapy-injections/",
+      "destination": "/blog/testosterone-replacement-therapy-injections/",
+      "permanent": true
+    },
+    {
+      "source": "/red-light-therapy-testosterone/",
+      "destination": "/blog/red-light-therapy-testosterone/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-replacement-therapy-for-women/",
+      "destination": "/blog/testosterone-replacement-therapy-for-women/",
+      "permanent": true
+    },
+    {
+      "source": "/online-testosterone-therapy-a-comprehensive-guide/",
+      "destination": "/blog/online-testosterone-therapy-a-comprehensive-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-replacement-therapy-cost-understanding-the-expenses-and-factors-involved/",
+      "destination": "/blog/testosterone-replacement-therapy-cost-understanding-the-expenses-and-factors-involved/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-therapy-side-effects/",
+      "destination": "/blog/testosterone-therapy-side-effects/",
+      "permanent": true
+    },
+    {
+      "source": "/once-you-start-testosterone-therapy-can-you-stop/",
+      "destination": "/blog/once-you-start-testosterone-therapy-can-you-stop/",
+      "permanent": true
+    },
+    {
+      "source": "/testosterone-replacement-therapy-what-are-its-potential-risks-and-benefits/",
+      "destination": "/blog/testosterone-replacement-therapy-what-are-its-potential-risks-and-benefits/",
+      "permanent": true
+    },
+    {
+      "source": "/services/anti-aging/",
+      "destination": "/services/peptide-therapy/",
+      "permanent": true
+    },
+
+    {
+      "source": "/services/nootropics/",
+      "destination": "/services/peptide-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/services/growth-hormone-peptides/",
+      "destination": "/services/peptide-therapy/",
+      "permanent": true
+    }
+  ]
+}

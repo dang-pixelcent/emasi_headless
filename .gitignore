@@ -1,0 +1,9 @@
+node_modules/
+.cache/
+public
+WordPress
+src/gatsby-types.d.ts
+# package-lock.json
+.env.*
+.wordpress-cache
+.vercel
