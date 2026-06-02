@@ -4,6 +4,6 @@ public
 WordPress
 src/gatsby-types.d.ts
 # package-lock.json
-.env.*
+.env
 .wordpress-cache
 .vercel
