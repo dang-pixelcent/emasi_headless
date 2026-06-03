@@ -35,7 +35,7 @@ const config: GatsbyConfig = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-postcss",
     "gatsby-plugin-react-helmet",
-    "gatsby-theme-material-ui",
+    // "gatsby-theme-material-ui",
 
     {
       resolve: "gatsby-source-filesystem",

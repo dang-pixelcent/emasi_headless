@@ -52,7 +52,6 @@
     "gatsby-plugin-sitemap": "^6.16.0",
     "gatsby-plugin-tsconfig-paths": "^1.0.6",
     "gatsby-source-filesystem": "^5.15.0",
-    "gatsby-theme-material-ui": "^5.3.0",
     "gatsby-transformer-sharp": "^5.15.0",
     "html-react-parser": "^5.2.13",
     "i18n-iso-countries": "^7.14.0",
