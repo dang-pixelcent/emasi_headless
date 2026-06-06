@@ -1,26 +1,56 @@
-function toggleLeftPanel()
-{
-const panel = document.querySelector('.left-panel-nav');
-const el = panel.querySelectorAll('li.has-child');
-el.forEach(element => {
-  const menu = element.querySelector('a');
-  const sub = element.querySelector('.sub-menu');
-  menu.addEventListener('click', function(){
-		element.classList.toggle('active');
-		sub.classList.toggle('active');
+// function toggleLeftPanel()
+// {
+// const panel = document.querySelector('.left-panel-nav');
+// const el = panel.querySelectorAll('li.has-child');
+// el.forEach(element => {
+//   const menu = element.querySelector('a');
+//   const sub = element.querySelector('.sub-menu');
+//   menu.addEventListener('click', function(){
+// 		element.classList.toggle('active');
+// 		sub.classList.toggle('active');
+//   });
+// });
+// var screen = document.querySelector('body').offsetWidth;
+// if (screen >1200)
+// {
+//   document.addEventListener('click', event => {
+// 	el.forEach(element => {
+// 	  if (!element.contains(event.target)){
+// 		element.classList.remove('active');
+// 	  };
+// 	});
+//   });
+// }
+// }
+function toggleLeftPanel() {
+  const panel = document.querySelector('.left-panel-nav');
+  // Thêm điều kiện bảo vệ: Nếu không có panel thì thoát hàm luôn, không chạy tiếp
+  if (!panel) return; 
+
+  const el = panel.querySelectorAll('li.has-child');
+  if (!el) return;
+
+  el.forEach(element => {
+    const menu = element.querySelector('a');
+    const sub = element.querySelector('.sub-menu');
+    if (menu && sub) {
+      menu.addEventListener('click', function(){
+            element.classList.toggle('active');
+            sub.classList.toggle('active');
+      });
+    }
   });
-});
-var screen = document.querySelector('body').offsetWidth;
-if (screen >1200)
-{
-  document.addEventListener('click', event => {
-	el.forEach(element => {
-	  if (!element.contains(event.target)){
-		element.classList.remove('active');
-	  };
-	});
-  });
-}
+
+  var screen = document.querySelector('body').offsetWidth;
+  if (screen > 1200) {
+    document.addEventListener('click', event => {
+      el.forEach(element => {
+        if (!element.contains(event.target)){
+          element.classList.remove('active');
+        };
+      });
+    });
+  }
 }
 function effectPrograms()
 {
