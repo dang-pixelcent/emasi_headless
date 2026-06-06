@@ -1,0 +1,363 @@
+/**
+* Template Name: emasi
+* Template URL: pixelcent.com
+* Author: Pixelcent
+* License:
+*/
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #5d5b5b;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color:#83CEF7;
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Inter", sans-serif;
+}
+
+/*--------------------------------------------------------------
+# Back to top button
+--------------------------------------------------------------*/
+.back-to-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 996;
+  background: #83CEF7;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  transition: all 0.4s;
+}
+.back-to-top i {
+  font-size: 28px;
+  color: #fff;
+  line-height: 0;
+}
+.back-to-top:hover {
+  background: #83CEF7;
+  color: #fff;
+}
+.back-to-top.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*--------------------------------------------------------------
+# Disable aos animation delay on mobile devices
+--------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  [data-aos-delay] {
+    transition-delay: 0 !important;
+  }
+}
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+#header {
+  transition: all 0.5s;
+  z-index: 997;
+  padding: 23px 0 0;
+}
+#header.header-scrolled {
+  padding: 12px 0;
+  background-color:#00354d;
+}
+
+#header .logo img {
+  max-height: 111px;
+}
+#header.header-scrolled .logo img
+{
+  height:70px;
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+/**
+* Desktop Navigation 
+*/
+.navbar:not(.navbar-mobile) {
+  padding: 0;
+}
+.navbar:not(.navbar-mobile) ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+.navbar:not(.navbar-mobile) li {
+  position: relative;
+  padding-bottom:12px;
+}
+.navbar:not(.navbar-mobile) a, .navbar:not(.navbar-mobile) a:focus {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 0px 0px 35px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height:120%;
+  color: #fff;
+  white-space: nowrap;
+  transition: 0.3s;
+}
+.navbar:not(.navbar-mobile) a i, .navbar:not(.navbar-mobile) a:focus i {
+  font-size: 12px;
+  line-height: 0;
+  margin-left: 5px;
+}
+.navbar:not(.navbar-mobile) a:hover, .navbar:not(.navbar-mobile) .active, .navbar:not(.navbar-mobile) .active:focus, .navbar:not(.navbar-mobile) li:hover > a {
+  color: #84cff7;
+}
+.navbar:not(.navbar-mobile) .dropdown ul {
+  overflow:hidden;
+  display: block;
+  position: absolute;
+  left: 30px;
+  top: calc(100% + 30px);
+  margin: 0;
+  padding: 10px 0;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  background: #681667;
+  border-radius:0px 0px 0px 20px;
+  transition: 0.3s;
+  padding:40px 30px 80px 27px;
+}
+.navbar:not(.navbar-mobile) .dropdown ul:before{
+  content:"";
+  display: block;
+  position: absolute;
+  top:0px;
+  width:100%;
+  left:0px;
+  height:10px;
+  background: linear-gradient(to right, rgba(86, 11,85, 0.6) 30%, #84cff7 30%);
+}
+.navbar:not(.navbar-mobile) .dropdown ul:after{
+  content:"";
+  display:block;
+  position:absolute;
+  width:221px;
+  height:210px;
+  background:no-repeat center/cover url('../../img/bg-logo-overlay.png');
+  bottom:0px;
+  left:0px;
+  opacity: 0.2;
+}
+.navbar:not(.navbar-mobile) .dropdown ul li {
+  min-width: 200px;
+  padding-bottom:0px;
+  z-index:2;
+}
+.navbar:not(.navbar-mobile) .dropdown ul a {
+  padding: 10px 0px;
+  font-family: 'Open Sans';
+  font-weight:400;
+  font-size: 16px;
+  line-height:1.2;
+}
+.navbar:not(.navbar-mobile) .dropdown ul a i {
+  font-size: 12px;
+}
+.navbar:not(.navbar-mobile) .dropdown ul a:hover, .navbar:not(.navbar-mobile) .dropdown ul .active:hover, .navbar:not(.navbar-mobile) .dropdown ul li:hover > a {
+  color: #84cff7;
+}
+.navbar:not(.navbar-mobile) .dropdown:hover > ul {
+  opacity: 1;
+  top: 100%;
+  visibility: visible;
+}
+.navbar:not(.navbar-mobile) .dropdown .dropdown ul {
+  top: 0;
+  left: calc(100% - 30px);
+  visibility: hidden;
+}
+.navbar:not(.navbar-mobile) .dropdown .dropdown:hover > ul {
+  opacity: 1;
+  top: 0;
+  left: 100%;
+  visibility: visible;
+}
+@media (max-width: 1366px) {
+  .navbar:not(.navbar-mobile) .dropdown .dropdown ul {
+    left: -90%;
+  }
+  .navbar:not(.navbar-mobile) .dropdown .dropdown:hover > ul {
+    left: -100%;
+  }
+}
+
+/**
+* Mobile Navigation 
+*/
+.mobile-nav-toggle {
+  color: #111111;
+  font-size: 28px;
+  cursor: pointer;
+  display: none;
+  line-height: 0;
+  transition: 0.5s;
+}
+.mobile-nav-toggle.bi-x {
+  color: #fff;
+}
+
+@media (max-width: 1199px) {
+  .mobile-nav-toggle {
+    display: block;
+  }
+
+  .navbar:not(.navbar-mobile)ul {
+    display: none;
+  }
+}
+.navbar-mobile {
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  transition: 0.3s;
+  z-index: 999;
+  padding:50px 0px 100px;
+}
+.navbar-mobile .mobile-nav-toggle {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+/*.navbar-mobile ul {
+  display: block;
+  position: absolute;
+  top: 55px;
+  right: 15px;
+  bottom: 15px;
+  left: 15px;
+  padding: 10px 0;
+  background-color: #fff;
+  overflow-y: auto;
+  transition: 0.3s;
+}
+.navbar-mobile a, .navbar-mobile a:focus {
+  padding: 10px 20px;
+  font-size: 15px;
+  color: #111111;
+}
+
+.navbar-mobile .getstarted, .navbar-mobile .getstarted:focus {
+  margin: 15px;
+}
+.navbar-mobile .dropdown ul {
+  position: static;
+  display: none;
+  margin: 10px 20px;
+  padding: 10px 0;
+  z-index: 99;
+  opacity: 1;
+  visibility: visible;
+  background: #fff;
+  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+}
+.navbar-mobile .dropdown ul li {
+  min-width: 200px;
+}
+.navbar-mobile .dropdown ul a {
+  padding: 10px 20px;
+}
+.navbar-mobile .dropdown ul a i {
+  font-size: 12px;
+}
+.navbar-mobile .dropdown ul a:hover, .navbar-mobile .dropdown ul .active:hover, .navbar-mobile .dropdown ul li:hover > a {
+  color: #e03a3c;
+}
+.navbar-mobile .dropdown > .dropdown-active {
+  display: block;
+}
+  */
+
+/*--------------------------------------------------------------
+# Sections General
+--------------------------------------------------------------*/
+section {
+  padding: 60px 0;
+  overflow: hidden;
+  position: relative;
+}
+.section-bg {
+  padding: 120px 0;
+  color: #fff;
+}
+.section-bg:before {
+  content: "";
+  background: #1b1b1b;
+  position: absolute;
+  bottom: 60px;
+  top: 60px;
+  left: 0;
+  right: 0;
+  transform: skewY(-3deg);
+}
+
+/*--------------------------------------------------------------
+# Breadcrumbs
+--------------------------------------------------------------*/
+.breadcrumbs {
+  padding: 15px 0;
+  background: #2b2b2b;
+  min-height: 40px;
+  margin-top: 82px;
+  color: #fff;
+}
+.breadcrumbs h2 {
+  font-size: 28px;
+  font-weight: 500;
+}
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0 0 10px 0;
+  margin: 0;
+  font-size: 14px;
+}
+.breadcrumbs ol a {
+  color: #aaaaaa;
+}
+.breadcrumbs ol a:hover {
+  color: #fff;
+  transition: 0.3s;
+}
+.breadcrumbs ol li + li {
+  padding-left: 10px;
+}
+.breadcrumbs ol li + li::before {
+  display: inline-block;
+  padding-right: 10px;
+  content: "/";
+}
+
+
+
+
+

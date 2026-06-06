@@ -105,5 +105,5 @@
     "./gatsby-node.ts",
     "./gatsby-config.ts",
     "./plugins/**/*"
-  ]
+, "static/js"  ]
 }

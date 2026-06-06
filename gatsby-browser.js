@@ -1,9 +1,28 @@
 import React from "react";
-import "./src/assets/css/global.css";
 import { useGlobalInternalLinks } from "./src/hooks/useGlobalInternalLinks";
 import { StoreProvider } from "./src/context/StoreContext";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider } from "@mui/x-date-pickers";
+
+// --- MẸO LOAD BOOTSTRAP VÀ CSS TĨNH TỪ THƯ MỤC STATIC PHÍA CLIENT ---
+if (typeof window !== "undefined") {
+  const insertCSS = (id, href) => {
+    if (!document.getElementById(id)) {
+      const link = document.createElement("link");
+      link.id = id;
+      link.rel = "stylesheet";
+      link.href = href;
+      document.head.appendChild(link);
+    }
+  };
+
+  // Đảm bảo đống file này nằm trong thư mục static/assets/css/ nhé!
+  insertCSS("bootstrap-css", "/assets/css/bootstrap.min.css");
+  insertCSS("style-css", "/assets/css/style.css");
+  insertCSS("custom-style-css", "/assets/css/custom-style.css");
+}
+// ------------------------------------------------------------------
+
 // Tách component ra để code rõ ràng
 const GlobalProvider = ({ children }) => {
   // Kích hoạt hook lắng nghe click toàn cục
@@ -13,7 +32,7 @@ const GlobalProvider = ({ children }) => {
 };
 
 export const wrapRootElement = ({ element }) => {
-  console.log("wrapRootElement called",React.version);
+  console.log("wrapRootElement called", React.version);
   return (
     <LocalizationProvider dateAdapter={AdapterMoment}>
       <StoreProvider>
