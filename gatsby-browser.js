@@ -17,9 +17,15 @@ if (typeof window !== "undefined") {
   };
 
   // Đảm bảo đống file này nằm trong thư mục static/assets/css/ nhé!
+  insertCSS("aos-css", "/assets/css/aos.css");
   insertCSS("bootstrap-css", "/assets/css/bootstrap.min.css");
+  insertCSS("bootstrap-icons-css", "/assets/css/bootstrap-icons.css");
   insertCSS("style-css", "/assets/css/style.css");
   insertCSS("custom-style-css", "/assets/css/custom-style.css");
+  insertCSS("font-awesome-css", "/assets/css/font-awesome.min.css");
+  insertCSS("select2-css", "/assets/css/select2.min.css");
+  insertCSS("slick-css", "/assets/css/slick.css");
+  
 }
 // ------------------------------------------------------------------
 
