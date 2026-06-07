@@ -35,7 +35,9 @@ if (typeof window !== "undefined") {
       script.src = src;
       script.async = false; // Chạy tuần tự để tránh lỗi jQuery undefined
       document.body.appendChild(script);
+      return script;
     }
+    return null;
   };
 
   // 1. Tiêm toàn bộ file CSS (Thứ tự chuẩn từ core đến custom)
@@ -52,7 +54,8 @@ if (typeof window !== "undefined") {
   window.addEventListener("DOMContentLoaded", () => {
     insertJS("jq", "/assets/js/jquery.min.js");
     insertJS("bs-bundle", "/assets/js/bootstrap.bundle.min.js");
-    insertJS("aos-js", "/assets/js/aos.js");
+    const aosScript = insertJS("aos-js", "/assets/js/aos.js");
+    if (aosScript) aosScript.onload = () => { window.AOS && window.AOS.init(); };
     insertJS("slick-js", "/assets/js/slick.min.js");
     insertJS("select2-js", "/assets/js/select2.min.js");
     insertJS("emasi-main", "/assets/js/main.js");

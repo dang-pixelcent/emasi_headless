@@ -1,0 +1,228 @@
+.sc-school-list {
+    padding: 0px;
+}
+
+.schools {
+    gap: clamp(3.52px, 0.29296875vw, 60px);
+    padding-bottom: clamp(29.3px, 2.44140625vw, 50px);
+}
+
+.schools-slider {
+    max-width: clamp(287.11px, 23.92578125vw, 490px);
+}
+
+.schools-slider .box {
+    position: relative;
+    gap: clamp(11.72px, 0.9765625vw, 20px);
+    padding: 0px clamp(30.47px, 2.5390625vw, 52px);
+    min-height: clamp(105.47px, 8.7890625vw, 180px);
+    cursor: pointer;
+    margin-bottom: clamp(3.52px, 0.29296875vw, 6px);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transition: all 1s ease;
+}
+
+.inner-box {
+    gap: clamp(11.72px, 0.9765625vw, 20px);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transition: all 1s ease;
+}
+
+.schools-slider .active .box .inner-box {
+    scale: 1.1;
+}
+
+.schools-slider .box:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: clamp(110.74px, 9.228515625vw, 189px);
+    height: clamp(105.47px, 8.7890625vw, 180px);
+    top: 0px;
+    left: 0px;
+    transition: scale .5s linear;
+    scale: 1;
+}
+
+.schools-slider .active .box:before {
+    scale: 1.5;
+}
+
+.schools-slider .slick-active:nth-child(1) .box:before,
+.schools-slider .box-1:before,
+.schools-slider .box-5:before {
+    background: no-repeat center/cover url('/assets/images/icon-img-1.png');
+}
+
+.schools-slider .slick-active:nth-child(2) .box:before,
+.schools-slider .box-2:before {
+    background: no-repeat center/cover url('/assets/images/icon-img-2.png');
+}
+
+.schools-slider .slick-active:nth-child(3) .box:before,
+.schools-slider .box-3:before {
+    background: no-repeat center/cover url('/assets/images/icon-img-3.png');
+}
+
+.schools-slider .slick-active:nth-child(4) .box:before,
+.schools-slider .box-4:before {
+    background: no-repeat center/cover url('/assets/images/icon-img-4.png');
+}
+
+.schools-slider .slick-active:nth-child(1) .box,
+.schools-slider .box-1,
+.schools-slider .box-5 {
+    background: linear-gradient(57deg, #819314, #bed62f);
+}
+
+.schools-slider .slick-active:nth-child(2) .box,
+.schools-slider .box-2 {
+    background: linear-gradient(67deg, #5bcbf5, #0794c9);
+}
+
+.schools-slider .slick-active:nth-child(3) .box,
+.schools-slider .box-3 {
+    background: linear-gradient(62deg, #0794c9, #004d6c);
+}
+
+.schools-slider .slick-active:nth-child(4) .box,
+.schools-slider .box-4 {
+    background: linear-gradient(62deg, #0794c9, #832a81);
+}
+
+.schools-slider .slide.active .box,
+.schools-slider .slick-active.active .box,
+.schools-slider .active .box {
+    box-shadow: unset;
+}
+
+.schools-slider .box>* {
+    position: relative;
+    z-index: 2;
+}
+
+.schools-slider .box img {
+    flex: 0 0 auto;
+    width: clamp(29.3px, 2.44140625vw, 49px);
+    height: clamp(38.67px, 3.22265625vw, 65px);
+}
+
+.schools-slider .box .content {
+    transition: all .5s ease;
+}
+
+.schools-slider .box h3 {
+    font-weight: 500;
+    font-size: clamp(16.41px, 1.3671875vw, 28px);
+    line-height: 1.2;
+    transition: all 0.5s ease-in-out;
+    /*margin-bottom:0.68359375vw !important;*/
+}
+
+.schools-slider .box .address {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: all 1s ease;
+    height: 0px;
+}
+
+.schools-slider .box .address {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+    transform: translateY(0);
+    height: 100%;
+    font-size: clamp(9.6px, 0.8vw, 16px);
+}
+
+.school-img {
+    flex: 1;
+    height: clamp(435.94px, 36.328125vw, 743px);
+    overflow: hidden;
+}
+
+.school-img .slick-list,
+.school-img .slick-track {
+    height: 100%;
+}
+
+.school-img img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.schools-slider .slick-arrow {
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.schools-slider .slick-prev {
+    display: none !important;
+}
+
+.schools-slider .slick-next {
+    bottom: clamp(-20.5px, -1.708984375vw, -35px);
+}
+
+@media only screen and (max-width:1199.98px) {
+    .sc-school-list .ps-90 {
+        padding-left: 0px !important;
+    }
+
+    .schools {
+        gap: 0.8340283569641368vw;
+        padding-bottom: 4.253544620517098vw;
+    }
+
+    .schools-slider {
+        max-width: 36.19683069224354vw;
+    }
+
+    .schools-slider .box {
+        min-height: 13.344453711426189vw;
+        margin-bottom: 0.3336113427856547vw;
+        padding: 0px 3.7531276063386154vw;
+    }
+
+    .schools-slider .box img {
+        width: 3.669724770642202vw;
+        height: 4.837364470391994vw;
+    }
+
+    .schools-slider .box h3 {
+        font-size: 2.0850708924103416vw;
+        /*margin-bottom:1.1676396997497915vw !important;*/
+    }
+
+    .schools-slider .box .address {
+        font-size: 1.58465387823186vw;
+    }
+
+    .school-img {
+        height: unset;
+    }
+
+    .schools-slider .box:before {
+        width: 15.763135946622187vw;
+        height: 15.012510425354462vw;
+    }
+
+    .schools-slider .slick-arrow,
+    .schools-slider .slick-arrow img {
+        width: 2.7522935779816518vw;
+        height: 1.58465387823186vw;
+    }
+
+    .schools-slider .slick-next {
+        bottom: -2.9190992493744785vw;
+    }
+}

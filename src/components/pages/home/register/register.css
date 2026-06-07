@@ -1,0 +1,255 @@
+.sc-register select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 30px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="5" viewBox="0 0 10 5"><path fill="%23a5a5a5" d="M0 0h10L5 5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px
+}
+
+.nf-before-form-content {
+    display: none
+}
+
+.sc-register {
+    padding: clamp(24.0234375px, 2.001953125vw, 41px) 0 clamp(16.40625px, 1.3671875vw, 28px)
+}
+
+.col-banner {
+    flex: 0 0 46%
+}
+
+.col-banner img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    max-height: 1136px;
+}
+
+.bg-gray-ems {
+    background: #f1f5f7
+}
+
+.col-form {
+    flex: 1;
+    padding: clamp(49.21875px, 4.1015625vw, 84px) 0 clamp(41.6015625px, 3.466796875vw, 71px);
+    background: #f1f5f7
+}
+
+.col-form .sc-header {
+    padding: 0 clamp(7.6171875px, 0.634765625vw, 13px)
+}
+
+.col-form .h2-title {
+    color: #797979
+}
+
+.col-form .h2-title strong {
+    color: #005d83 !important
+}
+
+.register-form {
+    padding: clamp(26.953125px, 2.24609375vw, 46px) clamp(70.3125px, 5.859375vw, 120px) clamp(31.640625px, 2.63671875vw, 54px) clamp(33.3984375px, 2.783203125vw, 57px);
+    margin-top: clamp(15.8203125px, 1.318359375vw, 27px);
+    max-width: clamp(498.6337890625px, 41.552734375vw, 852px);
+    margin-left: clamp(-72.0703125px, -6.005859375vw, -123px);
+    background: #fff;
+    border-radius: 0 clamp(85.546875px, 7.12890625vw, 146px) 0 0
+}
+
+.register-form p,
+.register-form .desc {
+    font-size: clamp(14.0625px, 1.171875vw, 24px);
+    font-weight: 300;
+    line-height: 1.33;
+    color: #5d5b5b
+}
+
+.register-form .ninja-forms-all-fields-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(9.375px, 0.78125vw, 16px) clamp(14.0625px, 1.171875vw, 24px)
+}
+
+.register-form .field-wrap:not(.w_half-wrap) {
+    width: 100%
+}
+
+.register-form .field-wrap {
+    margin: 0;
+    width: 100%;
+}
+
+.register-form .field-wrap.w_half-wrap {
+    width: calc((100% - clamp(14.0625px, 1.171875vw, 24px)) / 2)
+}
+
+.register-form input,
+.register-form select,
+.register-form textarea {
+    font-weight: 300;
+    font-size: clamp(12.890625px, 1.07421875vw, 22px);
+    line-height: normal;
+    border: .25px solid #e7e7e7 !important;
+    padding: clamp(8.203125px, 0.68359375vw, 14px) clamp(17.578125px, 1.46484375vw, 30px);
+    border-radius: clamp(14.6484375px, 1.220703125vw, 25px) 0 0 0;
+    color: #a5a5a5
+}
+
+.register-form select {
+    width: 100% !important
+}
+
+.register-form .textarea-wrap textarea {
+    height: clamp(53.90625px, 4.4921875vw, 92px)
+}
+
+.register-form input::placeholder,
+.register-form textarea::placeholder {
+    color: #a5a5a5
+}
+
+.register-form input:focus,
+.register-form input:hover,
+.register-form textarea:hover,
+.register-form textarea:focus,
+.register-form select:focus,
+.register-form select:hover {
+    outline: none;
+    border: 1px solid #62B6E2 !important
+}
+
+.register-form .submit-wrap {
+    justify-content: flex-end;
+    width: auto !important;
+    margin-left: auto
+}
+
+.register-form .submit-wrap .nf-field-element {
+    width: auto !important
+}
+
+.register-form input[type="button"],
+.register-form input[type="submit"] {
+    background: #62b6e2;
+    width: 310px;
+    height: clamp(28.671875px, 2.39vw, 49px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 300;
+    font-size: clamp(12.84px, 1.07vw, 22px);
+    line-height: normal;
+    color: #fff;
+    border-radius: 25px 0 0 0;
+    padding: 0 4vw !important;
+    border: 0 solid !important
+}
+
+.register-form .submit-wrap .nf-field-element {
+    text-align: right
+}
+
+.enable-select2-wrap {
+    position: relative
+}
+
+.field-wrap.enable-select2-wrap::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: calc((100% - 20px)/2);
+    right: 15px;
+    transform: rotate(90deg);
+    background: no-repeat center/cover url('/assets/images/arrow-right-2.svg');
+    width: 20px;
+    height: 20px
+}
+
+.enable-select2-wrap select {
+    appearance: none;
+    background: transparent;
+    position: relative;
+    z-index: 2
+}
+
+.nf-field-element input, textarea {
+    width: 100%;
+}
+
+@media only screen and (max-width:1199.98px) {
+    .sc-register .ps-90 {
+        padding-left: 0px !important;
+    }
+
+    .sc-register {
+        padding: 8.340283569641366vw 0px 0px;
+    }
+
+    .col-banner {
+        flex: 0 0 100%;
+        padding: 0px 10.842368640533778vw;
+    }
+
+    .col-form {
+        padding: 10.842368640533778vw 0px 5.170975813177648vw;
+    }
+
+    .col-form .sc-header {
+        padding: 0px 7.6730608840700585vw;
+    }
+
+    .register-form {
+        margin: 3.919933277731443vw 0px 0px;
+        max-width: 100%;
+        padding: 10.008340283569641vw 7.6730608840700585vw 0px;
+        border-radius: 0px;
+    }
+
+    .col-form .h2-title br {
+        display: none;
+    }
+
+    .col-form .h2-title strong {
+        color: #782077 !important;
+    }
+
+    .register-form p,
+    .register-form .desc {
+        font-size: 2.9190992493744785vw;
+    }
+
+    .register-form .ninja-forms-all-fields-wrap {
+        gap: 2.0016680567139282vw;
+    }
+
+    .register-form .field-wrap.w_half-wrap {
+        width: calc((100% - 2.0016680567139282vw)/2);
+    }
+
+    .field-wrap.enable-select2-wrap::after {
+        top: calc((100% - 1.6680567139282736vw)/2);
+        right: 1.2510425354462051vw;
+        width: 1.6680567139282736vw;
+        height: 1.6680567139282736vw;
+    }
+
+    .register-form input,
+    .register-form select,
+    .register-form textarea,
+    .register-form input[type="button"],
+    .register-form input[type="submit"] {
+        font-size: 2.6688907422852375vw;
+    }
+
+    .register-form .textarea-wrap textarea {
+        height: 11.259382819015846vw;
+    }
+
+    .register-form input[type="submit"] {
+        width: 37.53127606338615vw;
+        height: 5.838198498748957vw;
+    }
+}
