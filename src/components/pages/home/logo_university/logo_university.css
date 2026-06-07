@@ -1,0 +1,39 @@
+.sc-logos-university{padding:0}
+.sc-logos-university .logos-university-slider{overflow:hidden;white-space:nowrap}
+.logos-university-inner{display:inline-flex;align-items:center;gap:0;justify-content:space-around}
+.logos-university-slider .slick-track{display:flex;align-items:center}
+.logos-university-slider .slide-logo{display:flex;justify-content:center}
+.logos-university-slider .slide-logo .logo {
+    padding: 0 clamp(9.375px, 0.78125vw, 16px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+.logos-university-slider .slide-logo img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+@keyframes scrollLeft {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+
+}
+
+@media only screen and (max-width:1199.98px) {
+    .sc-logos-university {
+        padding: 0px 0px 4.5037531276063385vw;
+    }
+
+    .logos-university-slider .slide-logo .logo {
+        padding: 0px 1.3344453711426187vw;
+    }
+}

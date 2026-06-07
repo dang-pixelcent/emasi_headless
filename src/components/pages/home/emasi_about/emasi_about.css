@@ -1,0 +1,136 @@
+.sc-about-emasi {
+    padding-bottom: clamp(56.84px, 4.736328125vw, 97px);
+}
+
+.col-left {
+    max-width: clamp(284.18px, 23.681640625vw, 485px);
+    padding-top: clamp(43.36px, 3.61328125vw, 74px);
+}
+
+.col-left h2 {
+    margin:
+        clamp(38.67px, 3.22265625vw, 66px)
+        0
+        clamp(16.41px, 1.3671875vw, 28px);
+}
+
+.col-right {
+    max-width: clamp(415.43px, 34.619140625vw, 709px);
+    padding-top: clamp(43.36px, 3.61328125vw, 74px);
+}
+
+.col-right .desc {
+    color: #363838;
+    font-size: clamp(14.06px, 1.171875vw, 24px);
+    line-height: 1.4;
+    margin-top: clamp(38.67px, 3.22265625vw, 66px);
+}
+
+.sep {
+    display: flex;
+    align-items: center;
+    gap: clamp(9.38px, 0.78125vw, 16px);
+    margin-top: clamp(12.89px, 1.07421875vw, 22px);
+}
+
+.sep::before {
+    content: "";
+    width: 100%;
+    max-width: clamp(202.15px, 16.845703125vw, 345px);
+    height: clamp(6.45px, 0.537109375vw, 11px);
+    background: #5bcbf5;
+}
+
+.sep a {
+    color: #5bcbf5;
+    font-weight: 400;
+    font-size: clamp(14.06px, 1.171875vw, 24px);
+    line-height: 1.33;
+}
+
+.ab-img-left,
+.ab-img-right {
+    width: clamp(135px, 11.25vw, 230px);
+    min-width: 180px;
+}
+
+@media only screen and (max-width: 1199.98px) {
+    .sc-about-emasi {
+        padding-top: 7.172643869891576vw;
+        padding-bottom: 6.422018348623854vw;
+    }
+
+    .sc-about-emasi::after {
+        content: "";
+        display: block;
+        position: absolute;
+        right: 5.5045871559633035vw;
+        bottom: 1.6680567139282736vw;
+
+        width: 50.87572977481234vw;
+        height: 48.54045037531276vw;
+
+        background: no-repeat center / cover
+            url('/assets/images/mark-about-emasi.png');
+    }
+
+    .sc-about-emasi > * {
+        position: relative;
+        z-index: 2;
+    }
+
+    .m-px {
+        padding-left: 12.01000834028357vw;
+        padding-right: 12.01000834028357vw;
+    }
+
+    .col-left h2 {
+        margin:
+            7.506255212677231vw
+            0
+            3.336113427856547vw;
+
+        font-size: 8.84070058381985vw !important;
+    }
+
+    .col-left .sub-title {
+        font-size: 5.67139282735613vw !important;
+    }
+
+    .sep {
+        margin-top: 4.75396163469558vw;
+    }
+
+    .sep::before {
+        height: 1.2510425354462051vw;
+        max-width: 45.53794829024187vw;
+    }
+
+    .col-left,
+    .col-right {
+        max-width: unset;
+    }
+
+    .col-right {
+        padding-top: 0;
+        margin-top: 6.005004170141785vw;
+    }
+
+    .col-right img {
+        display: none;
+    }
+
+    .col-right .desc {
+        font-weight: 300;
+    }
+
+    .col-right .desc,
+    .sep a {
+        font-size: 3.0025020850708923vw;
+    }
+
+    .ab-img-left,
+    .ab-img-right {
+        width: 15.27vw;
+    }
+}
