@@ -1,0 +1,100 @@
+.sc-our-schools-about {
+    padding: clamp(89.6484375px, 7.470703125vw, 153px) 0 clamp(83.203125px, 6.93359375vw, 142px);
+    position: relative
+}
+
+.sc-our-schools-about:before,
+.sc-our-schools-about:after {
+    content: "";
+    display: block;
+    position: absolute
+}
+
+.sc-our-schools-about:before {
+    background: no-repeat center/cover url('/assets/images/about-mark-left.png');
+    left: 0;
+    bottom: 0;
+    width: clamp(434.0625px, 36.03515625vw, 737px);
+    height: clamp(410.15625px, 34.1796875vw, 699px)
+}
+
+.sc-our-schools-about:after {
+    background: no-repeat center/cover url('/assets/images/about-mark-right.png');
+    right: 0;
+    bottom: 0;
+    width: clamp(314.0625px, 26.171875vw, 536px);
+    height: clamp(296.484375px, 24.70703125vw, 506px)
+}
+
+.sc-our-schools-about>* {
+    position: relative;
+    z-index: 2
+}
+
+.our-schools-about {
+    padding-left: clamp(127.1484375px, 10.595703125vw, 217px);
+    padding-right: clamp(127.1484375px, 10.595703125vw, 217px)
+}
+
+.our-schools-about .h2-title {
+    color: #aeaeae
+}
+
+.our-schools-about .h2-title strong {
+    color: #57cbf5
+}
+
+.our-schools-about .desc {
+    margin-top: clamp(25.78125px, 2.1484375vw, 44px);
+    color: #004d6c
+}
+
+.our-schools-about .desc,
+.our-schools-about .desc p {
+    font-size: clamp(14.0625px, 1.171875vw, 24px);
+    line-height: 1.4
+}
+
+.our-schools-about .desc p:last-child {
+    margin-bottom: 0
+}
+
+@media only screen and (max-width: 1199.98px) {
+    .sc-our-schools-about {
+        padding: 9.1743119266055vw 0 10.175145954962vw
+    }
+
+    .sc-our-schools-about:after {
+        content: none
+    }
+
+    .sc-our-schools-about:before {
+        left: -18.348623853211vw;
+        top: -25.020850708924vw;
+        bottom: unset;
+        width: 61.551292743953vw;
+        height: 58.38198498749vw
+    }
+
+    .sc-our-schools-about .inner-container {
+        padding-left: 13.928273561301vw;
+        padding-right: 13.928273561301vw
+    }
+
+    .our-schools-about {
+        padding: 0
+    }
+
+    .our-schools-about .h2-title {
+        font-size: 4.0033361134279vw
+    }
+
+    .our-schools-about .desc {
+        margin-top: 3.5029190992494vw
+    }
+
+    .our-schools-about .desc,
+    .our-schools-about .desc p {
+        font-size: 3.0025020850709vw
+    }
+}

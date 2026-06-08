@@ -1,6 +1,5 @@
 import React from "react";
-// import Banner from "../components/pages/home/banner/banner";
-import EmasiAbout from '../components/pages/home/emasi_about/emasi_about';
+import EmasiAbout from '@/components/pages/home/emasi_about/emasi_about';
 import Banner from "@/components/pages/home/banner/banner";
 import SchoolList from "@/components/pages/home/school_list/school_list";
 import Values from "@/components/pages/home/values/values";
