@@ -1,0 +1,108 @@
+.sc-main-title {
+    position: relative;
+    padding: clamp(28.13px, 2.34375vw, 48px) 0 clamp(28.71px, 2.392578125vw, 49px)
+}
+
+.sc-main-title::after {
+    content: "";
+    position: absolute;
+    background-size: clamp(301px, 25.048828125vw, 513px) clamp(287px, 23.876953125vw, 489px);
+    top: 0;
+    left: 0;
+    width: clamp(301px, 25.048828125vw, 513px);
+    height: clamp(287px, 23.876953125vw, 489px);
+    z-index: -1;
+    background: linear-gradient(49deg, #e9a5a5fe 0%, #b8c1c0fe 25%, #65c0e0fe 50%, #aea2dbff 75%, #81c1d9ff 100%);
+    mask-image: url('/assets/images/background-logo.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: cover;
+    -webkit-mask-image: url('/assets/images/background-logo.svg');
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: cover;
+    opacity: .1
+}
+
+.sc-main-title .breadcrumb {
+    background: none;
+    margin-bottom: clamp(36.91px, 3.076171875vw, 63px);
+    gap: clamp(11.72px, .9765625vw, 20px)
+}
+
+.sc-main-title .breadcrumb span,
+.sc-main-title .breadcrumb a {
+    color: #a5a5a5;
+    font-weight: 300;
+    font-size: clamp(11.72px, .9765625vw, 20px);
+    line-height: 1.8;
+    transition: 1s ease;
+    letter-spacing: clamp(2.34px, .1953125vw, 4px)
+}
+
+.sc-main-title .breadcrumb a:hover {
+    color: #822a81
+}
+
+.sc-main-title .subtitle,
+.sc-main-title .title {
+    font-size: clamp(28.13px, 2.34375vw, 48px);
+    line-height: normal;
+    text-transform: uppercase;
+    margin-bottom: 0
+}
+
+.sc-main-title .subtitle {
+    color: #909090
+}
+
+.sc-main-title .title {
+    color: #003e58;
+    margin-bottom: clamp(30.47px, 2.5390625vw, 52px)
+}
+
+.sc-main-title .blockquote {
+    padding-left: clamp(9.37px, .78125vw, 16px);
+    border-left: clamp(7.03px, .5859375vw, 12px) solid #57cbf5;
+    font-size: clamp(14.65px, 1.220703125vw, 25px);
+    line-height: 1.44;
+    color: #8e8e8e;
+    margin-bottom: 0
+}
+
+@media only screen and (max-width:1199.98px) {
+    .sc-main-title {
+        padding: 8.006672226855713vw 0 5.337781484570475vw;
+    }
+
+    .sc-main-title .breadcrumb {
+        margin-bottom: 0px;
+        display: none;
+    }
+
+    .sc-main-title .breadcrumb span,
+    .sc-main-title .breadcrumb a {
+        font-size: 1.6680567139282736vw;
+    }
+
+    .sc-main-title::after {
+        background-size: 42.75vw 41.5vw;
+        width: 42.75vw;
+        height: 41.5vw;
+    }
+
+    .sc-main-title .subtitle,
+    .sc-main-title .title {
+        font-size: 4vw;
+        max-width: 65.41666666666667vw;
+    }
+
+    .sc-main-title .title {
+        margin-bottom: 4.666666666666667vw;
+    }
+
+    .sc-main-title .blockquote {
+        padding-left: 3.4166666666666665vw;
+        font-size: 3vw;
+    }
+}

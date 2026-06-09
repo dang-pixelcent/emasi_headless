@@ -1,12 +1,12 @@
 import React from "react";
 import Button from "@/components/common/Button";
 import Layout from "@/components/common/Layout";
-import Home from "@/templates/wp-page-home";
+import Program from "@/templates/wp-page-program";
 
 const HomePage = () => {
   return (
     <Layout>
-      <Home />
+      <Program />
       {/* <div className="container py-20 text-center">
         <div className="row">
           <div className="col-12">
