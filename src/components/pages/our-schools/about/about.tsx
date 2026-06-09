@@ -1,7 +1,9 @@
 import React from "react";
 import "./about.css";
 
-export default function OurSchoolsAbout() {
+//dữ liệu tuyển sinh/ đăng ký tuyển sinh
+
+export default function About() {
   return (
     <section className="sc-our-schools-about">
       <div className="inner-container">

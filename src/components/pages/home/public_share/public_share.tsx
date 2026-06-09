@@ -169,15 +169,17 @@ export default function PublicShare() {
           <div className="pagination-controls">
 
             <button className="slick-prev slick-arrow" aria-label="Previous">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M8 4L16 12L8 20"
-                  stroke="#000"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+             <svg
+  fill="#cccccc"
+  width="20"
+  height="20"
+  viewBox="0 0 330 330"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M250.606,154.389l-150-149.996c-5.857-5.858-15.355-5.858-21.213,0.001c-5.857,5.858-5.857,15.355,0.001,21.213l139.393,139.39L79.393,304.394c-5.857,5.858-5.857,15.355,0.001,21.213C82.322,328.536,86.161,330,90,330s7.678-1.464,10.607-4.394l149.999-150.004c2.814-2.813,4.394-6.628,4.394-10.606C255,161.018,253.42,157.202,250.606,154.389z"
+  />
+</svg>
             </button>
 
             <div className="pagination text-white">
@@ -186,15 +188,17 @@ export default function PublicShare() {
             </div>
 
             <button className="slick-next slick-arrow" aria-label="Next">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M8 4L16 12L8 20"
-                  stroke="#000"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              <svg
+  fill="#cccccc"
+  width="20"
+  height="20"
+  viewBox="0 0 330 330"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M250.606,154.389l-150-149.996c-5.857-5.858-15.355-5.858-21.213,0.001c-5.857,5.858-5.857,15.355,0.001,21.213l139.393,139.39L79.393,304.394c-5.857,5.858-5.857,15.355,0.001,21.213C82.322,328.536,86.161,330,90,330s7.678-1.464,10.607-4.394l149.999-150.004c2.814-2.813,4.394-6.628,4.394-10.606C255,161.018,253.42,157.202,250.606,154.389z"
+  />
+</svg>
             </button>
 
           </div>

@@ -1,0 +1,85 @@
+.sc-badgets {
+    padding: 2px 0;
+    background: linear-gradient(270deg, #e2e2e2 0%, #f1f1f1 100%)
+}
+
+.sc-badgets .boxies {
+    gap: 2px
+}
+
+.sc-badgets .boxies .box {
+    width: calc((100% - 10px)/8);
+    max-width: clamp(140.625px, 11.71875vw, 300px)
+}
+
+.sc-badgets .boxies.box8 .box {
+    width: calc((100% - 10px)/8)
+}
+
+.sc-badgets .boxies .box a {
+    gap: 7px;
+    transition: all .5s ease;
+    padding: clamp(20px, 1.6666667vw, 20px)
+}
+
+.sc-badgets .boxies .box a:hover {
+    transform: scale(1.05)
+}
+
+.box-1 {
+    background: linear-gradient(90deg, #40b649, #b0d235)
+}
+
+.box-2 {
+    background: linear-gradient(270deg, #afd236, #57cbf5)
+}
+
+.box-3 {
+    background: linear-gradient(90deg, #55b1d9 0%, #57cbf5 100%)
+}
+
+.box-4 {
+    background: linear-gradient(270deg, #006289 0%, #00aeef 100%)
+}
+
+.box-5 {
+    background: linear-gradient(270deg, #42b649 0%, #00638c 100%)
+}
+
+.box-6 {
+    background: linear-gradient(270deg, #42b649 0%, #5ec7f2 100%)
+}
+
+.box-7 {
+    background: linear-gradient(270deg, #42b649 0%, #00638c 100%)
+}
+
+.box-8 {
+    background: linear-gradient(270deg, #42b649 0%, #5ec7f2 100%)
+}
+
+.sc-badgets .box .title {
+    font-size: clamp(14px, 1.171875vw, 24px);
+    line-height: normal
+}
+
+@media only screen and (max-width: 1199.98px) {
+    .sc-badgets .container-fluid {
+        padding-left: 12.176814011676vw !important;
+        padding-right: 12.176814011676vw !important
+    }
+
+    .sc-badgets .boxies .box {
+        width: calc((100% - 4px)/3);
+        padding: 1.6680567139283vw;
+        max-width: unset
+    }
+
+    .sc-badgets .boxies.box8 .box {
+        width: calc((100% - 6px)/4)
+    }
+
+    .sc-badgets .box .title {
+        font-size: 2.0016680567139vw
+    }
+}

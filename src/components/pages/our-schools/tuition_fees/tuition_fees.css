@@ -1,0 +1,96 @@
+.sc-fees {
+    padding: clamp(75px, 6.25vw, 128px) 0 clamp(39.84375px, 3.3203125vw, 68px);
+    margin-bottom: clamp(17px, 1.416015625vw, 29px)
+}
+
+.sc-fees:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(-30deg, #005d83 0%, #00364d 100%);
+    opacity: .8
+}
+
+.sc-fees .inner-container {
+    position: relative;
+    z-index: 2
+}
+
+.sc-fees .h2-title strong {
+    color: #bfd730 !important
+}
+
+.sc-fees .list {
+    margin-top: clamp(13.4765625px, 1.123046875vw, 23px)
+}
+
+.sc-fees .list img {
+    width: 100%;
+    margin-bottom: clamp(7.6171875px, .634765625vw, 13px)
+}
+
+.sc-fees .list img:last-child {
+    margin-bottom: 0
+}
+
+.sc-fees .sc-btn {
+    margin-top: clamp(16.40625px, 1.3671875vw, 28px)
+}
+
+.sc-fees .bg-icon:before {
+    content: "";
+    display: block;
+    position: relative;
+    background: no-repeat center/cover url('/assets/images/icon-fingerprint.svg');
+    width: clamp(26.3671875px, 2.197265625vw, 45px);
+    height: clamp(29.8828125px, 2.490234375vw, 51px)
+}
+
+.sc-fees .sc-btn .btn-bg {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    border-radius: 53px;
+    padding: 15px 30px;
+    height: clamp(48.6328125px, 4.052734375vw, 83px);
+    font-size: clamp(18.75px, 1.5625vw, 32px);
+    font-weight: 700;
+}
+
+.bg-white {
+    background: #fff !important;
+    color: #5bcbf5 !important
+}
+
+
+@media only screen and (max-width: 1199.98px) {
+    .sc-fees {
+        padding: 11.092577147623vw 0 8.9241034195163vw;
+        margin: 5.0875729774812vw 0 8.5070892410342vw
+    }
+
+    .sc-fees .inner-container {
+        padding: 0 6.9224353628023vw
+    }
+
+    .sc-fees .h2-title {
+        font-size: 4.0033361134279vw
+    }
+
+    .sc-fees .list {
+        margin-top: 3.836530442035vw
+    }
+
+    .sc-fees .list img {
+        margin-bottom: 2.418682235196vw
+    }
+
+    .sc-fees .sc-btn {
+        margin-top: 5.3377814845705vw
+    }
+}
