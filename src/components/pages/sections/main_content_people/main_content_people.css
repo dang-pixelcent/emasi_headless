@@ -1,0 +1,755 @@
+/* block 1 */
+.sc-main-content {
+    padding: clamp(28px, 2.34375vw, 48px) 0 0;
+    position: relative
+}
+
+.sc-main-content:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: clamp(301px, 25.048828125vw, 513px);
+    height: clamp(288px, 23.974609375vw, 491px);
+    background: no-repeat center/cover url('/assets/images/about-mark-left.png');
+    top: 0;
+    left: 0
+}
+
+.sc-main-content>.inner-container {
+    position: relative;
+    z-index: 2
+}
+
+.sc-main-content .breadcrumb {
+    background: none;
+    margin-bottom: clamp(16px, 1.318359375vw, 27px);
+    gap: clamp(12px, 0.9765625vw, 20px)
+}
+
+.sc-main-content .breadcrumb span,
+.sc-main-content .breadcrumb a {
+    color: #a5a5a5;
+    font-weight: 300;
+    font-size: clamp(12px, 0.9765625vw, 20px);
+    line-height: 1.8;
+    transition: 1s ease;
+    letter-spacing: clamp(2px, 0.1953125vw, 4px)
+}
+
+.sc-main-content .breadcrumb a:hover {
+    color: #822a81
+}
+
+.page-content {
+    gap: clamp(29px, 2.44140625vw, 50px)
+}
+
+.header-content {
+    flex: 0 0 100%
+}
+
+.main-content {
+    flex: 1;
+    padding-bottom: clamp(12px, 0.9765625vw, 20px)
+}
+
+.main-content h1 {
+    font-family: 'Open Sans';
+    font-size: clamp(30px, 2.5vw, 51px);
+    font-weight: 600;
+    color: #003e58;
+    margin-bottom: clamp(18px, 1.5vw, 31px);
+    margin-top: clamp(18px, 1.5vw, 31px)
+}
+
+.main-content h2 {
+    font-family: 'Open Sans';
+    font-size: clamp(22px, 1.8vw, 37px);
+    font-weight: 600;
+    color: #003e58;
+    margin-bottom: clamp(18px, 1.5vw, 31px);
+    margin-top: clamp(18px, 1.5vw, 31px)
+}
+
+.main-content h3 {
+    font-family: 'Open Sans';
+    font-size: clamp(18px, 1.5vw, 31px);
+    font-weight: 600;
+    color: #003e58;
+    margin-bottom: clamp(18px, 1.5vw, 31px);
+    margin-top: clamp(18px, 1.5vw, 31px)
+}
+
+.main-content h2 span,
+.main-content h2 em {
+    color: #909090
+}
+
+.main-content blockquote {
+    border-left: clamp(7px, 0.5859375vw, 12px) solid #57cbf5;
+    padding-left: clamp(15px, 1.220703125vw, 25px);
+    margin-bottom: clamp(30px, 2.5vw, 51px)
+}
+
+.main-content blockquote p {
+    font-family: 'Open Sans';
+    font-size: clamp(15px, 1.220703125vw, 25px);
+    line-height: 1.44;
+    font-weight: 300;
+    color: #8e8e8e
+}
+
+.main-content p {
+    font-family: 'Open Sans';
+    font-size: clamp(14px, 1.171875vw, 24px);
+    line-height: 1.5;
+    font-weight: 300;
+    color: #010101
+}
+
+.main-content .cols-2 {
+    margin-top: clamp(23px, 1.953125vw, 40px);
+    gap: clamp(35px, 2.9296875vw, 60px)
+}
+
+.main-content .cols-2>div {
+    width: calc((100% - clamp(35px, 2.9296875vw, 60px)) / 2)
+}
+
+@media only screen and (max-width:1199.98px) {
+    .page-content {
+        gap: 24px
+    }
+
+    .sidebar-right {
+        flex: 0 0 30%;
+        padding: 50px 24px
+    }
+
+    .sc-main-content .breadcrumb {
+        margin-bottom: 0
+    }
+
+    .main-content h1 {
+        font-size: 5.5vw
+    }
+
+    .main-content h2 {
+        font-size: 4.5vw
+    }
+
+    .main-content h3 {
+        font-size: 3.5vw;
+    }
+
+    .main-content h2,
+    .main-content blockquote {
+        margin-bottom: 5vw;
+    }
+
+    .main-content blockquote p {
+        font-size: 3vw
+    }
+
+    .main-content p {
+        font-size: 3vw
+    }
+
+    .main-content .cols-2 {
+        margin-top: 24px;
+        gap: 24px
+    }
+
+    .main-content .cols-2>div {
+        width: calc((100% - 24px)/2)
+    }
+
+    .sc-main-content .breadcrumb span,
+    .sc-main-content .breadcrumb a {
+        font-size: 1.6680567139283vw
+    }
+}
+
+@media only screen and (max-width:999.98px) {
+    .main-content {
+        flex: 0 0 100%
+    }
+}
+
+@media only screen and (max-width:767.98px) {
+    .sc-main-content {
+        padding: 40px 0 0
+    }
+
+    .main-content {
+        padding-bottom: 40px
+    }
+
+    .main-content .cols-2>div {
+        width: 100%
+    }
+
+    .header-content {
+        display: none
+    }
+}
+
+@media (min-width:768px) {
+    .sidebar-right .widget:has(figure.logo-mobile) {
+        display: none
+    }
+}
+
+/* block 2 */
+.sc-main-content .button {
+    display: flex;
+    gap: clamp(8px, 0.244140625vw, 13px);
+    flex-wrap: wrap;
+    justify-content: flex-start
+}
+
+.sc-main-content .button .item {
+    flex: 0 0 calc((100% - clamp(8px, 0.244140625vw, 13px) * 2) / 3);
+    position: relative;
+    height: clamp(73px, 6.103515625vw, 125px);
+    color: #003e58;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(14px, 0.732421875vw, 30px);
+    font-size: clamp(14px, 1.171875vw, 24px);
+    font-weight: 500;
+    line-height: normal;
+    background-image: linear-gradient(23deg, #f9f9f9 0%, #ebebeb 99%, #ebebeb 100%);
+    text-transform: uppercase
+}
+
+.sc-main-content .button * {
+    transition-duration: .5s
+}
+
+.sc-main-content .button .item img {
+    width: clamp(20px, 1.708984375vw, 35px);
+    height: clamp(26px, 2.197265625vw, 45px);
+    filter: brightness(0) saturate(100%) invert(17%) sepia(16%) saturate(6800%) hue-rotate(171deg) brightness(95%) contrast(101%)
+}
+
+.sc-main-content .button .item::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: no-repeat center/cover url('/assets/images/about-mark-left.png');
+    filter: brightness(0) saturate(100%) invert(42%) sepia(8%) saturate(475%) hue-rotate(131deg) brightness(-40%) contrast(88%);
+    aspect-ratio: 1 / 1
+}
+
+.sc-main-content .button .item:nth-child(1).active {
+    background-image: linear-gradient(33deg, #819314 0%, #bed62f 100%)
+}
+
+.sc-main-content .button .item:nth-child(2).active {
+    background-image: linear-gradient(23deg, #5bcbf5 0%, #0794c9 99%, #0794c9 100%)
+}
+
+.sc-main-content .button .item:nth-child(3).active {
+    background-image: linear-gradient(152deg, #0794c9 0%, #004d6c 100%)
+}
+
+.sc-main-content .button .item.active {
+    color: #FFF
+}
+
+.sc-main-content .button .item.active img {
+    filter: unset
+}
+
+@media(max-width:1199.97px) {
+    .sc-main-content .button {
+        gap: 0.33333333333333337vw;
+    }
+
+    .sc-main-content .button .item {
+        flex: 0 0 calc((100% - 0.33333333333333337vw * 2) / 3);
+        height: 10.416666666666668vw;
+        font-size: 2.3333333333333335vw;
+    }
+
+    .sc-main-content .button .item img {
+        width: 2.9166666666666665vw;
+        height: 3.75vw;
+    }
+}
+
+@media(max-width:640px) {
+    .sc-main-content .button {
+        gap: 4px;
+        flex-wrap: wrap;
+    }
+
+    .sc-main-content .button .item {
+        flex: 0 0 100%;
+    }
+}
+
+/* block 3 */
+.tab-content {
+    margin-bottom: clamp(12px, 0.9765625vw, 20px)
+}
+
+.board-of-directors {
+    background-image: linear-gradient(152deg, #0794c9 0%, #004d6c 100%);
+    padding: clamp(56px, 4.6875vw, 96px) 0 clamp(45px, 3.759765625vw, 77px);
+    position: relative;
+    overflow: hidden
+}
+
+.board-of-directors::after {
+    content: '';
+    background: no-repeat center/cover url('/assets/images/about-mark-left.png');
+    height: 80%;
+    position: absolute;
+    bottom: -25px;
+    right: -35px;
+    aspect-ratio: 1 / 1
+}
+
+.board-of-directors *,
+.school-box * {
+    z-index: 2;
+    position: relative
+}
+
+.main-box .title-h3 {
+    font-size: clamp(21px, 1.7578125vw, 36px);
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 500;
+    line-height: normal;
+    text-align: center
+}
+
+.main-box .items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(31px, 2.63671875vw, 54px) clamp(30px, 2.5390625vw, 52px);
+    justify-content: flex-start;
+    margin-top: clamp(33px, 2.734375vw, 56px);
+    width: 100%
+}
+
+.main-box .items .item {
+    flex: 0 0 calc((100% - clamp(30px, 2.5390625vw, 52px) * 3) / 4);
+    padding: clamp(11px, 0.87890625vw, 18px) clamp(9px, 0.78125vw, 16px) clamp(20px, 1.66015625vw, 34px);
+    background-image: linear-gradient(180deg, #57cbf5 0%, #00364d 100%)
+}
+
+.main-box .item .image {
+    aspect-ratio: 290 / 348;
+    width: 100%;
+    background: transparent;
+    text-align: center;
+    margin-bottom: clamp(24px, 2.001953125vw, 41px)
+}
+
+.main-box .item .image img {
+    aspect-ratio: 290 / 348;
+    width: 100%;
+    object-fit: cover
+}
+
+.main-box .item .name {
+    font-size: clamp(14px, 1.171875vw, 24px);
+    line-height: 1.5;
+    color: #57cbf5;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: clamp(5px, 0.390625vw, 10px)
+}
+
+.main-box .item .position {
+    font-size: clamp(14px, 1.171875vw, 24px);
+    line-height: 1.5;
+    color: #fff;
+    font-weight: 300;
+    text-align: center
+}
+
+.school-box {
+    background: #FFF;
+    padding: clamp(30px, 2.5390625vw, 52px) 0 clamp(60px, 5.029296875vw, 103px);
+    position: relative;
+    overflow: hidden
+}
+
+.school-box::after {
+    content: '';
+    background: no-repeat center/cover url('/assets/images/about-mark-left.png');
+    height: 70%;
+    position: absolute;
+    bottom: -25px;
+    right: -35px;
+    aspect-ratio: 1 / 1
+}
+
+.school-box .box-color {
+    background-image: linear-gradient(152deg, #f6f6f6 0%, #e0e0e0 100%);
+    padding: clamp(18px, 1.46484375vw, 30px) 0;
+    overflow: hidden
+}
+
+.school-box .main-schools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(12px, 0.9765625vw, 20px);
+    border: none
+}
+
+.school-box .school.nav-link {
+    border: none;
+    flex: 0 0 calc((100% - clamp(12px, 0.9765625vw, 20px) * 2) / 3);
+    background-image: linear-gradient(23deg, #f9f9f9 0%, #ebebeb 99%, #ebebeb 100%);
+    font-size: clamp(21px, 1.7578125vw, 36px);
+    text-transform: uppercase;
+    color: #003e58;
+    font-weight: 500;
+    line-height: normal;
+    transition-duration: .5s;
+    text-align: center;
+    padding: clamp(10px, 0.830078125vw, 17px) 0
+}
+
+.school-box .school.nav-link.active {
+    background-image: linear-gradient(129deg, #57cbf5 0%, #037caf 100%);
+    color: #fff
+}
+
+@media(max-width:1199.97px) {
+    .board-of-directors {
+        padding: 40px 0;
+    }
+
+    .main-box .title-h3 {
+        font-size: 3vw;
+    }
+
+    .main-box .items {
+        margin-top: 2.5vw !important;
+        gap: 4.5vw 4.333333333333334vw;
+    }
+
+    .main-box .items .item {
+        flex: 0 0 calc((100% - 4.333333333333334vw * 3) / 4);
+        padding: 18px 16px 34px;
+    }
+
+    .main-box .item .image {
+        margin-bottom: 3.4166666666666665vw;
+    }
+
+    .main-box .item .name {
+        font-size: 2.3333333333333335vw;
+        margin-bottom: 0.6666666666666667vw;
+    }
+
+    .main-box .item .position {
+        font-size: 2.3333333333333335vw;
+    }
+
+    .school-box {
+        padding: 40px 0;
+    }
+
+    .school-box .box-color {
+        padding: 2.5vw 0;
+    }
+
+    .school-box .main-schools {
+        gap: 1.6666666666666667vw;
+    }
+
+    .school-box .school.nav-link {
+        flex: 0 0 calc((100% - 1.6666666666666667vw * 2) / 3);
+        padding: 1.4166666666666665vw 0;
+    }
+}
+
+@media(max-width:800px) {
+    .main-box .items .item {
+        flex: 0 0 calc((100% - 4.333333333333334vw * 2) / 3);
+    }
+}
+
+@media(max-width:500px) {
+    .school-box .school.nav-link {
+        flex: 0 0 100%;
+    }
+
+    .main-box .items .item {
+        flex: 0 0 calc((100% - 4.333333333333334vw) / 2);
+    }
+}
+
+/* block 4 */
+.modal-popup .modal-dialog {
+    max-width: clamp(860px, 71.728515625vw, 1468px);
+    max-height: 80vh;
+    height: 100%;
+    overflow: hidden;
+    filter: drop-shadow(-9.027px 11.98px 27px #000000b5)
+}
+
+.modal-popup .modal-content {
+    width: 100%;
+    height: 100%;
+    padding: 0 clamp(12px, 0.9765625vw, 20px);
+    position: relative;
+    padding: 0
+}
+
+.modal-popup .custom-close-btn {
+    position: absolute;
+    top: clamp(23px, 1.953125vw, 40px);
+    right: clamp(23px, 1.953125vw, 40px);
+    width: clamp(16px, 1.318359375vw, 27px);
+    height: clamp(16px, 1.318359375vw, 27px);
+    z-index: 1000
+}
+
+.modal-popup .modal-body {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0;
+    justify-content: space-between;
+    padding: 0
+}
+
+.modal-popup .left-box {
+    background-image: linear-gradient(0deg, #005d83 0%, #00364d 100%);
+    flex: 1;
+    padding: clamp(59px, 4.8828125vw, 100px) clamp(29px, 2.44140625vw, 50px) clamp(59px, 4.8828125vw, 100px) clamp(35px, 2.9296875vw, 60px);
+    max-width: clamp(260px, 21.6796875vw, 443px);
+    word-break: break-word;
+    position: relative;
+    padding-right: 0
+}
+
+.modal-popup .left-box * {
+    z-index: 2;
+    position: relative
+}
+
+.modal-popup .left-box .box {
+    padding-right: clamp(29px, 2.44140625vw, 50px)
+}
+
+.modal-popup .left-box::after {
+    content: '';
+    background: no-repeat center/cover url('/assets/images/about-mark-left.png');
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    aspect-ratio: 1 / 1
+}
+
+.modal-popup .box {
+    max-height: calc(80vh - clamp(59px, 4.8828125vw, 100px));
+    overflow-y: auto
+}
+
+.modal-popup .left-box img {
+    width: 100%;
+    height: auto;
+    max-width: clamp(182px, 15.185546875vw, 310px);
+    aspect-ratio: 311 / 402;
+    margin-bottom: clamp(26px, 2.197265625vw, 45px)
+}
+
+.modal-popup .left-box .name {
+    font-size: clamp(14px, 1.171875vw, 24px);
+    color: #57cbf5;
+    font-weight: 500;
+    text-align: center;
+    line-height: normal;
+    margin-bottom: clamp(6px, 0.537109375vw, 11px)
+}
+
+.modal-popup .left-box .position {
+    font-size: clamp(13px, 1.07421875vw, 22px);
+    color: #fff;
+    font-weight: 300;
+    text-align: center;
+    line-height: normal;
+    margin-bottom: 0
+}
+
+.modal-popup .left-box .info,
+.modal-popup .left-box .email {
+    margin: clamp(58px, 4.833984375vw, 99px) 0 0;
+    font-size: 24px;
+    color: #57cbf5;
+    font-weight: 300;
+    line-height: normal
+}
+
+.modal-popup .left-box .info p {
+    color: #fff;
+    margin-bottom: 0
+}
+
+.modal-popup .left-box .email {
+    color: #FFF;
+    margin: clamp(10px, 0.833984vw, 17px) 0 0
+}
+
+.modal-popup .left-box .email a {
+    color: #57cbf5
+}
+
+.modal-popup .right-box {
+    flex: 0 0 clamp(583px, 48.583984375vw, 994px);
+    padding: clamp(62px, 5.17578125vw, 106px) clamp(53px, 4.39453125vw, 90px) clamp(80px, 6.640625vw, 136px);
+    position: relative;
+    padding-right: 0;
+    font-size: clamp(14px, 1.171875vw, 24px);
+    color: #393939;
+    line-height: 1.25;
+    font-weight: 300
+}
+
+.modal-popup .right-box * {
+    z-index: 2;
+    position: relative
+}
+
+.modal-popup .right-box::after {
+    content: '';
+    background: no-repeat center/cover url('/assets/images/about-mark-left.png');
+    width: 50%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    aspect-ratio: 1 / 1
+}
+
+.modal-popup .right-box .box {
+    height: calc(80vh - clamp(62px, 5.17578125vw, 106px));
+    padding-right: clamp(53px, 4.39453125vw, 90px)
+}
+
+.modal-popup .right-box h3 {
+    font-size: clamp(14px, 1.171875vw, 24px);
+    color: #003e58;
+    font-weight: 500;
+    margin: clamp(19px, 1.5625vw, 32px) 0
+}
+
+.modal-popup .right-box h3:first-child {
+    margin-top: 0
+}
+
+.modal-popup .right-box p {
+    margin-bottom: clamp(9px, 0.78125vw, 16px)
+}
+
+.box::-webkit-scrollbar {
+    width: 4px
+}
+
+.box::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px
+}
+
+.box::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #888
+}
+
+@media(max-width:1199.97px) {
+    .modal-popup .modal-dialog {
+        max-width: calc(100% - 40px);
+        margin: 1vh auto 0;
+        height: 90vh;
+    }
+
+    .modal-popup .left-box {
+        max-width: 30%;
+    }
+
+    .modal-popup .left-box img {
+        max-width: 100%;
+    }
+
+    .modal-popup .left-box .name {
+        font-size: 2.3333333333333335vw;
+        margin-bottom: 0.9166666666666666vw;
+    }
+
+    .modal-popup .left-box .position {
+        font-size: 2.3333333333333335vw;
+    }
+
+    .modal-popup .left-box .info,
+    .modal-popup .left-box .email {
+        margin: 4.166666666666666vw 0 0;
+        font-size: 2.3333333333333335vw;
+    }
+
+    .modal-popup .right-box {
+        flex: 0 0 70%;
+        font-size: 2.3333333333333335vw;
+    }
+
+    .modal-popup .right-box h3 {
+        font-size: 2.3333333333333335vw;
+    }
+}
+
+@media(max-width:768px) {
+    .modal-popup .modal-body {
+        flex-wrap: wrap;
+        max-height: 95vh;
+        overflow-Y: auto;
+    }
+
+    .modal-popup .box {
+        overflow-Y: unset;
+        max-height: unset;
+    }
+
+    .modal-popup .right-box .box {
+        max-height: unset;
+    }
+
+    .modal-popup .left-box {
+        max-width: unset;
+        flex: 0 0 100%;
+    }
+
+    .modal-popup .right-box {
+        max-width: unset;
+        flex: 0 0 100%;
+    }
+
+    .modal-popup .left-box img {
+        max-height: 50vw;
+        height: 100%;
+        max-width: unset;
+        width: unset;
+    }
+
+    .modal-popup .left-box .temp-div * {
+        text-align: left;
+    }
+}
+
+@media(max-width:500px) {
+    .modal-popup .left-box img {
+        max-height: unset;
+        height: unset;
+        width: 100%;
+    }
+}

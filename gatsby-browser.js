@@ -55,7 +55,14 @@ if (typeof window !== "undefined") {
     insertJS("jq", "/assets/js/jquery.min.js");
     insertJS("bs-bundle", "/assets/js/bootstrap.bundle.min.js");
     const aosScript = insertJS("aos-js", "/assets/js/aos.js");
-    if (aosScript) aosScript.onload = () => { window.AOS && window.AOS.init(); };
+    if (aosScript)
+      aosScript.onload = () => {
+        if (window.AOS) {
+          window.AOS.init({
+            once: true, //dùng để hiệu ứng aos chỉ kích hoạt 1 lần khi lướt
+          });
+        }
+    };
     insertJS("slick-js", "/assets/js/slick.min.js");
     insertJS("select2-js", "/assets/js/select2.min.js");
     insertJS("emasi-main", "/assets/js/main.js");
