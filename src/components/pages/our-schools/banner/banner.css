@@ -1,0 +1,96 @@
+.custom-banner {
+    position: relative;
+    height: clamp(460.546875px, 38.37890625vw, 786px)
+}
+
+.custom-banner .inner-container {
+    position: relative;
+    z-index: 2
+}
+
+.banner-content {
+    gap: clamp(26.3671875px, 2.197265625vw, 45px)
+}
+
+.banner-content .h1-title {
+    font-size: clamp(49.8046875px, 4.150390625vw, 85px);
+    line-height: 1.2
+}
+
+.banner-content .h1-title i {
+    font-family: 'SVN-Modisframe' !important;
+    font-size: clamp(77.9296875px, 6.494140625vw, 133px);
+    line-height: .8
+}
+
+.btn-bg {
+    padding: clamp(11.71875px, .9765625vw, 20px) clamp(23.4375px, 1.953125vw, 40px);
+    height: clamp(60.3515625px, 5.029296875vw, 103px);
+    display: flex;
+    align-items: center;
+    border-radius: 53px;
+    box-shadow: -2.121px 2.121px 3px #035878;
+    font-size: clamp(28.125px, 2.34375vw, 48px);
+    font-weight: 700
+}
+
+.bg-white {
+    background: #fff !important;
+    color: #5bcbf5 !important
+}
+
+.bg-icon {
+    position: relative;
+    gap: clamp(15.8203125px, 1.318359375vw, 27px)
+}
+
+.bg-icon:before {
+    content: "";
+    display: block;
+    position: relative;
+    background: no-repeat center/cover url('/assets/images/icon-fingerprint.svg');
+    width: clamp(35.15625px, 2.9296875vw, 60px);
+    height: clamp(39.84375px, 3.3203125vw, 68px)
+}
+
+.campus-slider-wrap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0
+}
+
+.campus-slider .inner img {
+    width: 100%
+}
+
+@media only screen and (max-width: 1199.98px) {
+    .custom-banner {
+        height: 65.554628857381vw
+    }
+
+    .custom-banner .inner-container {
+        padding-left: 5.0041701417848vw;
+        padding-right: 5.0041701417848vw
+    }
+
+    .banner-content .h1-title {
+        font-size: 7.0892410341952vw
+    }
+
+    .banner-content .h1-title i {
+        font-size: 11.092577147623vw
+    }
+
+    .btn-bg {
+        padding: 1.6680567139283vw 3.3361134278565vw;
+        height: 8.5904920767306vw;
+        font-size: 4.0033361134279vw
+    }
+
+    .bg-icon:before {
+        width: 5.0041701417848vw;
+        height: 5.6713928273561vw
+    }
+}

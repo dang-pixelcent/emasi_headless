@@ -1,0 +1,193 @@
+.sc-achievement {
+    padding: clamp(50.9765625px, 4.248046875vw, 87px) 0 clamp(41.015625px, 3.41796875vw, 70px)
+}
+
+.sc-achievement .sc-header {
+    padding-bottom: clamp(62.109375px, 5.17578125vw, 106px)
+}
+
+.sc-achievement .sub-title {
+    margin-bottom: clamp(50.390625px, 4.19921875vw, 86px)
+}
+
+.sc-achievement .sub-title span {
+    font-weight: 500 !important;
+    color: #10c1f4 !important
+}
+
+.sc-achievement .h2-title {
+    font-size: clamp(39.84375px, 3.3203125vw, 68px);
+    line-height: 1.2;
+    color: #bfd730 !important
+}
+
+.sc-achievement .h2-title span {
+    font-weight: 500 !important;
+    color: #fff
+}
+
+.achievement-list {
+    padding-left: clamp(48.6328125px, 4.052734375vw, 83px)
+}
+
+.slider_academic .item {
+    padding: 0 clamp(8.49609375px, .7080078125vw, 14.5px)
+}
+
+.item-featured {
+    width: clamp(184.5703125px, 15.380859375vw, 315px);
+    height: clamp(233.203125px, 19.43359375vw, 398px);
+    background: no-repeat center/cover url('/assets/images/circle-flower.png');
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto clamp(7.03125px, .5859375vw, 12px)
+}
+
+.item-featured figure {
+    margin-bottom: 0;
+    overflow: hidden;
+    width: clamp(138.28125px, 11.5234375vw, 236px);
+    height: clamp(144.140625px, 12.01171875vw, 246px);
+    border-radius: 50%
+}
+
+.item-featured figure img {
+    width: 100%;
+    height: 100%
+}
+
+.item-content .h3-title,
+.item-content .class {
+    font-size: clamp(14.6484375px, 1.220703125vw, 25px);
+    line-height: 1.4;
+    color: #57cbf5
+}
+
+.item-content .desc {
+    margin-top: clamp(12.3046875px, 1.025390625vw, 21px)
+}
+
+.slider-nav {
+    margin-top: clamp(29.296875px, 2.44140625vw, 50px);
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center
+}
+
+.slider-nav .slick-arrow {
+    position: unset;
+    width: clamp(19.921875px, 1.66015625vw, 34px);
+    height: clamp(19.921875px, 1.66015625vw, 34px);
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.slider-nav .slick-arrow svg {
+    fill: #ccc;
+    width: clamp(11.71875px, .9765625vw, 20px);
+    height: 20px
+}
+
+.slider-nav .slick-arrow:hover,
+.slider-nav .slick-arrow:focus {
+    outline: none;
+    border: 0 solid
+}
+
+.slider-nav .slick-arrow:hover svg,
+.slider-nav .slick-arrow:focus svg {
+    fill: #7dc8f0
+}
+
+.slider-nav .slick-prev svg {
+    transform: rotate(180deg)
+}
+
+.slider-dots {
+    color: #ccc;
+    font-size: clamp(10.546875px, .87890625vw, 18px);
+    line-height: normal
+}
+
+.slider-dots .current {
+    color: #7dc8f0
+}
+
+@media only screen and (max-width: 1199.98px) {
+    .sc-achievement {
+        padding: 11.092577147623vw 0 10.425354462052vw
+    }
+
+    .sc-achievement .inner-container {
+        padding: 0 17.931609674729vw
+    }
+
+    .sc-achievement .sc-header {
+        padding-bottom: 0
+    }
+
+    .sc-achievement .sub-title {
+        font-size: 4.0033361134279vw !important
+    }
+
+    .sc-achievement .sub-title span {
+        display: block
+    }
+
+    .sc-achievement .h2-title {
+        font-size: 5.6713928273561vw
+    }
+
+    .achievement-list {
+        padding-left: 0;
+        margin-top: 12.677231025855vw
+    }
+
+    .slider_academic .inner {
+        padding-bottom: 6.3386155129274vw
+    }
+
+    .item-featured {
+        width: 29.107589658048vw;
+        height: 36.864053377815vw;
+        margin: 0 auto 1.1676396997498vw
+    }
+
+    .item-featured figure {
+        width: 21.85154295246vw;
+        height: 22.852376980817vw
+    }
+
+    .item-content .h3-title,
+    .item-content .class {
+        font-size: 2.3352793994996vw
+    }
+
+    .item-content .desc {
+        margin-top: 1.9182652210175vw;
+        font-size: 2.1684737281068vw
+    }
+
+    .slider-nav {
+        margin-top: 4.6705587989992vw
+    }
+
+    .slider-nav .slick-arrow {
+        width: 2.8356964136781vw;
+        height: 2.8356964136781vw
+    }
+
+    .slider-nav .slick-arrow svg {
+        width: 1.6680567139283vw;
+        height: 1.6680567139283vw
+    }
+
+    .slider-dots {
+        font-size: 1.5012510425354vw
+    }
+}

@@ -7,9 +7,6 @@ export default function Banner() {
    useEffect(() => {
     const $ = (window as any).$;
 
-    console.log("$ =", $);
-    console.log("slick =", $?.fn?.slick);
-
     if ($?.fn?.slick) {
         $(".home-slider").slick({
             autoplay: true,

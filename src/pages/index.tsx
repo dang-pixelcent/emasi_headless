@@ -1,24 +1,25 @@
 import React from "react";
-import Button from "@/components/common/Button";
 import Layout from "@/components/common/Layout";
-import Program from "@/templates/wp-page-program";
+import About from "@/components/pages/our-schools/about/about";
+import Badgets from "@/components/pages/our-schools/badgets/badgets";
+import News from "@/components/pages/our-schools/news_events/news_events";
+import Projects from "@/components/pages/our-schools/projects/projects";
+import Achievement from "@/components/pages/our-schools/academic_achievement/academic_achievement";
+import Fees from "@/components/pages/our-schools/tuition_fees/tuition_fees";
+import Banner from "@/components/pages/our-schools/banner/banner";
+import Discover from "@/components/pages/sections/discover_more/discover_more";
 
 const HomePage = () => {
   return (
     <Layout>
-      <Program />
-      {/* <div className="container py-20 text-center">
-        <div className="row">
-          <div className="col-12">
-            <h1 className="text-4xl font-bold text-blue-600 mb-6">
-              Chào mừng đến với dự án EMASI
-            </h1>
-            <button className="btn btn-primary">
-              Test Bootstrap Button
-            </button>
-          </div>
-        </div>
-      </div> */}
+      <About />
+      <Badgets />  
+      <Projects />
+      <Achievement />
+      <News />
+      <Fees />
+      <Banner />
+      <Discover />
     </Layout>
   );
 };

@@ -1,0 +1,210 @@
+.sc-news {
+    padding: clamp(60.9375px, 5.078125vw, 104px) 0 clamp(29.296875px, 2.44140625vw, 50px)
+}
+
+.sc-news .sub-title {
+    margin-bottom: clamp(35.15625px, 2.9296875vw, 60px)
+}
+
+.sc-news .h2-title span {
+    font-weight: 500 !important;
+    color: #005d83 !important
+}
+
+.news-list {
+    margin-top: clamp(28.125px, 2.34375vw, 48px);
+    gap: clamp(33.984375px, 2.83203125vw, 58px)
+}
+
+.news-list .col-feature-news {
+    flex: 0 0 clamp(362.6953125px, 30.224609375vw, 618px)
+}
+
+.news-list .col-list {
+    flex: 1
+}
+
+.col-feature-news figure {
+    max-height: clamp(194.53125px, 16.2109375vw, 332px)
+}
+
+.news-list .col figure {
+    overflow: hidden;
+    margin-bottom: 0
+}
+
+.news-list .col figure img {
+    object-fit: cover;
+    height: 100%
+}
+
+.news-list .col .content {
+    background: #F1F5F7;
+    padding: clamp(15.234375px, 1.26953125vw, 26px) clamp(15.234375px, 1.26953125vw, 26px) clamp(13.4765625px, 1.123046875vw, 23px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(12.890625px, 1.07421875vw, 22px)
+}
+
+.news-list .col .news-cat {
+    color: #4C4C4C;
+    font-weight: 700;
+    font-size: clamp(10.546875px, .87890625vw, 18px);
+    line-height: 1.2
+}
+
+.news-list .col .h3-title,
+.news-list .col .h3-title a {
+    color: #005d83;
+    font-size: clamp(15.234375px, 1.26953125vw, 26px);
+    line-height: 1.2
+}
+
+.news-list .col .h3-title {
+    margin-bottom: 2px
+}
+
+.news-list .col .sc-btn {
+    margin-top: auto
+}
+
+.news-list .col .sc-btn a {
+    color: #62b6e2;
+    font-weight: 600;
+    font-size: clamp(12.890625px, 1.07421875vw, 22px);
+    line-height: 1.2
+}
+
+.news-list .col-list {
+    display: flex;
+    flex-wrap: wrap
+}
+
+.news-list .col-list .item {
+    display: flex;
+    align-items: stretch;
+    margin-top: clamp(18.75px, 1.5625vw, 31px);
+    max-height: clamp(130.078125px, 10.83984375vw, 220px)
+}
+
+.news-list .col-list .item:first-child {
+    margin-top: 0
+}
+
+.news-list .col-list .item figure {
+    flex: 0 0 clamp(143.5546875px, 11.962890625vw, 243px);
+    max-height: clamp(130.078125px, 10.83984375vw, 220px)
+}
+
+.news-list .col-list .item .content {
+    flex: 1;
+    padding: clamp(16.9921875px, 1.416015625vw, 28px) clamp(16.40625px, 1.3671875vw, 27px) clamp(10.546875px, .87890625vw, 18px)
+}
+
+.news-list .col-list .item .content .h3-title {
+    margin-bottom: 5px
+}
+
+.news-list .col .sc-btn-all {
+    margin-top: clamp(11.71875px, .9765625vw, 20px)
+}
+
+.news-list .col .sc-btn-all a {
+    color: #005d83;
+    font-weight: 700;
+    font-size: clamp(11.71875px, .9765625vw, 20px);
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    gap: clamp(5.859375px, .48828125vw, 10px)
+}
+
+@media only screen and (max-width: 1199.98px) {
+    .sc-news {
+        padding: 11.426188490409vw 0 5.0875729774812vw
+    }
+
+    .sc-news .inner-container {
+        padding: 0 7.1726438698916vw
+    }
+
+    .sc-news .sub-title {
+        margin-bottom: 4.5871559633028vw;
+        font-weight: 600 !important
+    }
+
+    .news-list {
+        margin-top: 5.5045871559633vw;
+        gap: 3.6697247706422vw
+    }
+
+    .news-list .col {
+        flex: 0 0 100%
+    }
+
+    .col-feature-news figure {
+        max-height: 45.037531276063vw
+    }
+
+    .col-feature-news figure img {
+        width: 100%
+    }
+
+    .news-list .col .content {
+        padding: 3.6697247706422vw 3.419516263553vw 2.7522935779817vw
+    }
+
+    .news-list .col .h3-title,
+    .news-list .col .h3-title a {
+        font-size: 3.5029190992494vw
+    }
+
+    .news-list .col .content .sc-btn {
+        margin-top: 8.5070892410342vw
+    }
+
+    .news-list .col-list .item {
+        margin-top: 1.7514595496247vw;
+        max-height: unset
+    }
+
+    .news-list .col-list .item figure {
+        flex: 0 0 27.105921601334vw;
+        max-height: 24.687239366138vw
+    }
+
+    .news-list .col-list .item figure img {
+        width: 100%;
+        height: 100%
+    }
+
+    .news-list .col-list .item .content {
+        padding: 2.3352793994996vw 3.0859049207673vw 2.0016680567139vw
+    }
+
+    .news-list .col .h3-title {
+        font-size: 2.9190992493745vw;
+        margin-bottom: 0
+    }
+
+    .news-list .col .sc-btn a {
+        font-size: 2.418682235196vw
+    }
+
+    .news-list .col-list .item .content .sc-btn {
+        margin-top: 1.2510425354462vw
+    }
+
+    .news-list .col .sc-btn-all {
+        margin-top: 2.0850708924103vw
+    }
+
+    .news-list .col .sc-btn-all img {
+        width: 2.6688907422852vw;
+        height: 2.6688907422852vw
+    }
+
+    .news-list .col .sc-btn-all {
+        font-size: 2.2518765638032vw
+    }
+}

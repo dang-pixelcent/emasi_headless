@@ -1,0 +1,142 @@
+.sc-projects {
+    padding: clamp(72.65625px, 6.0546875vw, 124px) 0 clamp(34.5703125px, 2.880859375vw, 59px)
+}
+
+.sc-projects .h2-title {
+    color: #4c4c4c
+}
+
+.sc-projects .h2-title span {
+    font-weight: 500 !important;
+    color: #005d83
+}
+
+.pe-215 {
+    padding-left: clamp(125.9765625px, 10.498046875vw, 214.75px)
+}
+
+.header-sep-bg {
+    margin-top: clamp(22.8515625px, 1.904296875vw, 39px);
+    padding-left: clamp(178.711px, 14.892578125vw, 304.875px)
+}
+
+.projects-wrapper {
+    margin-top: clamp(20.5078125px, 1.708984375vw, 35px)
+}
+
+.projects-slider .item-img img {
+    width: 100%
+}
+
+.projects-nav {
+    margin-top: clamp(17.578125px, 1.46484375vw, 30px);
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center
+}
+
+.projects-nav .slick-arrow {
+    position: unset;
+    width: clamp(22.8515625px, 1.904296875vw, 39px);
+    height: clamp(22.8515625px, 1.904296875vw, 39px);
+    border-radius: 50%;
+    background: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.projects-nav .slick-arrow svg {
+    fill: #fff;
+    width: clamp(11.71875px, .9765625vw, 20px);
+    height: clamp(11.71875px, .9765625vw, 20px)
+}
+
+.projects-nav .slick-arrow:hover,
+.projects-nav .slick-arrow:focus {
+    outline: none;
+    border: 0 solid
+}
+
+.projects-nav .slick-arrow:hover svg,
+.projects-nav .slick-arrow:focus svg {
+    fill: #7dc8f0
+}
+
+.projects-nav .slick-prev svg {
+    transform: rotate(180deg)
+}
+
+.projects-dots {
+    color: #ccc;
+    font-size: clamp(10.546875px, .87890625vw, 18px);
+    line-height: normal
+}
+
+.projects-dots .current {
+    color: #7dc8f0
+}
+
+.projects-slider .slick-slide {
+    margin: 0 5px
+}
+
+.projects-slider .slick-list {
+    margin: 0 -5px
+}
+
+@media only screen and (max-width: 1199.98px) {
+    .sc-projects {
+        padding: 7.7564637197665vw 0 8.256880733945vw
+    }
+
+    .sc-projects .inner-container {
+        padding: 0 8.3402835696414vw
+    }
+
+    .header-sep-bg {
+        margin-top: 3.2527105921601vw
+    }
+
+    .header-sep-bg img {
+        height: 4.5037531276063vw
+    }
+
+    .projects-wrapper {
+        margin-top: 5.0875729774812vw
+    }
+
+    .projects-slider {
+        height: 40.533778148457vw
+    }
+
+    .projects-slider .slick-list,
+    .projects-slider .slick-track,
+    .projects-slider .item-img {
+        height: 100%
+    }
+
+    .projects-slider .item-img img {
+        height: 100%;
+        width: auto
+    }
+
+    .projects-nav {
+        margin-top: 4.7539616346956vw
+    }
+
+    .projects-nav .slick-arrow {
+        width: 3.2527105921601vw;
+        height: 3.2527105921601vw
+    }
+
+    .projects-nav .slick-arrow svg {
+        width: 1.6680567139283vw;
+        height: 1.6680567139283vw
+    }
+
+    .projects-dots {
+        font-size: 1.5012510425354vw
+    }
+}
