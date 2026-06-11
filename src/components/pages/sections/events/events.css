@@ -1,0 +1,129 @@
+.sc-main-title .subtitle,.sc-main-title .title{font-size:clamp(28px,2.34375vw,48px);line-height:normal;text-transform:uppercase;margin-bottom:0}
+.sc-main-title .subtitle{color:#909090}
+.sc-main-title .title{color:#003e58;margin-bottom:clamp(31px,2.5390625vw,52px)}
+
+.sc-main-content .button {
+    border-bottom: unset;
+    display: flex;
+    gap: clamp(2px, 0.195vw, 4px);
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    overflow: hidden
+}
+
+.sc-main-content .button .item {
+    flex: 0 0 calc((100% - clamp(2px, 0.195vw, 4px) * 2) / 3);
+    position: relative;
+    height: clamp(73px, 6.10vw, 125px);
+    color: #003e58;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(9px, 0.732vw, 15px);
+    font-size: clamp(11px, 0.928vw, 19px);
+    font-weight: 500;
+    line-height: normal;
+    background-image: linear-gradient(23deg, #f9f9f9 0%, #ebebeb 99%, #ebebeb 100%);
+    text-transform: uppercase
+}
+
+.sc-main-content .button * {
+    transition-duration: .5s
+}
+
+.sc-main-content .button .item img {
+    width: clamp(20px, 1.709vw, 35px);
+    height: clamp(26px, 2.197vw, 45px);
+    filter: brightness(0) saturate(100%) invert(17%) sepia(16%) saturate(6800%) hue-rotate(171deg) brightness(95%) contrast(101%)
+}
+
+.sc-main-content .button .item::after {
+    content: '';
+    position: absolute;
+    width: clamp(73px, 6.05vw, 124px);
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: no-repeat center/cover url('/assets/images/about-mark-left.png');
+    filter: brightness(0) saturate(100%) invert(42%) sepia(8%) saturate(475%) hue-rotate(131deg) brightness(-40%) contrast(88%)
+}
+
+.sc-main-content .button .item:nth-child(1).active {
+    background-image: linear-gradient(33deg, #819314 0%, #bed62f 100%)
+}
+
+.sc-main-content .button .item:nth-child(2).active {
+    background-image: linear-gradient(23deg, #5bcbf5 0%, #0794c9 99%, #0794c9 100%)
+}
+
+.sc-main-content .button .item:nth-child(3).active {
+    background-image: linear-gradient(152deg, #0794c9 0%, #004d6c 100%)
+}
+
+.sc-main-content .button .item.active {
+    color: #FFF
+}
+
+.sc-main-content .button .item.active img {
+    filter: unset
+}
+
+.title-event {
+    color: #ffffff !important;
+    font-weight: 400;
+}
+
+.events-items {
+    margin-top: clamp(15px, 1.221vw, 25px)
+}
+
+@media(max-width:1199.97px) {
+    .sc-main-content .button {
+        gap: .33333333333333vw
+    }
+
+    .sc-main-content .button .item {
+        flex: 0 0 calc((100% - 0.33333333333333337vw * 2) / 3);
+        height: 10.416666666667vw;
+        font-size: 19px
+    }
+
+    .sc-main-content .button .item img {
+        width: 2.9166666666667vw;
+        height: 3.75vw
+    }
+
+    .events-items {
+        margin-top: 2.0833333333333vw
+    }
+}
+
+@media(max-width:640px) {
+    .sc-main-content .button {
+        gap: 4px;
+        flex-wrap: wrap
+    }
+
+    .sc-main-content .button .item {
+        flex: 0 0 100%
+    }
+}
+
+.elfsight-container {
+    overflow: hidden;
+    transition: height 0.6s ease;
+    height: 0;
+}
+
+.elfsight-app-wrapper {
+    opacity: 0;
+    filter: blur(3px);
+    transition: opacity 0.6s ease, filter 0.6s ease;
+    pointer-events: none;
+}
+
+.elfsight-loaded .elfsight-app-wrapper {
+    opacity: 1;
+    filter: none;
+    pointer-events: auto;
+}

@@ -1,0 +1,149 @@
+.sc-environments {
+    padding: clamp(46.875px, 3.90625vw, 80px) 0 clamp(42.1875px, 3.515625vw, 72px)
+}
+
+.desc {
+    font-size: clamp(14.0625px, 1.171875vw, 24px);
+    line-height: 1.5
+}
+
+.environments {
+    padding: clamp(38.671875px, 3.22265625vw, 66px) clamp(71.484375px, 5.95703125vw, 122px) 0;
+    position: relative
+}
+
+.environments:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: clamp(718.359375px, 59.86328125vw, 1226px);
+    height: clamp(353.3203125px, 29.443359375vw, 603px);
+    background: no-repeat center/cover url('/assets/images/map.png');
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: .05
+}
+
+.environments .sub-title {
+    font-size: clamp(28.125px, 2.34375vw, 48px);
+    line-height: 1.25;
+    color: #5bcbf5;
+    margin-bottom: clamp(3.515625px, .29296875vw, 6px)
+}
+
+.environments .lists {
+    gap: 0 clamp(5.859375px, .48828125vw, 10px);
+    margin-top: clamp(48.6328125px, 4.052734375vw, 83px)
+}
+
+.environments .lists .item {
+    overflow: hidden;
+    padding: clamp(55.6640625px, 4.638671875vw, 95px) clamp(17.578125px, 1.46484375vw, 30px) clamp(23.4375px, 1.953125vw, 40px);
+    position: relative;
+    width: calc((100% - clamp(17.578125px, 1.46484375vw, 30px))/4);
+    cursor: pointer
+}
+
+.environments .lists .item .bg-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: all 1s ease
+}
+
+.environments .lists .item .h3-title {
+    font-size: clamp(14.0625px, 1.171875vw, 24px)
+}
+
+.environments .lists .item:nth-child(odd) .bg-overlay {
+    background: linear-gradient(0deg, #5bcbf500 0%, #5bcbf5ff 100%);
+    opacity: .2
+}
+
+.environments .lists .item:nth-child(even) .bg-overlay {
+    background: linear-gradient(0deg, #5bcbf5ff 0%, #5bcbf500 100%);
+    opacity: .2
+}
+
+.environments .lists .item:hover .bg-overlay:before,
+.environments .lists .item:focus .bg-overlay:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: clamp(157.03125px, 13.0859375vw, 268px);
+    height: clamp(150px, 12.5vw, 256px);
+    bottom: 0;
+    left: 0;
+    background: no-repeat center/cover url('/assets/images/mark-logo-2.png');
+    opacity: .08
+}
+
+.environments .lists .item:hover .bg-overlay {
+    background: linear-gradient(0deg, #5bcbf5, #005d83);
+    opacity: 1
+}
+
+.environments .lists .item>* {
+    position: relative;
+    z-index: 2
+}
+
+.environments .lists .item .desc {
+    margin-top: clamp(5.859375px, .48828125vw, 10px)
+}
+
+.environments .lists .item .desc p {
+    margin-bottom: clamp(5.859375px, .48828125vw, 10px);
+}
+
+@media only screen and (max-width: 1199.98px) {
+    .sc-environments {
+        padding-top: 12.677231025855vw;
+        padding-bottom: 16.763969974979vw
+    }
+
+    .sc-environments .inner-container {
+        padding: 0
+    }
+
+    .sc-environments .h2-title,
+    .environments .sub-title {
+        font-size: 4.0033361134279vw
+    }
+
+    .environments {
+        position: unset;
+        margin-top: 5.5045871559633vw;
+        padding: 0 12.176814011676vw
+    }
+
+    .environments:before {
+        top: 12.677231025855vw;
+        width: 102.2518765638vw;
+        height: 50.291909924937vw
+    }
+
+    .environments .lists {
+        gap: 0;
+        margin-top: 12.176814011676vw
+    }
+
+    .environments .lists .item {
+        width: calc(100% / 2);
+        padding: 11.676396997498vw 4.0867389491243vw 4.837364470392vw
+    }
+
+    .environments .lists .item:hover .bg-overlay:before,
+    .environments .lists .item:focus .bg-overlay:before {
+        width: 32.693911592994vw;
+        height: 31.192660550459vw
+    }
+
+    .environments .lists .item .h3-title,
+    .environments .desc {
+        font-size: 2.9190992493745vw
+    }
+}

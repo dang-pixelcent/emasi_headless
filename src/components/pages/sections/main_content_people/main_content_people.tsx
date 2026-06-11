@@ -3,6 +3,36 @@ import { useState, useEffect } from "react";
 import './main_content_people.css';
 
 //đội ngũ sư phạm
+export const pageData = {
+  breadcrumb: {
+    home: "Trang chủ",
+    title: "Đội ngũ Sư phạm",
+    slug: "/doi-ngu-su-pham/",
+  },
+
+  heading: {
+    prefix: "Đội ngũ",
+    highlight: "Sư phạm",
+  },
+
+  description:
+    "Để không chỉ mang đến một môi trường học tập song ngữ vượt trội mà còn ươm dưỡng thế hệ học sinh ưu tú, đội ngũ sư phạm của nhà trường được tâm huyết tinh chọn, bao gồm Đội ngũ giáo viên Tiếng Anh bản ngữ và Đội ngũ giáo viên Việt Nam. Các thầy cô cùng san sẻ một sứ mệnh khơi dậy đam mê học hỏi, phát triển tư duy và kỹ năng toàn diện cho học sinh.",
+
+  campuses: [
+    {
+      id: "tab-1",
+      name: "EMASI VẠN PHÚC",
+      active: true,
+      icon: "/assets/images/demo/icon-marker-large.png",
+    },
+    {
+      id: "tab-2",
+      name: "EMASI NAM LONG",
+      active: false,
+      icon: "/assets/images/demo/icon-marker-large.png",
+    },
+  ],
+};
 
 const schools = [
   {
@@ -299,11 +329,13 @@ export default function MainContentPeople() {
           <div className="header-content">
             <div className="breadcrumb text-uppercase">
               <a href="/" target="_self">
-                Trang chủ
+                {pageData.breadcrumb.home}
               </a>
+
               <span>-</span>
-              <a href="/doi-ngu-su-pham/" target="_self">
-                Đội ngũ Sư phạm
+
+              <a href={pageData.breadcrumb.slug} target="_self">
+                {pageData.breadcrumb.title}
               </a>
             </div>
           </div>
@@ -311,63 +343,47 @@ export default function MainContentPeople() {
           <div className="main-content">
             <h2>
               <strong>
-                <span style={{ color: "#909090" }}>Đội ngũ </span>
-                <span style={{ color: "#003e58" }}>Sư phạm</span>
+                <span style={{ color: "#909090" }}>
+                  {pageData.heading.prefix}{" "}
+                </span>
+
+                <span style={{ color: "#003e58" }}>
+                  {pageData.heading.highlight}
+                </span>
               </strong>
             </h2>
 
-            <p>
-              Để không chỉ mang đến một môi trường học tập song ngữ vượt trội mà
-              còn ươm dưỡng thế hệ học sinh ưu tú, đội ngũ sư phạm của nhà trường
-              được tâm huyết tinh chọn, bao gồm Đội ngũ giáo viên Tiếng Anh bản
-              ngữ và Đội ngũ giáo viên Việt Nam. Các thầy cô cùng san sẻ một sứ
-              mệnh khơi dậy đam mê học hỏi, phát triển tư duy và kỹ năng toàn diện
-              cho học sinh.
-            </p>
+            <p>{pageData.description}</p>
 
             <div
               className="button ast-flex nav nav-tabs"
               id="myTab"
               role="tablist"
             >
-              <a
-                className="item nav-link active"
-                id="tab-1-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#tab-1"
-                role="tab"
-                aria-controls="tab-1"
-                aria-selected="true"
-                data-aos="fade-up"
-              >
-                <img
-                  src="/assets/images/demo/icon-marker-large.png"
-                  alt=""
-                />
-                EMASI VẠN PHÚC
-              </a>
-
-              <a
-                className="item nav-link"
-                id="tab-2-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#tab-2"
-                role="tab"
-                aria-controls="tab-2"
-                aria-selected="false"
-                data-aos="fade-up"
-              >
-                <img
-                  src="/assets/images/demo/icon-marker-large.png"
-                  alt=""
-                />
-                EMASI NAM LONG
-              </a>
+              {pageData.campuses.map((campus) => (
+                <a
+                  key={campus.id}
+                  className={`item nav-link ${
+                    campus.active ? "active" : ""
+                  }`}
+                  id={`${campus.id}-tab`}
+                  data-bs-toggle="tab"
+                  data-bs-target={`#${campus.id}`}
+                  role="tab"
+                  aria-controls={campus.id}
+                  aria-selected={campus.active}
+                  data-aos="fade-up"
+                >
+                  <img src={campus.icon} alt="" />
+                  {campus.name}
+                </a>
+              ))}
             </div>
           </div>
         </div>
       </div>
     </section>
+
     <div className="tab-content" id="main-tab-content">
   {schools.map((school, schoolIndex) => (
     <div
