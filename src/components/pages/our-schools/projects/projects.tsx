@@ -83,6 +83,18 @@ export default function Projects() {
         },
       ],
     });
+    
+    //khởi tạo lại AOS sau khi slick đã render xong để tránh bị lỗi aos ở những section sau
+    const AOS = (window as any).AOS;
+    if (AOS) {
+        if (typeof AOS.refresh === "function") {
+            AOS.refresh();
+        } else if (typeof AOS.init === "function") {
+            AOS.init();
+        }
+    }
+
+    
 
     $slider.on(
       "afterChange",
@@ -112,7 +124,8 @@ export default function Projects() {
       </div>
 
       <div className="container-fluid container-2560">
-        <div className="row">
+        {/* <div className="row"> */}
+        <div>
           <div className="header-sep-bg">
             <img
               src="/assets/images/mark-project.png"
@@ -123,76 +136,77 @@ export default function Projects() {
           <div
             className="projects-wrapper"
             data-aos="fade-up"
-          ></div>
-          <div className="projects-slider">
-            {projects.map((item, index) => (
-              <div key={index}>
-                <a
-                  href={item.link}
-                  className="item-img"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img src={item.image} alt="" />
-                </a>
-              </div>
-            ))}
-          </div>
-
-          <div className="projects-nav">
-            <button
-              type="button"
-              className="slick-arrow slick-prev"
-            >
-              <svg
-                fill="#cccccc"
-                width="20"
-                height="20"
-                viewBox="0 0 330 330"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M250.606,154.389l-150-149.996c-5.857-5.858-15.355-5.858-21.213,0.001
-                  c-5.857,5.858-5.857,15.355,0.001,21.213l139.393,139.39L79.393,304.394
-                  c-5.857,5.858-5.857,15.355,0.001,21.213
-                  C82.322,328.536,86.161,330,90,330
-                  s7.678-1.464,10.607-4.394
-                  l149.999-150.004
-                  c2.814-2.813,4.394-6.628,4.394-10.606
-                  C255,161.018,253.42,157.202,250.606,154.389z"
-                />
-              </svg>
-            </button>
-
-            <div className="projects-dots">
-              <span className="current">{current}</span>
-              {" | "}
-              <span className="total">{projects.length}</span>
+          >
+            <div className="projects-slider">
+              {projects.map((item, index) => (
+                <div key={index}>
+                  <a
+                    href={item.link}
+                    className="item-img"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={item.image} alt="" />
+                  </a>
+                </div>
+              ))}
             </div>
 
-            <button
-              type="button"
-              className="slick-arrow slick-next"
-            >
-              <svg
-                fill="#cccccc"
-                width="20"
-                height="20"
-                viewBox="0 0 330 330"
-                xmlns="http://www.w3.org/2000/svg"
+            <div className="projects-nav">
+              <button
+                type="button"
+                className="slick-arrow slick-prev"
               >
-                <path
-                  d="M250.606,154.389l-150-149.996c-5.857-5.858-15.355-5.858-21.213,0.001
-                  c-5.857,5.858-5.857,15.355,0.001,21.213l139.393,139.39L79.393,304.394
-                  c-5.857,5.858-5.857,15.355,0.001,21.213
-                  C82.322,328.536,86.161,330,90,330
-                  s7.678-1.464,10.607-4.394
-                  l149.999-150.004
-                  c2.814-2.813,4.394-6.628,4.394-10.606
-                  C255,161.018,253.42,157.202,250.606,154.389z"
-                />
-              </svg>
-            </button>
+                <svg
+                  fill="#cccccc"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 330 330"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M250.606,154.389l-150-149.996c-5.857-5.858-15.355-5.858-21.213,0.001
+                    c-5.857,5.858-5.857,15.355,0.001,21.213l139.393,139.39L79.393,304.394
+                    c-5.857,5.858-5.857,15.355,0.001,21.213
+                    C82.322,328.536,86.161,330,90,330
+                    s7.678-1.464,10.607-4.394
+                    l149.999-150.004
+                    c2.814-2.813,4.394-6.628,4.394-10.606
+                    C255,161.018,253.42,157.202,250.606,154.389z"
+                  />
+                </svg>
+              </button>
+
+              <div className="projects-dots">
+                <span className="current">{current}</span>
+                {" | "}
+                <span className="total">{projects.length}</span>
+              </div>
+
+              <button
+                type="button"
+                className="slick-arrow slick-next"
+              >
+                <svg
+                  fill="#cccccc"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 330 330"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M250.606,154.389l-150-149.996c-5.857-5.858-15.355-5.858-21.213,0.001
+                    c-5.857,5.858-5.857,15.355,0.001,21.213l139.393,139.39L79.393,304.394
+                    c-5.857,5.858-5.857,15.355,0.001,21.213
+                    C82.322,328.536,86.161,330,90,330
+                    s7.678-1.464,10.607-4.394
+                    l149.999-150.004
+                    c2.814-2.813,4.394-6.628,4.394-10.606
+                    C255,161.018,253.42,157.202,250.606,154.389z"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>
