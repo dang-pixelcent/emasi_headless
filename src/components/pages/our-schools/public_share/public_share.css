@@ -1,0 +1,285 @@
+.sc-share-public {
+    position: relative;
+    padding: clamp(67.3828125px, 5.615234375vw, 115px) 0 clamp(43.9453125px, 3.662109375vw, 75px);
+    overflow: hidden
+}
+
+.sc-share-public:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: clamp(1464.84375px, 122.0703125vw, 100%);
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(-90deg, #bfd730, #5bcbf5)
+}
+
+.sc-share-public:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: clamp(517.578125px, 43.1640625vw, 884px);
+    height: clamp(487.8125px, 41.064453125vw, 841px);
+    background: no-repeat center/cover url('/assets/images/mark-logo-large.png');
+    opacity: .14;
+    bottom: -10%;
+    right: -10%
+}
+
+.sc-share-public>* {
+    position: relative;
+    z-index: 2
+}
+
+.testimonials-slider {
+    margin-top: clamp(36.9140625px, 3.076171875vw, 63px)
+}
+
+.testimonial {
+    gap: clamp(6.4453125px, 0.537109375vw, 11px);
+    margin: 0 clamp(4.1015625px, 0.341796875vw, 7px);
+    height: 100%;
+    max-height: clamp(376.25px, 31.34765625vw, 642px);
+    overflow: auto
+}
+
+.testimonial::-webkit-scrollbar {
+    width: 2px
+}
+
+.testimonial::-webkit-scrollbar-thumb {
+    background: #003e58;
+    border-radius: 10px;
+    background: linear-gradient(to bottom, #003e58, #003e58)
+}
+
+.testimonials-slider .testimonial>div {
+    width: calc((100% - 0.537109375vw)/2)
+}
+
+.testimonials-slider .testimonial.only-text>div,
+.testimonials-slider .testimonial.only-video>div {
+    width: 100%
+}
+
+.testimonials-slider .testimonial .content-video {
+    padding: 0;
+    background: transparent
+}
+
+.testimonial .col-content {
+    overflow: hidden;
+    background: #f7f4ee;
+    padding: clamp(25.78125px, 2.1484375vw, 44px) clamp(19.3359375px, 1.611328125vw, 33px) clamp(43.9453125px, 3.662109375vw, 75px) clamp(24.609375px, 2.05078125vw, 42px);
+    position: relative
+}
+
+.testimonial .col-content:after {
+    content: "";
+    display: block;
+    position: absolute;
+    background: no-repeat center/cover url('/assets/images/marker-logo-blue.png');
+    opacity: .06;
+    width: clamp(215.0390625px, 17.919921875vw, 367px);
+    height: clamp(203.90625px, 16.9921875vw, 348px);
+    bottom: -5%;
+    left: -15%
+}
+
+.testimonial .col-content>* {
+    position: relative;
+    z-index: 2
+}
+
+.testimonial .desc {
+    font-family: "IBM Plex Sans", serif;
+    font-weight: 300;
+    font-size: clamp(14.0625px, 1.171875vw, 24px);
+    line-height: 1.5;
+    color: #000
+}
+
+.testimonial .author {
+    font-family: "IBM Plex Sans", serif;
+    font-weight: 500;
+    font-size: clamp(14.0625px, 1.171875vw, 24px);
+    line-height: normal;
+    margin-top: clamp(28.125px, 2.34375vw, 48px);
+    color: #000
+}
+
+.col-img img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%
+}
+
+.content-video iframe {
+    width: 100%;
+    height: 100%
+}
+
+.testimonials-slider .slick-track {
+    display: flex;
+    align-items: stretch
+}
+
+.testimonials-slider .slick-track .slick-slide {
+    height: unset;
+    min-height: unset
+}
+
+.overlay-img-video {
+    display: block;
+    overflow: hidden
+}
+
+.overlay-img-video img {
+    opacity: .25;
+    height: 100%;
+    width: auto;
+    max-width: unset
+}
+
+.play-video {
+    display: none;
+    position: absolute !important;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0
+}
+
+.icon-play {
+    position: absolute !important;
+    width: clamp(49.8046875px, 4.150390625vw, 85px);
+    height: clamp(49.8046875px, 4.150390625vw, 85px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer
+}
+
+.icon-play img {
+    opacity: .41
+}
+
+.testimonials-slider .overlay-img-video:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #000f
+}
+
+.testimonial-pagination {
+    display: flex;
+    align-items: center;
+    gap: clamp(11.71875px, 0.9765625vw, 20px);
+    margin-top: clamp(24.609375px, 2.05078125vw, 42px);
+    justify-content: flex-end
+}
+
+.testimonial-pagination .slick-arrow {
+    position: unset;
+    width: clamp(19.921875px, 1.66015625vw, 34px);
+    height: clamp(19.921875px, 1.66015625vw, 34px);
+    border-radius: 50%;
+    background: #fff;
+    border: 0 solid;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.testimonial-pagination .slick-arrow svg {
+    width: clamp(12px, 1vw, 20px);
+    height: clamp(12px, 1vw, 20px)
+}
+
+.testimonial-pagination .slick-prev svg {
+    transform: rotate(-180deg)
+}
+
+.testimonial-pagination .pagination {
+    display: flex;
+    gap: 5px
+}
+
+.testimonial-pagination .current {
+    color: #005d83
+}
+
+.testimonial-pagination .slick-arrow:hover {
+    outline: none;
+    border: 0 solid;
+    box-shadow: none
+}
+
+.testimonial-pagination .slick-arrow:hover svg path {
+    fill: #7dc8f0
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* khoảng cách giữa 3 phần */
+}
+
+@media only screen and (max-width:1199.98px) {
+    .testimonials-slider .testimonial>div {
+        width: calc((100% - 2.537109375vw)/2)
+    }
+
+    .sc-share-public {
+        padding: 9.341117597998332vw 0px 12.51042535446205vw;
+    }
+
+    .sc-share-public .inner-container {
+        padding: 0px;
+    }
+
+    .testimonials-slider {
+        margin-top: 5.5045871559633035vw;
+        padding-left: 7.25604670558799vw;
+    }
+
+    .testimonials-slider .slick-list {
+        padding-right: 40%;
+    }
+
+    .testimonials-slider .testimonial {
+        max-width: 60vw;
+        width: 100%;
+        max-height: 39.6163469557965vw;
+    }
+
+    .testimonial .col-content {
+        padding: 3.919933277731443vw 2.335279399499583vw 9.841534612176813vw 3.5029190992493744vw;
+    }
+
+    .testimonial .desc {
+        font-size: 2.0016680567139282vw;
+    }
+
+    .col-img img,
+    .overlay-img-video img {
+        max-height: 39.6163469557965vw;
+    }
+
+    .testimonial .author,
+    .testimonial-pagination {
+        display: none;
+    }
+
+    .sc-share-public:after {
+        bottom: -4.170141784820683vw;
+    }
+}
+
+.sc-share-public strong,
+.sc-share-public b {
+    font-weight: 700;
+}
