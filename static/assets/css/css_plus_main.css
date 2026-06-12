@@ -1,0 +1,44 @@
+.sc-main-content { padding: clamp(59px, 4.8828125vw, 100px) 0 0; position: relative; font-size: clamp(14px, 1.171875vw, 24px); font-weight: 300; }
+.sc-main-content:before { content: ""; display: block; position: absolute; width: clamp(301px, 25.048828125vw, 513px); height: clamp(288px, 23.974609375vw, 491px); background: no-repeat center/cover url('/assets/img/about-mark-bottom.png'); top: 0; left: -7%; }
+.sc-main-content > .inner-container { position: relative; z-index: 2; }
+.sc-main-content .breadcrumb { background: none; margin-bottom: clamp(15px, 1.26953125vw, 26px); gap: clamp(12px, 0.9765625vw, 20px); }
+.sc-main-content .breadcrumb span, .sc-main-content .breadcrumb a { color: #a5a5a5; font-weight: 300; font-size: clamp(12px, 0.9765625vw, 20px); line-height: 1.8; transition: 1s ease; letter-spacing: clamp(2px, 0.1953125vw, 4px); }
+.sc-main-content .breadcrumb a:hover { color: #822a81; }
+.page-content { gap: clamp(29px, 2.44140625vw, 50px); }
+.header-content { flex: 0 0 100%; }
+.main-content { flex: 1; padding-bottom: clamp(59px, 4.8828125vw, 100px); }
+.main-content h1, .header-content h1 { font-family: 'Open Sans'; font-size: clamp(30px, 2.5vw, 51px); font-weight: 600; color: #003e58; margin-bottom: clamp(24px, 2vw, 40px); }
+.main-content h2 { font-family: 'Open Sans'; font-size: clamp(22px, 1.8vw, 37px); font-weight: 600; color: #003e58; margin-bottom: clamp(18px, 1.5vw, 31px); margin-top: clamp(18px, 1.5vw, 31px); }
+.main-content h3 { font-family: 'Open Sans'; font-size: clamp(18px, 1.5vw, 31px); font-weight: 600; color: #003e58; margin-bottom: clamp(18px, 1.5vw, 31px); margin-top: clamp(18px, 1.5vw, 31px); }
+.main-content h2 span, .main-content h2 em { color: #909090; }
+.main-content blockquote { border-left: clamp(7px, 0.5859375vw, 12px) solid #57cbf5; padding-left: clamp(15px, 1.220703125vw, 25px); margin-bottom: clamp(30px, 2.5vw, 51px); }
+.main-content blockquote p { font-family: 'Open Sans'; font-size: clamp(15px, 1.220703125vw, 25px); line-height: 1.44; font-weight: 300; color: #8e8e8e; }
+.main-content p { font-family: 'Open Sans'; font-size: clamp(14px, 1.171875vw, 24px); line-height: 1.5; font-weight: 300; color: #010101; }
+.main-content .cols-2 { margin-top: clamp(23px, 1.953125vw, 40px); gap: clamp(35px, 2.9296875vw, 60px); }
+.main-content .cols-2 > div { width: calc((100% - clamp(35px, 2.9296875vw, 60px)) / 2); }
+.main-content img { margin-bottom: 1rem; margin-top: 1rem; }
+.sc-main-content iframe { width: 100%; }
+
+@media only screen and (max-width:1199.98px) {
+  .sc-main-content { font-size: 3vw; }
+  .page-content { gap: 24px; }
+  .sc-main-content .breadcrumb { margin-bottom: 0; }
+  .main-content h1, .header-content h1 { font-size: 5.5vw; }
+  .main-content h2 { font-size: 4.5vw; }
+  .main-content h3 { font-size: 3.5vw; }
+  .main-content blockquote { margin-bottom: 5vw; }
+  .main-content blockquote p { font-size: 3vw; }
+  .main-content p { font-size: 3vw; } 
+  .main-content .cols-2 { margin-top: 24px; gap: 24px; }
+  .main-content .cols-2 > div { width: calc((100% - 24px)/2); }
+  .sc-main-content .breadcrumb span, .sc-main-content .breadcrumb a { font-size: 1.6680567139283vw; }
+}
+@media only screen and (max-width:999.98px) {
+  .main-content { flex: 0 0 100%; }
+}
+@media only screen and (max-width:767.98px) {
+  .sc-main-content { padding: 40px 0 0; }
+  .main-content { padding-bottom: 40px; }
+  .main-content .cols-2 > div { width: 100%; }
+  .header-content { display: none; }
+}

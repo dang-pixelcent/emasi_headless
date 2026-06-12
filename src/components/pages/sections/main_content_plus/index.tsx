@@ -1,6 +1,6 @@
 import React from "react";
-import Sidebar from "../sidebar/sidebar";
-import ListHocBong from "../list_hoc_bong/list_hoc_bong";
+import Sidebar from "../sidebar";
+import ListHocBong from "../list_hoc_bong";
 import './main_content_plus.css';
 export default function MainContentPlus() {
   return (

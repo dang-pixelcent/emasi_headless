@@ -1,6 +1,5 @@
 import React, { ComponentProps, useEffect } from "react";
 import Header from "../Header";
-import Footer from "../Footer";
 import { ScriptItem, ThemeOption } from "@/types/general";
 import { extractScripts, injectHtml } from "@/utils/string";
 import { Helmet } from "react-helmet";
@@ -51,9 +50,9 @@ const Layout = ({ children, themeOption, ...props }: LayoutProps) => {
         )}
       </Helmet>
       <Container>
-        <Header headerGroup={themeOption?.headerGroup} />
+        <Header />
         <main className="mt-40 lg:mt-25 grow">{children}</main>
-        <Footer footerGroup={themeOption?.footerGroup} />
+        {/* <Footer footerGroup={themeOption?.footerGroup} /> */}
       </Container>
     </>
   );

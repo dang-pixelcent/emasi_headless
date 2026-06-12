@@ -1,0 +1,127 @@
+/* --- HEADER CO GIÃN --- */
+/* Trạng thái mặc định: Chiếm chỗ thực tế */
+.top-header {
+  position: relative !important;
+  /* Đổi sticky thành relative */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  background: rgba(0, 53, 77, 0.92);
+  padding: 23px 0;
+  transition: all 0.4s ease-in-out;
+}
+
+/* Trạng thái cuộn: Bám nóc và trừ đi thanh Left Panel */
+.top-header.header-scrolled {
+  position: fixed !important;
+
+  padding: 10px 0 !important;
+  background-color: #00354d !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.top-header .logo img {
+  max-height: 80px;
+  transition: all 0.4s ease-in-out;
+}
+
+.top-header.header-scrolled .logo img {
+  max-height: 50px;
+}
+
+/* --- NGÔN NGỮ (LANGUAGE SWITCHER) --- */
+.header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.lang-wrapper {
+  position: relative;
+  margin-bottom: 10px;
+  margin-right: 20px;
+}
+
+.lang-current {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #5ec7f2;
+  /* Màu xanh nhạt */
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.lang-current img {
+  width: 18px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Mũi tên xổ xuống */
+.arrow-down-black {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid #000; /* Màu đen */
+  border-bottom: 2px solid #000;
+  transform: rotate(45deg); /* Trỏ xuống */
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+/* Hộp trắng xổ xuống */
+.lang-dropdown {
+  position: absolute;
+  top: calc(100% + 5px);
+  right: 0;
+  background: #ffffff;
+  min-width: 80px;
+  border-radius: 4px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  /* Hiệu ứng ẩn/hiện mượt mà */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.lang-wrapper.active .lang-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.lang-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #84cff7;
+  /* Chữ màu xanh dương như trong hình */
+  font-size: 14px;
+  font-weight: 400;
+  transition: opacity 0.2s;
+}
+
+.lang-dropdown-item img {
+  width: 18px;
+  height: auto;
+}
+
+.lang-dropdown-item:hover {
+  opacity: 0.7;
+}
+
+/* --- FIX MENU HIỂN THỊ --- */
+.top-header .navbar-inner {
+  display: flex;
+}

@@ -1,0 +1,32 @@
+/* src/components/pages/sections/banner_plus/style.css */
+.page-template header { background: #782077e6; }
+.banner { position: relative; height: auto; aspect-ratio: 1920 / 680; background-size: cover !important; 
+    background-repeat: no-repeat !important;}
+.banner > .container, .banner .inner-container { position: relative; height: 100%; z-index: 4; }
+.main-banner { max-width: 80%; display: flex; height: 100%; position: relative; z-index: 4; }
+.main-banner-inner { margin-top: auto; display: flex; flex-direction: column; padding-bottom: clamp(42px, 3.515625vw, 72px); }
+.main-banner .sub-title { font-size: clamp(32.8px, 2.734375vw, 56px); line-height: 1.36; margin-bottom: 0; }
+.main-banner .h1-title { font-size: clamp(34px, 2.83203125vw, 58px); line-height: 1.21; }
+.main-banner .desc { margin-top: clamp(21px, 1.7578125vw, 36px); font-size: clamp(21px, 1.7578125vw, 36px); line-height: 1.36; }
+
+@media only screen and (max-width: 1199px) {
+    .main-banner { max-width: 75%; padding: 0px 72px 30px; }
+    .banner { aspect-ratio: 1; }
+}
+@media only screen and (max-width: 999px) {
+    .main-banner { padding: 0px 0px 30px; }
+    .banner { background: no-repeat center/cover url('/assets/images/DJI_0858.JPG') !important; }
+}
+@media only screen and (max-width: 767px) {
+    .banner .inner-container { z-index: 4; }
+    .main-banner-inner { padding-bottom: 30px; }
+    .main-banner .sub-title { font-size: 19px; }
+    .main-banner .h1-title { font-size: 24px; }
+    .main-banner .desc { font-size: 12px; margin-top: 20px; }
+}
+@media only screen and (min-width: 1199.98px) {
+    .banner { margin-left: clamp(52px, 4.39453125vw, 90px); }
+}
+@media only screen and (min-width: 2048px) {
+    .banner { margin-left: 0; max-height: 875px; width: 100%; }
+}

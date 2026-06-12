@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "../sidebar/sidebar";
+import Sidebar from "../sidebar";
 import Handbooks from "../handbooks/handbooks";
 import './main_content_handbooks.css';
 
