@@ -1,0 +1,59 @@
+.lists-tainang {
+    margin-top: clamp(36px, 3vw, 61px)
+}
+
+.tainang-item {
+    border-radius: 8px;
+    margin-bottom: clamp(12px, 1vw, 20px);
+    overflow: hidden
+}
+
+.tainang-image {
+    flex: 0 0 clamp(48px, 4vw, 82px)
+}
+
+.tainang-item h2 {
+    font-size: clamp(24px, 2vw, 41px);
+    font-weight: 700;
+    margin-bottom: clamp(12px, 1vw, 20px);
+    color: #003e58
+}
+
+.tainang-item p:last-child {
+    margin-bottom: 0
+}
+
+.tainang-item .fa {
+    font-size: clamp(24px, 2vw, 41px)
+}
+
+.tainang-content {
+    padding: clamp(12px, 1vw, 20px)
+}
+
+@media only screen and (max-width:1199.98px) {
+    .lists-tainang {
+        margin-top: 5vw;
+    }
+
+    .tainang-item {
+        margin: 3vw;
+    }
+
+    .tainang-item h2 {
+        font-size: 5vw;
+        margin-bottom: 3vw;
+    }
+
+    .tainang-image {
+        flex: 0 0 9vw;
+    }
+
+    .tainang-content {
+        padding: 3vw;
+    }
+
+    .tainang-item .fa {
+        font-size: 5vw;
+    }
+}

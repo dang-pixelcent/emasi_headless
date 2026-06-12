@@ -35,7 +35,7 @@ export default function Values() {
             link: "https://emasi.pixelcent.com/kiem-dinh-quoc-te-wasc-toan-phan/",
             desc: "bởi Tổ chức Kiểm định giáo dục danh giá",
             image:
-                "https://emasi.pixelcent.com/wp-content/uploads/2025/04/wascLOGO_FullyAccredited_WHITE.png",
+                "/assets/images/demo/our-schools/environments/wascLOGO_FullyAccredited_WHITE.png",
         },
         {
             title: "Trường Quốc tế Cambridge",
@@ -43,7 +43,7 @@ export default function Values() {
             link: "https://emasi.pixelcent.com/chuong-trinh-cambridge/",
             desc: "Thành viên Tổ chức Giáo dục Quốc tế uy tín toàn cầu",
             image:
-                "https://emasi.pixelcent.com/wp-content/uploads/2025/02/logo-cambridge-1.png",
+                "/assets/images/demo/our-schools/environments/logo-cambridge-1.png",
         },
         {
             title: "Triết lý giáo dục",
@@ -56,7 +56,7 @@ export default function Values() {
             link: "http://nguyenartfoundation.com",
             desc: "phối hợp độc quyền cùng Nguyen Art Foundation",
             image:
-                "https://emasi.pixelcent.com/wp-content/uploads/2025/05/NguyenArtFoundation_NewLogo_White-2-1-e1747124235542.png",
+                "/assets/images/demo/our-schools/environments/NguyenArtFoundation_NewLogo_White-2-1-e1747124235542.png",
         },
         {
             title: "Chương trình Song ngữ tích hợp",

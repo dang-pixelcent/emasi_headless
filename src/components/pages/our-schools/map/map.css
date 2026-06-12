@@ -1,0 +1,67 @@
+#map {
+    height: 100%;
+    width: 100%
+}
+
+.map-label {
+    position: absolute;
+    background: #fff0;
+    padding: 0;
+    border-radius: 0;
+    font-size: clamp(12.89px, 1.074vw, 22px);
+    font-weight: 500;
+    white-space: nowrap;
+    z-index: 9999;
+    text-align: center;
+    cursor: pointer;
+    color: #003e58;
+    font-family: "Open Sans"
+}
+
+.mfs-22 {
+    font-size: clamp(12.89px, 1.074vw, 22px);
+    font-weight: 500
+}
+
+.mfs-16 {
+    font-size: clamp(9.37px, .781vw, 16px);
+    font-weight: 700;
+    text-align: left
+}
+
+.col-map-left {
+    flex: 0 0 60%;
+    aspect-ratio: 1.652;
+    max-height: 983px;
+}
+
+.col-image-right-map {
+    flex: 0 0 40%;
+    max-height: 983px;
+}
+
+.col-image-right-map img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+@media only screen and (max-width: 1199.98px) {
+    .sc-map {
+        display: none
+    }
+
+    .col-map-left {
+        flex: 0 0 100%
+    }
+
+    .col-image-right-map {
+        flex: 0 0 100%
+    }
+}
+
+.col-map-left iframe {
+    width: 100% !important;
+    ;
+    height: 100% !important;
+}
