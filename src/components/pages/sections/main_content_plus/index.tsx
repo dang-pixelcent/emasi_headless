@@ -1,8 +1,8 @@
 import React from "react";
-import Sidebar from "../sidebar/sidebar";
-import ListHocBong from "../list_hoc_bong/list_hoc_bong";
-import ListTaiNang from "../list_tai_nang/list_tai_nang";
-import Careers from "../careers/careers";
+import Sidebar from "../sidebar";
+import ListHocBong from "../list_hoc_bong";
+import ListTaiNang from "../list_tai_nang";
+import Careers from "../careers";
 import "./main_content_plus.css";
 
 const pageData = {

@@ -8,7 +8,7 @@ export const collapseData = [
     title: "Lịch Năm Học 2024 - 2025",
     content: (
       <img
-        src="https://emasi.pixelcent.com/wp-content/uploads/2025/04/Academic-Calendar-2024-2025-EMASI-Schools-1-1024x724.jpg"
+        src="/assets/images/demo/sections/fee-collapse/Academic-Calendar-2024-2025-EMASI-Schools-1-1024x724.jpg"
         alt="Lịch Năm Học 2024 - 2025"
       />
     ),
@@ -19,7 +19,7 @@ export const collapseData = [
     title: "Lịch Năm Học 2025 - 2026",
     content: (
       <img
-        src="https://emasi.pixelcent.com/wp-content/uploads/2025/04/emasi_academic-calendar_2526-1024x716.jpg"
+        src="/assets/images/demo/sections/fee-collapse/emasi_academic-calendar_2526-1024x716.jpg"
         alt="Lịch Năm Học 2025 - 2026"
       />
     ),

@@ -160,7 +160,7 @@ export default function Achievement() {
             className="sc-achievement position-relative"
             style={{
                 background:
-                    "url('https://emasi.pixelcent.com/wp-content/uploads/2025/03/bg-achievement-2.jpg') center/cover no-repeat",
+                    "url('/assets/images/demo/our-schools/achievements/bg-achievement-2.jpg') center/cover no-repeat",
             }}
         >
             <div className="inner-container">

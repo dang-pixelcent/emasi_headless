@@ -44,7 +44,7 @@ const schools = [
         id: 1,
         name: "Tiến sĩ Huỳnh Công Minh",
         position: "Chủ Tịch Hội Đồng Sáng Lập / Tổng Hiệu Trưởng",
-        image: "https://emasi.pixelcent.com/wp-content/uploads/2025/04/ONG0741-768x1024.jpg",
+        image: "/assets/images/demo/sections/main-content-people/ONG0741-768x1024.jpg",
         email: "huynhcongminh@emasi.edu.vn",
         infor: [],
         content: [
@@ -57,7 +57,7 @@ const schools = [
         id: 2,
         name: "ThS Kenneth Haggarty",
         position: "Giám đốc Điều Hành - EMASI Vạn Phúc",
-        image: "https://emasi.pixelcent.com/wp-content/uploads/2025/05/Mr-Ken-853x1024.png",
+        image: "/assets/images/demo/sections/main-content-people/Mr-Ken-853x1024.png",
         email: "kenneth@emasi.edu.vn",
         infor: [],
          content: [
@@ -68,7 +68,7 @@ const schools = [
         id: 3,
         name: "ThS Christopher Cundall",
         position: "Phó Hiệu Trưởng Trung Học - EMASI Vạn Phúc",
-        image: "https://emasi.pixelcent.com/wp-content/uploads/2025/05/Cundall-853x1024.png",
+        image: "/assets/images/demo/sections/main-content-people/Cundall-853x1024.png",
         email: "christopherc@emasi.edu.vn",
         infor: [],
          content: [
@@ -80,7 +80,7 @@ const schools = [
         id: 4,
         name: "Thầy Nguyễn Hoàng Minh Đăng",
         position: "Phó Hiệu Trưởng Trung Học - EMASI Vạn Phúc",
-        image: "https://emasi.pixelcent.com/wp-content/uploads/2025/05/Dang-853x1024.png",
+        image: "/assets/images/demo/sections/main-content-people/Dang-853x1024.png",
         email: "dangnhm@emasi.edu.vn",
         infor:  [
     "Tốt nghiệp loại Giỏi ngành Sư phạm Địa lí tại trường Đại học Sư phạm TP.HCM",
@@ -94,7 +94,7 @@ const schools = [
         id: 5,
         name: "ThS Mai Thị Ngọc Lan",
         position: "Phó Hiệu Trưởng Tiểu Học - EMASI Vạn Phúc",
-        image: "https://emasi.pixelcent.com/wp-content/uploads/2025/05/ms-Lan-853x1024.png",
+        image: "/assets/images/demo/sections/main-content-people/ms-Lan-853x1024.png",
         email: "lanmtn@emasi.edu.vn",
         infor: [],
          content: [
@@ -115,7 +115,7 @@ const schools = [
             id: 101,
             name: "Cô Võ Ngọc Thùy Dương",
             position: "Giáo Viên Lớp 1E",
-            image: "https://emasi.pixelcent.com/wp-content/uploads/2025/04/GVCN_Vo-Ngoc-Thuy-Duong-1-894x1024.jpg",
+            image: "/assets/images/demo/sections/main-content-people/GVCN_Vo-Ngoc-Thuy-Duong-1-894x1024.jpg",
             email: "Duongvnt@emasi.edu.vn",
             infor: [],
             content: [
@@ -126,7 +126,7 @@ const schools = [
             id: 102,
             name: "Cô Vũ Thị Hồng Thủy",
             position: "Giáo Viên Lớp 1A",
-            image: "https://emasi.pixelcent.com/wp-content/uploads/2025/04/GVCN-VU-THI-HONG-THUY-1024x1024.jpg",
+            image: "/assets/images/demo/sections/main-content-people/GVCN-VU-THI-HONG-THUY-1024x1024.jpg",
             email: "thuyvth@emasi.edu.vn",
             infor: [],
             content: [
@@ -137,7 +137,7 @@ const schools = [
             id: 103,
             name: "Cô Nguyễn Thị Phương Tâm",
             position: "Giáo Viên Lớp 1S",
-            image: "https://emasi.pixelcent.com/wp-content/uploads/2025/04/nguyen-thi-phuong-tam-1024x1024.jpg",
+            image: "/assets/images/demo/sections/main-content-people/nguyen-thi-phuong-tam-1024x1024.jpg",
             email: "Tamntp@emasi.edu.vn",
             infor: [],
             content: [
@@ -148,7 +148,7 @@ const schools = [
             id: 104,
             name: "Cô Lê Thị Trinh Nguyên",
             position: "Giáo Viên Lớp 2A",
-            image: "https://emasi.pixelcent.com/wp-content/uploads/2025/04/GVCN_Le-Thi-Trinh-Nguyen-1024x1024.jpg",
+            image: "/assets/images/demo/sections/main-content-people/GVCN_Le-Thi-Trinh-Nguyen-1024x1024.jpg",
             email: "nguyenltt@emasi.edu.vn",
             infor: [],
             content: [
@@ -159,7 +159,7 @@ const schools = [
             id: 105,
             name: "Cô Võ Ngọc Tường Vy",
             position: "Giáo Viên Lớp 2S",
-            image: "https://emasi.pixelcent.com/wp-content/uploads/2025/04/GVCN-co-Vo-Ngoc-Tuong-Vy-1024x1024.jpg",
+            image: "/assets/images/demo/sections/main-content-people/GVCN-co-Vo-Ngoc-Tuong-Vy-1024x1024.jpg",
             email: "vyvnt@emasi.edu.vn",
             infor: [],
             content: [
@@ -178,7 +178,7 @@ const schools = [
             id: 101,
             name: "Cô Võ Ngọc Thùy Dương",
             position: "Giáo Viên Lớp 1E",
-            image: "https://emasi.pixelcent.com/wp-content/uploads/2025/04/GVCN_Vo-Ngoc-Thuy-Duong-1-894x1024.jpg",
+            image: "/assets/images/demo/sections/main-content-people/GVCN_Vo-Ngoc-Thuy-Duong-1-894x1024.jpg",
             email: "Duongvnt@emasi.edu.vn",
             infor: [],
             content: [
@@ -189,7 +189,7 @@ const schools = [
             id: 102,
             name: "Cô Vũ Thị Hồng Thủy",
             position: "Giáo Viên Lớp 1A",
-            image: "https://emasi.pixelcent.com/wp-content/uploads/2025/04/GVCN-VU-THI-HONG-THUY-1024x1024.jpg",
+            image: "/assets/images/demo/sections/main-content-people/GVCN-VU-THI-HONG-THUY-1024x1024.jpg",
             email: "thuyvth@emasi.edu.vn",
             infor: [],
             content: [
@@ -200,7 +200,7 @@ const schools = [
             id: 103,
             name: "Cô Nguyễn Thị Phương Tâm",
             position: "Giáo Viên Lớp 1S",
-            image: "https://emasi.pixelcent.com/wp-content/uploads/2025/04/nguyen-thi-phuong-tam-1024x1024.jpg",
+            image: "/assets/images/demo/sections/main-content-people/nguyen-thi-phuong-tam-1024x1024.jpg",
             email: "Tamntp@emasi.edu.vn",
             infor: [],
             content: [
@@ -211,7 +211,7 @@ const schools = [
             id: 104,
             name: "Cô Lê Thị Trinh Nguyên",
             position: "Giáo Viên Lớp 2A",
-            image: "https://emasi.pixelcent.com/wp-content/uploads/2025/04/GVCN_Le-Thi-Trinh-Nguyen-1024x1024.jpg",
+            image: "/assets/images/demo/sections/main-content-people/GVCN_Le-Thi-Trinh-Nguyen-1024x1024.jpg",
             email: "nguyenltt@emasi.edu.vn",
             infor: [],
             content: [
@@ -222,7 +222,7 @@ const schools = [
             id: 105,
             name: "Cô Võ Ngọc Tường Vy",
             position: "Giáo Viên Lớp 2S",
-            image: "https://emasi.pixelcent.com/wp-content/uploads/2025/04/GVCN-co-Vo-Ngoc-Tuong-Vy-1024x1024.jpg",
+            image: "/assets/images/demo/sections/main-content-people/GVCN-co-Vo-Ngoc-Tuong-Vy-1024x1024.jpg",
             email: "vyvnt@emasi.edu.vn",
             infor: [],
             content: [
@@ -243,7 +243,7 @@ const schools = [
         id: 1,
         name: "Tiến sĩ Huỳnh Công Minh",
         position: "Chủ Tịch Hội Đồng Sáng Lập / Tổng Hiệu Trưởng",
-        image: "https://emasi.pixelcent.com/wp-content/uploads/2025/04/ONG0741-768x1024.jpg",
+        image: "/assets/images/demo/sections/main-content-people/ONG0741-768x1024.jpg",
         email: "huynhcongminh@emasi.edu.vn",
         infor: [],
         content: [
@@ -256,7 +256,7 @@ const schools = [
         id: 2,
         name: "ThS Kenneth Haggarty",
         position: "Giám đốc Điều Hành - EMASI Vạn Phúc",
-        image: "https://emasi.pixelcent.com/wp-content/uploads/2025/05/Mr-Ken-853x1024.png",
+        image: "/assets/images/demo/sections/main-content-people/Mr-Ken-853x1024.png",
         email: "kenneth@emasi.edu.vn",
         infor: [],
          content: [
@@ -267,7 +267,7 @@ const schools = [
         id: 3,
         name: "ThS Christopher Cundall",
         position: "Phó Hiệu Trưởng Trung Học - EMASI Vạn Phúc",
-        image: "https://emasi.pixelcent.com/wp-content/uploads/2025/05/Cundall-853x1024.png",
+        image: "/assets/images/demo/sections/main-content-people/Cundall-853x1024.png",
         email: "christopherc@emasi.edu.vn",
         infor: [],
          content: [
@@ -279,7 +279,7 @@ const schools = [
         id: 4,
         name: "Thầy Nguyễn Hoàng Minh Đăng",
         position: "Phó Hiệu Trưởng Trung Học - EMASI Vạn Phúc",
-        image: "https://emasi.pixelcent.com/wp-content/uploads/2025/05/Dang-853x1024.png",
+        image: "/assets/images/demo/sections/main-content-people/Dang-853x1024.png",
         email: "dangnhm@emasi.edu.vn",
         infor:  [
     "Tốt nghiệp loại Giỏi ngành Sư phạm Địa lí tại trường Đại học Sư phạm TP.HCM",
@@ -293,7 +293,7 @@ const schools = [
         id: 5,
         name: "ThS Mai Thị Ngọc Lan",
         position: "Phó Hiệu Trưởng Tiểu Học - EMASI Vạn Phúc",
-        image: "https://emasi.pixelcent.com/wp-content/uploads/2025/05/ms-Lan-853x1024.png",
+        image: "/assets/images/demo/sections/main-content-people/ms-Lan-853x1024.png",
         email: "lanmtn@emasi.edu.vn",
         infor: [],
          content: [
