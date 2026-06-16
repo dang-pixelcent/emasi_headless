@@ -1,0 +1,222 @@
+/* ==============================================================
+   LOGIC CỐ ĐỊNH HEADER
+   ============================================================== */
+.fixed-top {
+  position: relative;
+  width: 100%;
+  z-index: 999;
+  transition: all 0.5s ease;
+}
+
+.fixed-top.header-scrolled {
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* ==============================================================
+   LOGIC FORM CHỌN NGÔN NGỮ
+   ============================================================== */
+.language {
+  position: relative;
+}
+
+.language a.lang-text {
+  color: #ffffff !important; /* Mặc định trên desktop nền xanh là chữ trắng */
+  font-weight: 600;
+}
+
+.lang-icon {
+  filter: invert(1); /* Mũi tên màu trắng trên desktop */
+}
+
+.lang-lists {
+  display: none;
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  min-width: 80px; /* Đảm bảo đủ rộng chứa Cờ + Chữ */
+  white-space: nowrap; /* Tránh rớt dòng */
+  padding: 8px 10px;
+  background: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+}
+
+.lang-lists.active {
+  display: block;
+  animation: fadeInDown 0.2s ease;
+}
+
+.lang-lists a {
+  color: #005d83 !important; /* Màu mặc định của list xổ xuống */
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.lang-lists a:hover {
+  color: #5ec7f2 !important; /* Đổi sang xanh lơ sáng khi đưa chuột vào */
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.current-lang img {
+  width: 16px;
+}
+
+/* ==============================================================
+   LOGIC THANH CHỨC NĂNG DƯỚI HEADER (DÀNH CHO MOBILE)
+   ============================================================== */
+.only-mobile {
+  display: none;
+}
+
+.only-desktop {
+  display: inline-block;
+}
+
+.hr-custom {
+  height: .08vw !important;
+  margin: 2.21vw 0 2.97vw;
+  background: #BCBCBC;
+  border: none;
+}
+
+.bellow-header-inner .icon-item {
+  font-size: 2.5vw;
+  display: flex;
+  gap: .6vw;
+  align-items: center;
+  cursor: pointer;
+}
+
+.bellow-header-inner .icon-item img {
+  width: 4vw;
+}
+
+.bellow-header-inner .icon-item a,
+.bellow-header-inner .icon-item span {
+  color: #363738;
+  text-transform: uppercase;
+}
+
+.m-search-bw {
+  position: relative;
+}
+
+.m-search-bw form {
+  position: absolute;
+  width: 100%;
+  top: 5vw;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.m-search-bw.active form {
+  visibility: visible;
+  opacity: 1;
+  z-index: 99;
+}
+
+/* ==============================================================
+   CSS RIÊNG CHO ĐIỆN THOẠI (DƯỚI 1200PX)
+   ============================================================== */
+@media only screen and (max-width: 1199.98px) {
+  .only-mobile { display: block; }
+  .only-desktop { display: none; }
+
+  /* Ép Header hoàn toàn màu trắng */
+  body header#header,
+  body header#header.fixed-top,
+  body header#header.header-scrolled,
+  body header#header.fixed-top.header-scrolled {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+  }
+
+  /* --- ÉP LOGO, NGÔN NGỮ VÀ MENU NẰM NGANG HÀNG --- */
+  body .primary-header-inner {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100%;
+  }
+
+  body .header-nav {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 20px; /* Khoảng cách giữa chữ VI và Nút Menu */
+  }
+
+  /* Gỡ bỏ các thuộc tính lơ lửng của file cũ */
+  body .header-nav .language {
+    position: relative !important;
+    top: 0 !important;
+    transform: none !important;
+    right: 0 !important;
+    margin: 0 !important;
+  }
+
+  body .mobile-nav-toggle {
+    position: relative !important;
+    top: 0 !important;
+    right: 0 !important;
+    width: 30px; 
+    height: 30px;
+    display: block;
+  }
+
+  body .mobile-nav-toggle:before {
+    top: 50% !important;
+    transform: translateY(-50%);
+    right: 0 !important;
+  }
+  /* --------------------------------------------------- */
+
+  /* Đổi chữ ngôn ngữ thành màu xanh theo nguyên bản trên nền trắng */
+  body .language a.lang-text {
+    color: #5ec7f2 !important; 
+    font-weight: 600;
+  }
+  
+  /* Tắt filter để mũi tên giữ nguyên màu xanh/đen */
+  body .lang-icon {
+    filter: none !important; 
+    width: 1.5vw !important;
+  }
+
+  .current-lang img { width: 4.07vw; }
+
+  /* Đẩy menu xổ xuống qua trái để ko bị tràn viền màn hình điện thoại */
+  .lang-lists { 
+    left: unset; 
+    right: 0; 
+  }
+
+  /* Input tìm kiếm cho mobile */
+  .m-search-bw .r-item {
+    position: relative;
+  }
+
+  .m-search-bw input {
+    padding: 2.5vw 3.8vw 2.5vw 9.2vw;
+    background: #f1f1f1;
+    border-radius: 4px;
+    border: 0 solid;
+    width: 100%;
+    font-size: 3vw;
+    line-height: 1.5;
+    color: #545454;
+    outline: unset;
+  }
+
+  .m-search-bw {
+    padding: 0;
+  }
+}
