@@ -19,7 +19,7 @@ export default function University() {
 
           <div className="sc-map text-center" data-aos="zoom-in-down">
             <img
-              src="https://emasi.pixelcent.com/wp-content/uploads/2025/02/map-img.png"
+              src="/assets/images/demo/map-img.png"
               alt="University map"
             />
           </div>

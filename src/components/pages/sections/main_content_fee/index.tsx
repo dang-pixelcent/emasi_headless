@@ -1,7 +1,7 @@
 import React from "react";
 import './main_content_fee.css';
-import Sidebar from "../sidebar/sidebar";
-import Collapse from "../fee_collapse/collapse";
+import Sidebar from "../sidebar";
+import Collapse from "../fee_collapse";
 
 //Phụ huynh/ Lịch năm học
 

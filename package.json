@@ -67,6 +67,8 @@
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.71.1",
     "react-player": "^2.16.1",
+    "react-slick": "^0.31.0",
+    "slick-carousel": "^1.8.1",
     "tailwind-merge": "^3.4.0",
     "tailwindcss": "^4.1.18",
     "yup": "^1.7.1"
@@ -80,6 +82,7 @@
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
     "@types/react-helmet": "^6.1.11",
+    "@types/react-slick": "^0.23.13",
     "ajv": "^8.18.0",
     "ajv-keywords": "^5.1.0",
     "typescript": "^5.3.3"

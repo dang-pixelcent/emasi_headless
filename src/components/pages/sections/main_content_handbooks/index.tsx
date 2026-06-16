@@ -1,6 +1,6 @@
 import React from "react";
-import Sidebar from "../sidebar/sidebar";
-import Handbooks from "../handbooks/handbooks";
+import Sidebar from "../sidebar";
+import Handbooks from "../handbooks";
 import './main_content_handbooks.css';
 
 export const pageData = {
@@ -44,7 +44,7 @@ export const pageData = {
       </p>
 
       <img
-        src="https://emasi.pixelcent.com/wp-content/uploads/2025/05/ONG2355-1024x683.jpg"
+        src="/assets/images/demo/sections/handbooks/ONG2355-1024x683.jpg"
         alt="Sổ tay và Quy trình"
       />
     </>

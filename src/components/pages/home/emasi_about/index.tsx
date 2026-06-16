@@ -13,7 +13,7 @@ export default function EmasiAbout() {
                         <img
                             className="ab-img-left"
                             data-aos="fade-down"
-                            src="https://emasi.pixelcent.com/wp-content/uploads/2025/02/image-colors.png"
+                            src="/assets/images/demo/image-colors.png"
                             alt="EMASI"
                         />
 
@@ -39,7 +39,7 @@ export default function EmasiAbout() {
                             className="ab-img-right"
                             data-aos="fade-down"
                             data-aos-delay="150"
-                            src="https://emasi.pixelcent.com/wp-content/uploads/2025/02/image-colors.png"
+                            src="/assets/images/demo/image-colors.png"
                             alt="EMASI"
                         />
 
