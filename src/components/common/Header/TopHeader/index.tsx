@@ -41,7 +41,7 @@ const TopHeader: React.FC = () => {
   }, []);
 
   return (
-    <header id="header" className={`fixed-top d-flex align-items-center ${isScrolled ? 'header-scrolled' : ''}`}>
+    <header id="header" className={`sticky-header d-flex align-items-center ${isScrolled ? 'header-scrolled' : ''}`}>
       <div className="inner-container">
         <div className="primary-header-inner d-flex align-items-center justify-content-between">
           
@@ -68,7 +68,7 @@ const TopHeader: React.FC = () => {
                     alt="arrow"
                     className="lang-icon"
                     style={{
-                      width: '10px',
+                      width: '15px',
                       marginLeft: '2px',
                       transition: 'transform 0.3s',
                       transform: isLangOpen ? 'rotate(180deg)' : 'rotate(0deg)'

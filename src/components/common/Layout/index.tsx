@@ -3,7 +3,7 @@ import Header from "../Header";
 import { ScriptItem, ThemeOption } from "@/types/general";
 import { extractScripts, injectHtml } from "@/utils/string";
 import { Helmet } from "react-helmet";
-
+import Footer from "../Footer";
 const Container = ({ ...props }: ComponentProps<"div">) => {
   return (
     <div
@@ -52,7 +52,7 @@ const Layout = ({ children, themeOption, ...props }: LayoutProps) => {
       <Container>
         <Header />
         <main className="mt-40 lg:mt-25 grow">{children}</main>
-        {/* <Footer footerGroup={themeOption?.footerGroup} /> */}
+        <Footer />
       </Container>
     </>
   );

@@ -7,7 +7,7 @@ import BannerPlus from '../components/pages/sections/banner_plus';
 import MainContentPlus from '../components/pages/sections/main_content_plus'; 
 import DiscoverMore from '../components/pages/sections/discover_more';
 
-const HocBongTaiNangTemplate: React.FC = () => {
+const ListHocBong: React.FC = () => {
 
   // 2. Chuyển đổi đoạn <script> của WP thành useEffect của React
   useEffect(() => {
@@ -67,4 +67,4 @@ const HocBongTaiNangTemplate: React.FC = () => {
   );
 };
 
-export default HocBongTaiNangTemplate;
+export default ListHocBong;

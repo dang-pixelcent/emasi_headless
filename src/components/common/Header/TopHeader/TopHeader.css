@@ -1,18 +1,21 @@
 /* ==============================================================
-   LOGIC CỐ ĐỊNH HEADER
+   LOGIC HEADER: KHÔNG ĐÈ BAN ĐẦU - CHỈ ĐÈ KHI CUỘN
    ============================================================== */
-.fixed-top {
-  position: relative;
+#header {
+  position: relative; /* Ban đầu nằm đúng vị trí, đẩy nội dung xuống, KHÔNG đè */
   width: 100%;
   z-index: 999;
-  transition: all 0.5s ease;
+  padding: 20px 0; /* Chiều cao header lúc to */
+  transition: padding 0.3s ease-in-out;
 }
 
-.fixed-top.header-scrolled {
-  position: fixed;
+#header.header-scrolled {
+  position: fixed; /* Khi cuộn sẽ rút ra khỏi dòng chảy để bám lên trên */
   top: 0;
   left: 0;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  padding: 8px 0; /* Thu nhỏ chiều cao */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.3s ease-out; /* Hiệu ứng trượt xuống mượt mà */
 }
 
 /* ==============================================================
