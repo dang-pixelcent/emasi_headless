@@ -4,7 +4,7 @@ import { StoreProvider } from "./src/context/StoreContext";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 
-// Thêm đoạn này vào đầu file gatsby-browser.js để chặn lỗi sập trang
+// Thêm đoạn này vào đầu file gatsby-browser.js để chặnlỗi sập trang
 if (typeof window !== "undefined") {
   window.addEventListener("error", (e) => {
     // Nếu lỗi xuất hiện từ các file script cũ của WP (như emasi.js hay main.js)
