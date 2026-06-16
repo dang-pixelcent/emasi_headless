@@ -1,0 +1,542 @@
+.sc-our-schools-facilities {
+    padding: clamp(36.9140625px, 3.076171875vw, 63px) 0 clamp(31.0546875px, 2.587890625vw, 53px);
+    background: linear-gradient(90deg, #269cc7 0%, #084b66 63%, #00364d 84%)
+}
+
+.pe-305 {
+    padding-right: clamp(178.7109375px, 14.892578125vw, 305px) !important
+}
+
+.ps-215 {
+    padding-left: clamp(125.9765625px, 10.498046875vw, 215px) !important
+}
+
+.main-facilities {
+    height: clamp(360.3515625px, 30.029296875vw, 614px)
+}
+
+.facilities-left {
+    width: clamp(768.1640625px, 64.013671875vw, 1311px)
+}
+
+.facilities-right {
+    padding: clamp(43.9453125px, 3.662109375vw, 75px) clamp(178.7109375px, 14.892578125vw, 305px) clamp(45.1171875px, 3.759765625vw, 77px) clamp(141.796875px, 11.81640625vw, 242px);
+    width: clamp(597.0703125px, 49.755859375vw, 1018px);
+    background: linear-gradient(90deg, #00364d00 0%, #00364dff 33%, #00364dff 100%);
+    right: 0;
+    top: 0;
+    z-index: 2
+}
+
+.facilities-right .sub-title {
+    font-size: clamp(28.125px, 2.34375vw, 48px)
+}
+
+.facilities-right .h2-title {
+    color: #bfd730
+}
+
+.facilities-right .desc {
+    font-size: clamp(14.0625px, 1.171875vw, 24px);
+    line-height: 1.4
+}
+
+.ps-215 {
+    padding-left: clamp(125.9765625px, 10.498046875vw, 215px)
+}
+
+.facility-nav {
+    padding-top: clamp(32.8125px, 2.734375vw, 55px);
+    justify-content: space-between
+}
+
+.d-title-slider {
+    max-width: clamp(216.2109375px, 18.017578125vw, 375px);
+    flex: 0 0 100%;
+    align-items: stretch
+}
+
+.nav-slider-wrap {
+    max-width: clamp(754.6875px, 62.890625vw, 1308px);
+    flex: 0 0 100%
+}
+
+.title-slider,
+.nav-slider {
+    height: clamp(202.1484375px, 16.845703125vw, 350px)
+}
+
+.m-title-slider,
+.m-nav-pagination {
+    display: none
+}
+
+.nav-slider .slick-list,
+.nav-slider .slick-track,
+.title-slider .slick-list,
+.title-slider .slick-track {
+    height: 100%
+}
+
+.title-slider .item figure>* {
+    position: relative;
+    z-index: 2
+}
+
+.title-slider:before,
+.title-slider:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: clamp(38.671875px, 3.22265625vw, 66px);
+    height: clamp(38.671875px, 3.22265625vw, 66px);
+    border-radius: 50%;
+    left: 0;
+    z-index: 2;
+    display: none;
+}
+
+.title-slider:before {
+    background: linear-gradient(0deg, #004d6cff 0%, #004d6cff 43%, #004d6c00 100%);
+    top: clamp(5.859375px, .48828125vw, 10px)
+}
+
+.title-slider:after {
+    bottom: clamp(3.515625px, .29296875vw, 6px);
+    background: linear-gradient(0deg, #004d6c00 0%, #004d6cff 73%, #004d6cff 100%)
+}
+
+.title-slider .slick-slide {
+    border: 0 solid
+}
+
+.title-slider .item {
+    display: flex;
+    gap: clamp(11.71875px, .9765625vw, 20px);
+    align-items: center;
+    padding: clamp(5.859375px, .48828125vw, 10px) 0
+}
+
+.title-slider * {
+    position: relative
+}
+
+.title-slider .item figure {
+    overflow: hidden;
+    flex: 0 0 auto;
+    width: clamp(38.671875px, 3.22265625vw, 66px);
+    height: clamp(38.671875px, 3.22265625vw, 66px);
+    border-radius: 50%;
+    background-color: #004d6c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
+    position: relative;
+    z-index: 1
+}
+
+.title-slider .item figure img {
+    position: relative;
+    z-index: 3;
+    width: clamp(24px, 2vw, 41px);
+    height: clamp(24px, 2vw, 41px)
+}
+
+.title-slider .item figure img.icon-hover {
+    display: none
+}
+
+.title-slider .item .title {
+    flex: 1;
+    font-size: clamp(14.0625px, 1.171875vw, 24px);
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.4
+}
+
+.title-slider .slick-current .item .title {
+    font-weight: 400;
+    color: #bfd730
+}
+
+.title-slider .slick-current .item figure img:not(.icon-hover) {
+    display: none
+}
+
+.title-slider .slick-current .item figure img.icon-hover {
+    display: block
+}
+
+.nav-slider .img-inner {
+    padding: 0 10px;
+    height: 100%
+}
+
+.facilities-slider .slick-slide img,
+.nav-slider .slick-slide img {
+    object-fit: cover;
+    height: 100%
+}
+
+.facilities-content .h2-title {
+    max-width: clamp(232.6171875px, 19.384765625vw, 390px);
+    font-size: clamp(28.125px, 2.34375vw, 48px)
+}
+
+.m-cus-slider {
+    overflow-y: auto;
+    margin-top: clamp(38.0859375px, 3.173828125vw, 65px)
+}
+
+.m-cus-slider::-webkit-scrollbar {
+    width: 3px
+}
+
+.m-cus-slider::-webkit-scrollbar-track {
+    background: transparent
+}
+
+.m-cus-slider::-webkit-scrollbar-thumb {
+    background: #00364d;
+    border-radius: 10px;
+    background: -webkit-linear-gradient(to bottom, #269cc7 0%, #084b66 63%, #00364d 84%);
+    background: -o-linear-gradient(to bottom, #269cc7 0%, #084b66 63%, #00364d 84%);
+    background: linear-gradient(to bottom, #269cc7 0%, #084b66 63%, #00364d 84%)
+}
+
+.m-cus-slider::-webkit-scrollbar-thumb:hover {
+    background: #40b3d4
+}
+
+.nav-pagination {
+    display: flex;
+    align-items: center;
+    gap: clamp(11.71875px, .9765625vw, 20px);
+    margin-top: clamp(15.8203125px, 1.318359375vw, 27px)
+}
+
+.nav-pagination .slick-arrow {
+    width: clamp(19.921875px, 1.66015625vw, 34px);
+    height: clamp(19.921875px, 1.66015625vw, 34px);
+    border-radius: 50%;
+    position: unset;
+    top: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff
+}
+
+.nav-pagination .slick-arrow:focus,
+.nav-pagination .slick-arrow:hover {
+    outline: none;
+    border: 0 solid
+}
+
+.nav-pagination .slick-arrow svg {
+    width: clamp(11.71875px, .9765625vw, 20px);
+    height: clamp(11.71875px, .9765625vw, 20px)
+}
+
+.nav-pagination .slick-prev svg,
+.m-nav-pagination .slick-prev svg {
+    transform: rotate(-180deg)
+}
+
+.nav-pagination .cus-dots,
+.nav-pagination .cus-dots span {
+    color: #fff
+}
+
+.nav-pagination .slick-arrow:focus svg,
+.nav-pagination .slick-arrow:hover svg,
+.m-nav-pagination .slick-arrow:focus svg,
+.m-nav-pagination .slick-arrow:hover svg {
+    fill: #57cbf5
+}
+
+.nav-pagination .cus-dots .dot-current,
+.m-nav-pagination .cus-dots .dot-current {
+    color: #57cbf5
+}
+
+@media(min-width:1200px) {
+    .m-cus-slider {
+        padding-right: 20px;
+        margin-right: -20px
+    }
+}
+
+@media only screen and (max-width:1199.98px) {
+    .sc-our-schools-facilities {
+        padding: 5.838198498749vw 0 8.1734778982485vw
+    }
+
+    .sc-our-schools-facilities .ps-90 {
+        padding-left: 0 !important
+    }
+
+    .main-facilities {
+        display: flex;
+        flex-direction: column;
+        height: auto
+    }
+
+    .facilities-left {
+        order: 2;
+        width: 100%
+    }
+
+    .facilities-right {
+        position: relative !important;
+        order: 1;
+        width: 100%;
+        padding: 3.9199332777314vw 12.260216847373vw 2.5854879065888vw
+    }
+
+    .facilities-right:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 130%;
+        background: linear-gradient(0deg, #00364d00 0%, #00364dff 33%, #00364dff 100%, opacity 0.6 )
+    }
+
+    .facilities-right:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: no-repeat center/cover url('/assets/images/mark-right-100.png');
+        width: 49.708090075063vw;
+        height: 49.207673060884vw;
+        opacity: .13
+    }
+
+    .facilities-right>* {
+        position: relative;
+        z-index: 2
+    }
+
+    .m-title-slider,
+    .m-nav-pagination {
+        display: block
+    }
+
+    .d-title-slider,
+    .nav-slider-wrap .nav-pagination {
+        display: none
+    }
+
+    .m-cus-header {
+        max-width: 27.522935779817vw
+    }
+
+    .m-cus-slider {
+        margin-top: 3.3361134278565vw;
+        display: flex;
+        gap: 6.0884070058382vw;
+        overflow: unset
+    }
+
+    .m-title-slider {
+        flex: 1
+    }
+
+    .facilities-right .sub-title {
+        margin-bottom: .41701417848207vw
+    }
+
+    .facilities-right .sub-title,
+    .facilities-right .h2-title {
+        font-size: 4.0033361134279vw
+    }
+
+    .facilities-right .desc {
+        font-size: 2.5854879065888vw;
+        line-height: 1.6;
+        margin-top: 0;
+        flex: 0 0 100%;
+        max-width: 49.791492910759vw
+    }
+
+    .title-slider:before,
+    .title-slider:after {
+        content: none
+    }
+
+    .title-slider .item {
+        gap: 1.8348623853211vw;
+        padding: .83402835696414vw 0
+    }
+
+    .title-slider .item figure {
+        width: 6.4220183486239vw;
+        height: 6.4220183486239vw
+    }
+
+    .title-slider .item figure img {
+        width: 100%;
+        height: auto;
+        max-width: 3.0859049207673vw
+    }
+
+    .title-slider .item .title {
+        font-size: 2.3352793994996vw
+    }
+
+    .m-nav-pagination {
+        flex: 0 0 100%;
+        margin-top: 3.1693077564637vw;
+        display: flex;
+        align-items: center;
+        gap: 20px
+    }
+
+    .m-nav-pagination .slick-arrow {
+        position: unset;
+        width: 2.8356964136781vw;
+        height: 2.8356964136781vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        border-radius: 50%
+    }
+
+    .m-nav-pagination .slick-arrow svg {
+        fill: #ccc;
+        width: 1.6680567139283vw;
+        height: 1.6680567139283vw;
+        fill: #ccc
+    }
+
+    .m-nav-pagination .slick-arrow:hover svg,
+    .m-nav-pagination .slick-arrow:focus svg {
+        fill: #57cbf5
+    }
+
+    .cus-dots {
+        color: #fff;
+        font-size: 1.5012510425354vw
+    }
+
+    .facilities-slider {
+        height: 51.376146788991vw
+    }
+
+    .facilities-slider .slick-list,
+    .facilities-slider .slick-track,
+    .facilities-slider .facility-img {
+        height: 100%
+    }
+
+    .facilities-slider .slick-slide img {
+        width: 100%
+    }
+
+    .facility-nav {
+        padding: 1.9182652210175vw 0 0 !important
+    }
+
+    .nav-slider-wrap {
+        max-width: 100%
+    }
+
+    .nav-slider {
+        height: 23.519599666389vw;
+        width: 100%
+    }
+
+    .nav-slider .img-inner {
+        padding: 0 .6255212677231vw
+    }
+}
+
+.facilities-slider img {
+    aspect-ratio: 1311/614
+}
+
+.sc-our-schools-facilities.loading::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    z-index: 11;
+    opacity: .5;
+    background: #fff
+}
+
+.sc-our-schools-facilities.loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    transform: translate(-50%, -50%);
+    z-index: 11
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+.title-slider-next,
+.title-slider-prev {
+    position: absolute
+}
+
+.title-slider-prev {
+    top: clamp(-18px, -1.5vw, -31px);
+    transform: rotate(-90deg);
+    left: clamp(9.6px, .8vw, 16px)
+}
+
+.title-slider-next {
+    bottom: clamp(-24px, -2vw, -41px);
+    transform: rotate(90deg);
+    left: clamp(13.2px, 1.1vw, 23px)
+}
+
+@media only screen and (max-width:1199.98px) {
+
+    .title-slider-next,
+    .title-slider-prev {
+        position: relative;
+        width: 100%;
+        text-align: center;
+    }
+
+    .title-slider-next svg,
+    .title-slider-prev svg {
+        width: 2vw;
+        left: unset;
+    }
+
+    .title-slider-prev {
+        top: -3vw;
+    }
+
+    .title-slider-next {
+        bottom: -4vw;
+    }
+}

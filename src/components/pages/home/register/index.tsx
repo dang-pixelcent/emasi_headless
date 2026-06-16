@@ -1,6 +1,8 @@
 import React from "react";
 import "./register.css";
 
+//trong php wordpress sử dụng ninja form
+
 export default function RegisterSection() {
   return (
     <section id="dangky" className="sc-register">
@@ -12,7 +14,7 @@ export default function RegisterSection() {
             {/* Banner */}
             <div className="col-banner" data-aos="fade-right">
               <img
-                src="https://emasi.pixelcent.com/wp-content/uploads/2025/04/AN-LANH-GIAU-CAM-HUNG-TRAN-DAY-YEU-THUONG-blank.png"
+                src="/assets/images/demo/AN-LANH-GIAU-CAM-HUNG-TRAN-DAY-YEU-THUONG-blank.png"
                 alt="ĐĂNG KÝ TƯ VẤN"
               />
             </div>
