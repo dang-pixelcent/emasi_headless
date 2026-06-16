@@ -1,0 +1,19 @@
+/* src/components/pages/hoc-bong/steps/steps.css */
+
+.sc-steps * { font-size: 3vw; }
+.sc-steps p { font-size: 3vw; }
+.sc-steps p:last-child { margin-bottom: 0; }
+.step-title { font-size: 4.5vw; text-transform: uppercase; }
+
+/* Media query cho màn hình Desktop */
+@media (min-width: 1199.97px) {
+  /* Chia 4 cột và chừa lại 1 khoảng trống nhỏ (1vw) làm gap */
+  .emasi-lg-3 { flex: 0 0 auto; width: calc(25% - 1vw); }
+  .sc-steps * { font-size: clamp(12px, 1vw, 20px); }
+  .sc-steps p { font-size: clamp(12px, 1vw, 20px); font-weight: 300; }
+  .sc-steps strong, .sc-steps b { font-weight: 600; }
+  .step-title { font-size: clamp(21px, 1.8vw, 37px); }
+}
+
+/* Thêm một chút margin-bottom cho ảnh để giống style inline của bạn */
+.step-img { margin-bottom: 10px; max-width: 100%; height: auto; }

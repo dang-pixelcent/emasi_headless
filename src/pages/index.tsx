@@ -12,12 +12,12 @@ import BannerPlus from "@/components/pages/sections/banner_plus";
 import Map from "@/components/pages/our-schools/map";
 import News from "@/components/pages/our-schools/news_events";
 import Facilities from "@/components/pages/our-schools/facilities/facilities";
-
+import ListHocBong from "@/templates/wp-hoc-bong-list";
 const HomePage = () => {
   return (
     <Layout>
       {/* <MainContentHandbooks /> */}
-      <MainContentPeople />
+      <ListHocBong />
       {/* <MainContentPlus /> */}
       {/* <Environments /> */}
       {/* <Events /> */}

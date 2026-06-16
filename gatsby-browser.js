@@ -49,6 +49,8 @@ if (typeof window !== "undefined") {
   insertCSS("select2-css", "/assets/css/select2.min.css");
   insertCSS("wp-style", "/assets/css/style.css");
   insertCSS("wp-custom-style", "/assets/css/custom-style.css");
+  insertCSS("css-plus-main", "/assets/css/css_plus_main.css");
+  // insertCSS("wp-style", "/assets/style.css");
 
   // 2. Tiêm toàn bộ file hiệu ứng JS (Chờ DOM load xong sẽ kích hoạt)
   window.addEventListener("DOMContentLoaded", () => {
@@ -66,7 +68,7 @@ if (typeof window !== "undefined") {
     insertJS("slick-js", "/assets/js/slick.min.js");
     insertJS("select2-js", "/assets/js/select2.min.js");
     insertJS("emasi-main", "/assets/js/main.js");
-    insertJS("emasi-core", "/assets/js/emasi.js");
+    // insertJS("emasi-core", "/assets/js/emasi.js");
   });
 }
 // ------------------------------------------------------------------

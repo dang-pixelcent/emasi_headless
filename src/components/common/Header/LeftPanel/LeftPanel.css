@@ -1,0 +1,152 @@
+/* src/components/common/Header/LeftPanel.css */
+
+/* --- BỐ CỤC CHUNG --- */
+.left-panel {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 100vh;
+    background: #005d83;
+    z-index: 9999 !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.left-panel-menus {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* Đổi từ space-between thành flex-start để chúng dồn lên trên */
+    gap: 100px;
+    /* Chỉnh số này (ví dụ: 50px, 80px, 100px) để quyết định khoảng cách giữa 2 cụm */
+    height: 100%;
+}
+
+.left-panel-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.left-panel-nav li {
+    position: relative;
+    /* Quan trọng để neo khung tìm kiếm */
+    width: 100%;
+    height: 96px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+/* Hiệu ứng nền khi Active hoặc Hover */
+.left-panel-nav li.active,
+.left-panel-nav li:hover {
+    background-color: #196d8f;
+}
+
+/* --- HIỆU ỨNG RÊ CHUỘT (HOVER ANIMATION) --- */
+.left-panel-nav li a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    text-decoration: none;
+}
+
+.left-panel-nav li a .icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    transition: transform 0.3s ease;
+    /* Chuyển động mượt */
+}
+
+/* Mặc định hiện icon trắng, ẩn icon xanh */
+.left-panel-nav li .icon {
+    filter: brightness(0) invert(1);
+    transition: opacity 0.3s ease;
+}
+
+.left-panel-nav li .icon-hover {
+    display: none;
+}
+
+/* KHI RÊ CHUỘT (HOVER) VÀ ACTIVE */
+.left-panel-nav li:hover a .icons,
+.left-panel-nav li.active a .icons {
+    transform: translateY(-5px);
+    /* Hiệu ứng nảy nhẹ lên trên */
+}
+
+.left-panel-nav li:hover .icon,
+.left-panel-nav li.active .icon {
+    display: none;
+}
+
+.left-panel-nav li:hover .icon-hover,
+.left-panel-nav li.active .icon-hover {
+    display: block;
+    /* color: #bed530; */
+}
+
+.left-panel-nav li a .name {
+    font-size: 0;
+    /* Mặc định ẩn chữ */
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.left-panel-nav li:hover a .name,
+.left-panel-nav li.active a .name {
+    font-size: 14px;
+    /* Hiện chữ ra */
+    color: #bed530;
+    /* Đổi sang màu xanh lá EMASI */
+    margin-top: 5px;
+}
+
+/* --- KHUNG TÌM KIẾM --- */
+.box-left-panel-search {
+    position: absolute !important;
+    top: 0 !important;
+    left: 90px !important;
+    /* Dính chặt vào mép phải thanh Left Panel (90px) */
+    width: 350px !important;
+    height: 100vh !important;
+    background: #00364d !important;
+    z-index: 100000 !important;
+
+    /* Hiệu ứng trượt ngang */
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.4s ease;
+}
+
+.left-panel-nav li.active .box-left-panel-search {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.box-search-top {
+    background: #1a6e90;
+    padding: 40px 30px;
+}
+
+.frm-search .txt-search {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 4px;
+    border: 2px solid #83a2af;
+    background: #00354d;
+    color: #fff;
+    outline: none;
+}
