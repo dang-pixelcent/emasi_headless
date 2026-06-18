@@ -5,7 +5,7 @@ import { extractScripts, injectHtml } from "@/utils/string";
 import { Helmet } from "react-helmet";
 import Footer from "../Footer";
 import AOS from 'aos';
-import 'aos/dist/aos.css';
+import 'aos/dist/aos.css' ;
 const Container = ({ ...props }: ComponentProps<"div">) => {
   return (
     <div
