@@ -4,6 +4,8 @@ import { ScriptItem, ThemeOption } from "@/types/general";
 import { extractScripts, injectHtml } from "@/utils/string";
 import { Helmet } from "react-helmet";
 import Footer from "../Footer";
+import AOS from 'aos';
+import 'aos/dist/aos.css' ;
 const Container = ({ ...props }: ComponentProps<"div">) => {
   return (
     <div
@@ -34,8 +36,15 @@ const Layout = ({ children, themeOption, ...props }: LayoutProps) => {
     injectHtml("start", bodyScripts, bodyNoscripts);
     injectHtml("end", footerScripts, footerNoscripts);
   }, []);
+  useEffect(() => {
+    // Lệnh này đảm bảo AOS chỉ chạy trên trình duyệt (tránh lỗi Vercel)
+    AOS.init({
+      duration: 800, // Thời gian chạy hiệu ứng (0.8s)
+      once: true,    // Chỉ chạy hiệu ứng 1 lần khi cuộn xuống
+      offset: 50,    // Cuộn quá phần tử 50px mới bắt đầu chạy
+    });
+  }, []);
   console.log("scripts in layout:", scripts);
-
   console.log("header:", themeOption?.headerGroup);
   console.log("footer:", themeOption?.footerGroup);
   return (
