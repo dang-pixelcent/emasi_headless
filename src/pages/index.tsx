@@ -16,8 +16,8 @@ import ListHocBong from "@/templates/wp-hoc-bong-list";
 const HomePage = () => {
   return (
     <Layout>
-      {/* <MainContentHandbooks /> */}
-      <ListHocBong />
+      <MainContentHandbooks />
+      {/* <ListHocBong /> */}
       {/* <MainContentPlus /> */}
       {/* <Environments /> */}
       {/* <Events /> */}
