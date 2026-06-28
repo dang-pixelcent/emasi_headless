@@ -50,50 +50,7 @@ export const runCreatePagesV2 = async ({
           uri
           slug
           title
-        }
-      }
-      allWpCustomPost {
-        nodes {
-          id
-          wpId
-          uri
-          slug
-          title
-        }
-      }
-      allWpCustomService {
-        nodes {
-          id
-          wpId
-          uri
-          slug
-          title
-        }
-      }
-      allWpCustomTeam {
-        nodes {
-          id
-          wpId
-          uri
-          slug
-          title
-        }
-      }
-      allWpGeoLocation {
-        nodes {
-          id
-          wpId
-          uri
-          slug
-          title
-          customPath
-          isGeosite
-        }
-      }
-      allWpThemeOptions {
-        nodes {
-          id
-          siteId
+          pageBuilder
         }
       }
     }
@@ -105,12 +62,13 @@ export const runCreatePagesV2 = async ({
   }
 
   const data = result.data!;
-  const pages = data.allWpCustomPage.nodes;
-  const posts = data.allWpCustomPost.nodes;
-  const services = data.allWpCustomService.nodes;
-  const teams = data.allWpCustomTeam.nodes;
-  const geoLocations = data.allWpGeoLocation.nodes;
-  const themeOptionsNodes = data.allWpThemeOptions.nodes;
+  // Dùng fallback an toàn (|| { nodes: [] })
+  const pages = data.allWpCustomPage?.nodes || [];
+  // const posts = data.allWpCustomPost?.nodes || []; // Nếu không query Post, nó sẽ lấy mảng rỗng
+  // const services = data.allWpCustomService?.nodes || [];
+  // const teams = data.allWpCustomTeam?.nodes || [];
+  const geoLocations = data.allWpGeoLocation?.nodes || [];
+  const themeOptionsNodes = data.allWpThemeOptions?.nodes || [];
 
   // Get theme options node IDs
   const mainThemeId = themeOptionsNodes.find((n) => n.siteId === "main")?.id;
@@ -118,26 +76,18 @@ export const runCreatePagesV2 = async ({
 
   console.log(`📊 NODES from Gatsby Data Layer:`);
   console.log(`   - Pages: ${pages.length}`);
-  console.log(`   - Posts: ${posts.length}`);
-  console.log(`   - Services: ${services.length}`);
-  console.log(`   - Teams: ${teams.length}`);
   console.log(`   - Geo Locations: ${geoLocations.length}`);
 
   // =============================
   // 2. GENERATE SEARCH INDEX
   // =============================
   console.log("🔍 Generating Local Search Index...");
-  const allSearchNodes = [...pages, ...posts, ...services, ...teams];
+  const allSearchNodes = [...pages];
 
   const searchIndex = allSearchNodes
     .filter((node) => node.title && (node.uri || node.slug))
     .map((node) => {
       let type = "Page";
-      // Determine type based on node collection
-      if (posts.includes(node)) type = "Post";
-      else if (services.includes(node)) type = "Services";
-      else if (teams.includes(node)) type = "Teams";
-
       return {
         id: node.wpId,
         title: node.title,
@@ -181,65 +131,66 @@ export const runCreatePagesV2 = async ({
         id: page.id,
         themeOptionsId: mainThemeId,
         type: "page",
+        pageBuilder: page.pageBuilder,
       },
       defer: false,
     });
   });
   console.log(`✅ Created ${pages.length} Pages`);
 
-  // --- POSTS ---
-  posts.forEach((node) => {
-    const nodePath = normalizePath(node.uri);
-    if (!nodePath) return;
+  // // --- POSTS ---
+  // posts.forEach((node) => {
+  //   const nodePath = normalizePath(node.uri);
+  //   if (!nodePath) return;
 
-    createPage({
-      path: nodePath,
-      component: TEMPLATES.POST,
-      context: {
-        id: node.id,
-        themeOptionsId: mainThemeId,
-        type: "post",
-      },
-      defer: false,
-    });
-  });
-  console.log(`✅ Created ${posts.length} Posts`);
+  //   createPage({
+  //     path: nodePath,
+  //     component: TEMPLATES.POST,
+  //     context: {
+  //       id: node.id,
+  //       themeOptionsId: mainThemeId,
+  //       type: "post",
+  //     },
+  //     defer: false,
+  //   });
+  // });
+  // console.log(`✅ Created ${posts.length} Posts`);
 
-  // --- SERVICES ---
-  services.forEach((node) => {
-    const nodePath = normalizePath(node.uri);
-    if (!nodePath) return;
+  // // --- SERVICES ---
+  // services.forEach((node) => {
+  //   const nodePath = normalizePath(node.uri);
+  //   if (!nodePath) return;
 
-    createPage({
-      path: nodePath,
-      component: TEMPLATES.POST,
-      context: {
-        id: node.id,
-        themeOptionsId: mainThemeId,
-        type: "service",
-      },
-      defer: false,
-    });
-  });
-  console.log(`✅ Created ${services.length} Services`);
+  //   createPage({
+  //     path: nodePath,
+  //     component: TEMPLATES.POST,
+  //     context: {
+  //       id: node.id,
+  //       themeOptionsId: mainThemeId,
+  //       type: "service",
+  //     },
+  //     defer: false,
+  //   });
+  // });
+  // console.log(`✅ Created ${services.length} Services`);
 
-  // --- TEAMS ---
-  teams.forEach((node) => {
-    const nodePath = normalizePath(node.uri);
-    if (!nodePath) return;
+  // // --- TEAMS ---
+  // teams.forEach((node) => {
+  //   const nodePath = normalizePath(node.uri);
+  //   if (!nodePath) return;
 
-    createPage({
-      path: nodePath,
-      component: TEMPLATES.POST,
-      context: {
-        id: node.id,
-        themeOptionsId: mainThemeId,
-        type: "team",
-      },
-      defer: false,
-    });
-  });
-  console.log(`✅ Created ${teams.length} Teams`);
+  //   createPage({
+  //     path: nodePath,
+  //     component: TEMPLATES.POST,
+  //     context: {
+  //       id: node.id,
+  //       themeOptionsId: mainThemeId,
+  //       type: "team",
+  //     },
+  //     defer: false,
+  //   });
+  // });
+  // console.log(`✅ Created ${teams.length} Teams`);
 
   // --- GEO LOCATIONS ---
   if (API_CONFIG.GEO_SITE.enabled && geoLocations.length > 0) {
@@ -298,8 +249,7 @@ export const runCreatePages = async ({ actions }: { actions: Actions }) => {
   console.log("\n🚀 --- START MULTI-BE FETCHING (ENGINE MODE) ---");
   console.log(`📡 Main API: ${API_CONFIG.MAIN_SITE.url}`);
   console.log(
-    `🌍 Geo API: ${
-      API_CONFIG.GEO_SITE.enabled ? API_CONFIG.GEO_SITE.url : "DISABLED"
+    `🌍 Geo API: ${API_CONFIG.GEO_SITE.enabled ? API_CONFIG.GEO_SITE.url : "DISABLED"
     }`,
   );
 
@@ -333,15 +283,15 @@ export const runCreatePages = async ({ actions }: { actions: Actions }) => {
     // Geo Site
     API_CONFIG.GEO_SITE.enabled
       ? Promise.all([
-          ...GEO_TYPES_CONFIG.map((config) =>
-            getContentNodes(
-              API_CONFIG.GEO_SITE.url,
-              config.graphqlTypes,
-              geoFragmentsMap,
-            ),
+        ...GEO_TYPES_CONFIG.map((config) =>
+          getContentNodes(
+            API_CONFIG.GEO_SITE.url,
+            config.graphqlTypes,
+            geoFragmentsMap,
           ),
-          getThemeOptions(API_CONFIG.GEO_SITE.url),
-        ])
+        ),
+        getThemeOptions(API_CONFIG.GEO_SITE.url),
+      ])
       : Promise.resolve([[], {}]),
   ]);
 
@@ -567,14 +517,14 @@ export const generateGeoSitemap = async ({ graphql, reporter }: any) => {
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   ${validNodes
-    .map((node: any) => {
-      return `  <url>
+      .map((node: any) => {
+        return `  <url>
       <loc>${siteUrl}${node.path}</loc>
       <changefreq>weekly</changefreq>
       <priority>0.7</priority>
     </url>`;
-    })
-    .join("\n")}
+      })
+      .join("\n")}
   </urlset>`;
 
   // Xác định đường dẫn output: public/locations/sitemap-index.xml

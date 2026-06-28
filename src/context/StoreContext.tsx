@@ -11,7 +11,7 @@ interface StoreProviderProps {
 }
 
 export const StoreProvider: React.FC<StoreProviderProps> = ({ children }) => {
-  const [currentPage, setCurrentPage] = React.useState<string | null>(null);
+  const [currentPage, setCurrentPage] = React.useState<string | null>("Trang-Dang-Test");
   const value = { currentPage, setCurrentPage };
   return (
     <StoreContext.Provider value={value}>{children}</StoreContext.Provider>

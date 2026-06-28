@@ -28,7 +28,19 @@ export const createSchemaCustomization = ({
     # =============================
     # MAIN SITE NODES
     # =============================
-    type WpCustomPage implements Node & WpCustomContent {
+    type WpCustomPage implements Node & WpCustomContent @dontInfer {
+      id: ID!
+      wpId: String!
+      uri: String
+      slug: String
+      title: String
+      nodeType: String!
+      flexibleContentMain: JSON
+      pageBuilder: JSON
+      getRankMathSEO: String
+    }
+
+    type WpCustomPost implements Node & WpCustomContent @dontInfer{
       id: ID!
       wpId: String!
       uri: String
@@ -39,7 +51,7 @@ export const createSchemaCustomization = ({
       getRankMathSEO: String
     }
 
-    type WpCustomPost implements Node & WpCustomContent {
+    type WpCustomService implements Node & WpCustomContent @dontInfer{
       id: ID!
       wpId: String!
       uri: String
@@ -50,18 +62,7 @@ export const createSchemaCustomization = ({
       getRankMathSEO: String
     }
 
-    type WpCustomService implements Node & WpCustomContent {
-      id: ID!
-      wpId: String!
-      uri: String
-      slug: String
-      title: String
-      nodeType: String!
-      flexibleContentMain: JSON
-      getRankMathSEO: String
-    }
-
-    type WpCustomTeam implements Node & WpCustomContent {
+    type WpCustomTeam implements Node & WpCustomContent @dontInfer{
       id: ID!
       wpId: String!
       uri: String
@@ -75,7 +76,7 @@ export const createSchemaCustomization = ({
     # =============================
     # GEO SITE NODES
     # =============================
-    type WpGeoLocation implements Node & WpCustomContent {
+    type WpGeoLocation implements Node & WpCustomContent @dontInfer{
       id: ID!
       wpId: String!
       uri: String

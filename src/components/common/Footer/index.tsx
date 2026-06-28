@@ -17,7 +17,7 @@ const Footer = () => {
                                 <img className="m-footer-logo" src="/assets/images/mobile_logo.png" alt="Logo Mobile" />
                                 <div className="m-footer-desc">Môi trường giáo dục tiên tiến, song ngữ và quốc tế.</div>
                             </div>
-                            <div className="title">Thanh vien cua: </div>
+                            <div className="title">Thành viên của: </div>
                             <img src="/assets/images/logo-khai-sang.png" alt="EMASI" />
                             {/* // LOGO ĐỐI TÁC */}
                             <div className="partners">
