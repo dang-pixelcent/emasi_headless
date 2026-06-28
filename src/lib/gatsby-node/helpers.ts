@@ -31,6 +31,71 @@ export const normalizePath = (p: string): string => {
 
 // --- FETCH LOGIC ---
 
+// export const getAllPages = async (
+//   apiUrl: string,
+//   take: number = 200,
+// ): Promise<WPNode[]> => {
+//   try {
+//     if (!apiUrl) {
+//       console.error(`❌ [getAllPages] ERROR: API URL thiếu!`);
+//       return [];
+//     }
+
+//     let hasNextPage = true;
+//     let endCursor: string | null = null;
+//     const allItems: WPNode[] = [];
+
+//     while (hasNextPage) {
+//       const query = `query GetAllPages($first: Int!, $after: String) {
+//         pages(first: $first, after: $after) {
+//           edges {
+//             cursor
+//             node {
+//               __typename
+//               id
+//               uri
+//               title
+//               slug
+//             }
+//           }
+//           pageInfo {
+//             hasNextPage
+//             endCursor
+//           }
+//         }
+//       }`;
+
+//       const response = await fetch(apiUrl, {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify({
+//           query,
+//           variables: { first: take, after: endCursor },
+//         }),
+//       });
+
+//       if (!response.ok) throw new Error(`Server Error ${response.status}`);
+//       const responseBody = (await response.json()) as GraphQLResponse;
+
+//       const data = responseBody.data?.pages;
+//       const items = data?.edges?.map((edge) => edge.node) || [];
+
+//       items.forEach((item) => {
+//         item.flexibleContentMain = safeParseFlexibleContent(
+//           item.flexibleContentMain,
+//         );
+//       });
+
+//       allItems.push(...items);
+//       hasNextPage = data?.pageInfo?.hasNextPage || false;
+//       endCursor = data?.pageInfo?.endCursor || null;
+//     }
+//     return allItems;
+//   } catch (error) {
+//     console.error(`❌ [getAllPages] CRITICAL ERROR with ${apiUrl}:`, error);
+//     return [];
+//   }
+// };
 export const getAllPages = async (
   apiUrl: string,
   take: number = 200,
@@ -55,9 +120,66 @@ export const getAllPages = async (
               id
               uri
               title
-              flexibleContentMain
-              getRankMathSEO
               slug
+              pageBuilder {
+                pagebuilderdata {
+                  __typename
+                  ... on PageBuilderPagebuilderdataContentEditorLayout {
+                    articleBlocks {
+                      __typename
+                      ... on PageBuilderPagebuilderdataArticleBlocksTextContentLayout {
+                        textContent
+                      }
+                    }
+                  }
+                  ... on PageBuilderPagebuilderdataBannerLayout {
+                    bannergallery {
+                      nodes {
+                        sourceUrl
+                        altText
+                      }
+                    }
+                  }
+                  ... on PageBuilderPagebuilderdataSidebarLayout {
+                    list {
+                      image {
+                        node {
+                          id
+                          sourceUrl
+                          altText
+                        }
+                      }
+                      title
+                      desc
+                      link {
+                        url
+                        title
+                        target
+                      }
+                    }
+                  }
+                  ... on PageBuilderPagebuilderdataDiscoveryLayout {
+                    title
+                    list {
+                      image {
+                        node {
+                          id
+                          sourceUrl
+                          altText
+                        }
+                      }
+                      link {
+                        url
+                      }
+                      title
+                    }
+                  }
+                  ... on PageBuilderPagebuilderdataLanguagesLayout{
+                    languages
+                    page
+                  }
+                } 
+              } 
             }
           }
           pageInfo {
@@ -66,6 +188,7 @@ export const getAllPages = async (
           }
         }
       }`;
+      // ... tiếp tục logic fetch như cũ
 
       const response = await fetch(apiUrl, {
         method: "POST",
@@ -82,6 +205,7 @@ export const getAllPages = async (
       const data = responseBody.data?.pages;
       const items = data?.edges?.map((edge) => edge.node) || [];
 
+      // Giữ lại logic parse cũ để không làm hỏng flexibleContentMain
       items.forEach((item) => {
         item.flexibleContentMain = safeParseFlexibleContent(
           item.flexibleContentMain,

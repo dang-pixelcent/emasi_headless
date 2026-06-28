@@ -14,11 +14,11 @@ import { WPNode } from "./types";
 // Node type mapping
 const NODE_TYPE_MAP: Record<string, string> = {
   Page: "WpCustomPage",
-  Post: "WpCustomPost",
-  Services: "WpCustomService",
-  Team: "WpCustomTeam",
-  ServicesArea: "WpGeoLocation",
-  LocationsArea: "WpGeoLocation",
+  // Post: "WpCustomPost",
+  // Services: "WpCustomService",
+  // Team: "WpCustomTeam",
+  // ServicesArea: "WpGeoLocation",
+  // LocationsArea: "WpGeoLocation",
 };
 
 /**
@@ -48,11 +48,6 @@ export const runSourceNodes = async ({
 
   console.log("\n📦 --- START SOURCING MULTI-BE DATA ---");
   console.log(`📡 Main API: ${API_CONFIG.MAIN_SITE.url}`);
-  console.log(
-    `🌍 Geo API: ${
-      API_CONFIG.GEO_SITE.enabled ? API_CONFIG.GEO_SITE.url : "DISABLED"
-    }`,
-  );
 
   const startTime = Date.now();
 
@@ -84,21 +79,38 @@ export const runSourceNodes = async ({
     // Geo Site
     API_CONFIG.GEO_SITE.enabled
       ? Promise.all([
-          ...GEO_TYPES_CONFIG.map((config) =>
-            getContentNodes(
-              API_CONFIG.GEO_SITE.url,
-              config.graphqlTypes,
-              geoFragmentsMap,
-            ),
+        ...GEO_TYPES_CONFIG.map((config) =>
+          getContentNodes(
+            API_CONFIG.GEO_SITE.url,
+            config.graphqlTypes,
+            geoFragmentsMap,
           ),
-          getThemeOptions(API_CONFIG.GEO_SITE.url),
-        ])
+        ),
+        getThemeOptions(API_CONFIG.GEO_SITE.url),
+      ])
       : Promise.resolve([[], {}]),
   ]);
 
   // Destructure Data
   const pages = mainData[0] as WPNode[];
   const themeOptions = mainData[mainData.length - 1];
+
+  // ====================================================================
+  // 🔥 IN RA TOÀN BỘ DỮ LIỆU CỦA 44 TRANG 🔥
+  // ====================================================================
+  console.log("\n=======================================================");
+  console.log("🔥 TRẠM 1: ĐÃ LẤY ĐƯỢC DỮ LIỆU TỪ WORDPRESS VỀ MÁY 🔥");
+  console.log(`=> Tổng số trang (Pages) lấy được: ${pages?.length} trang`);
+
+  if (pages && pages.length > 0) {
+    // Dùng map để in tiêu đề và ID của tất cả trang, hoặc in toàn bộ object
+    pages.forEach((page, index) => {
+      console.log(`--- Trang ${index + 1}: ${page.title} ---`);
+      console.log(JSON.stringify(page, null, 2));
+    });
+  }
+  console.log("=======================================================\n");
+  // ====================================================================
 
   // Extract Dynamic Nodes (Posts, Services, Teams...)
   const mainDynamicNodes: WPNode[] = [];
@@ -118,11 +130,6 @@ export const runSourceNodes = async ({
       if (nodes) geoLocations.push(...nodes);
     });
   }
-
-  console.log(`\n📊 FETCHED (${(Date.now() - startTime) / 1000}s):`);
-  console.log(`   - Main Pages: ${pages.length}`);
-  console.log(`   - Main Dynamic Nodes: ${mainDynamicNodes.length}`);
-  console.log(`   - Geosite Locations: ${geoLocations.length}`);
 
   // =============================
   // 3. CREATE GATSBY NODES
@@ -144,7 +151,6 @@ export const runSourceNodes = async ({
     parsedContent = normalizeWpData(parsedContent);
 
     const nodeData: NodeInput = {
-      // Gatsby required fields
       id: gatsbyNodeId,
       parent: null,
       children: [],
@@ -153,7 +159,6 @@ export const runSourceNodes = async ({
         contentDigest: createContentDigest(node),
         description: `WordPress ${contentType}: ${node.title}`,
       },
-      // Custom fields
       wpId: String(node.id),
       uri: normalizePath(node.uri),
       slug: node.slug || "",
@@ -161,6 +166,7 @@ export const runSourceNodes = async ({
       nodeType: contentType,
       flexibleContentMain: parsedContent,
       getRankMathSEO: node.getRankMathSEO || "",
+      pageBuilder: node.pageBuilder ? node.pageBuilder : { pagebuilderdata: [] },
       ...extras,
     };
 
@@ -182,20 +188,7 @@ export const runSourceNodes = async ({
     nodes.forEach((node) => {
       createContentNode(node, config.typeLabel.toLowerCase());
     });
-    console.log(`✅ Created ${nodes.length} ${config.typeLabel} nodes`);
   });
-
-  // --- Create GEO LOCATIONS ---
-  if (API_CONFIG.GEO_SITE.enabled) {
-    geoLocations.forEach((node) => {
-      const customPath = normalizePath(`/${node.uri}`);
-      createContentNode(node, "geolocation", {
-        isGeosite: true,
-        customPath,
-      });
-    });
-    console.log(`✅ Created ${geoLocations.length} WpGeoLocation nodes`);
-  }
 
   // =============================
   // 4. CREATE THEME OPTIONS NODES (Global)
@@ -215,27 +208,6 @@ export const runSourceNodes = async ({
     headerFooterTracking: themeOptions?.headerFooterTracking || {},
   };
   createNode(mainThemeNode);
-  console.log("✅ Created Main WpThemeOptions node");
-
-  if (API_CONFIG.GEO_SITE.enabled && geoThemeOptions) {
-    const geoThemeNode: NodeInput = {
-      id: createNodeId("WpThemeOptions-geo"),
-      parent: null,
-      children: [],
-      internal: {
-        type: "WpThemeOptions",
-        contentDigest: createContentDigest(geoThemeOptions),
-        description: "Geo Site Theme Options",
-      },
-      siteId: "geo",
-      headerGroup: geoThemeOptions?.headerGroup || {},
-      footerGroup: geoThemeOptions?.footerGroup || {},
-      headerFooterTracking: geoThemeOptions?.headerFooterTracking || {},
-    };
-    createNode(geoThemeNode);
-    console.log("✅ Created Geo WpThemeOptions node");
-  }
 
   activity.end();
-  console.log(`\n📦 TOTAL: ${nodeCount} content nodes created.\n`);
 };

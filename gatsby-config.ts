@@ -1,5 +1,6 @@
 import type { GatsbyConfig } from "gatsby";
-
+import * as dotenv from "dotenv";
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 //nơi lấy dữ liệu từ GraphQL
 const WPGRAPHQL_URL = process.env.GATSBY_WPGRAPHQL_URL;
 const MAIN_SITE_URL = process.env.GATSBY_MAIN_SITE_URL;

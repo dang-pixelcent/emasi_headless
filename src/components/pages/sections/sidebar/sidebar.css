@@ -1,7 +1,8 @@
 .sidebar-right {
 	flex: 0 0 clamp(213px, 17.822265625vw, 365px);
 	background: #003e58;
-	padding: clamp(29px, 2.44140625vw, 50px) clamp(19px, 1.5625vw, 32px)
+	padding: clamp(29px, 2.44140625vw, 50px) clamp(19px, 1.5625vw, 32px);
+	height: 100%;
 }
 
 .widget .align-center {
