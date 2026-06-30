@@ -85,7 +85,7 @@ const config: GatsbyConfig = {
         short_name: `PRCPB`,
         start_url: `/`,
         display: `standalone`,
-        icon: `static/favicon.ico`,
+        icon: `static/favicon.png`,
       },
     },
     {
