@@ -7,3 +7,4 @@ src/gatsby-types.d.ts
 .env
 .wordpress-cache
 .vercel
+.env*
