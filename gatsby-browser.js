@@ -3,20 +3,20 @@ import { useGlobalInternalLinks } from "./src/hooks/useGlobalInternalLinks";
 import { StoreProvider } from "./src/context/StoreContext";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider } from "@mui/x-date-pickers";
-
-// Thêm đoạn này vào đầu file gatsby-browser.js để chặnlỗi sập trang
+import { StaticQuery, graphql } from "gatsby";
+import { GlobalThemeProvider } from "./src/context/GlobalThemeProvider";
+// --- CHẶN LỖI RUNTIME TỪ FILE SCRIPT WP CŨ ĐỂ KHÔNG BỊ SẬP APP ---
 if (typeof window !== "undefined") {
   window.addEventListener("error", (e) => {
-    // Nếu lỗi xuất hiện từ các file script cũ của WP (như emasi.js hay main.js)
     if (e.filename && (e.filename.includes("emasi.js") || e.filename.includes("main.js"))) {
       console.warn("Đã chặn lỗi Runtime từ file cũ để tránh sập app:", e.message);
-      e.preventDefault(); // Ngăn React hiển thị màn hình báo lỗi đỏ (Error Overlay)
+      e.preventDefault(); 
     }
   });
 }
-// --- MẸO LOAD BOOTSTRAP VÀ CSS TĨNH TỪ THƯ MỤC STATIC PHÍA CLIENT ---
+
+// --- TIÊM CSS VÀ JS TĨNH TỪ THƯ MỤC STATIC (PHÍA CLIENT) ---
 if (typeof window !== "undefined") {
-  // Hàm tiêm CSS
   const insertCSS = (id, href) => {
     if (!document.getElementById(id)) {
       const link = document.createElement("link");
@@ -27,20 +27,19 @@ if (typeof window !== "undefined") {
     }
   };
 
-  // Hàm tiêm JS bổ trợ (Đồ án dùng rất nhiều jQuery và Slick slide)
   const insertJS = (id, src) => {
     if (!document.getElementById(id)) {
       const script = document.createElement("script");
       script.id = id;
       script.src = src;
-      script.async = false; // Chạy tuần tự để tránh lỗi jQuery undefined
+      script.async = false; 
       document.body.appendChild(script);
       return script;
     }
     return null;
   };
 
-  // 1. Tiêm toàn bộ file CSS (Thứ tự chuẩn từ core đến custom)
+  // 1. Tiêm CSS theo thứ tự chuẩn
   insertCSS("bootstrap-css", "/assets/css/bootstrap.min.css");
   insertCSS("bootstrap-icons", "/assets/css/bootstrap-icons.css");
   insertCSS("font-awesome", "/assets/css/font-awesome.min.css");
@@ -50,39 +49,32 @@ if (typeof window !== "undefined") {
   insertCSS("wp-style", "/assets/css/style.css");
   insertCSS("wp-custom-style", "/assets/css/custom-style.css");
   insertCSS("css-plus-main", "/assets/css/css_plus_main.css");
-  // insertCSS("wp-style", "/assets/style.css");
 
-  // 2. Tiêm toàn bộ file hiệu ứng JS (Chờ DOM load xong sẽ kích hoạt)
+  // 2. Tiêm JS sau khi DOM load hoàn tất
   window.addEventListener("DOMContentLoaded", () => {
     insertJS("jq", "/assets/js/jquery.min.js");
     insertJS("bs-bundle", "/assets/js/bootstrap.bundle.min.js");
     const aosScript = insertJS("aos-js", "/assets/js/aos.js");
-    if (aosScript)
+    if (aosScript) {
       aosScript.onload = () => {
         if (window.AOS) {
-          window.AOS.init({
-            once: true, //dùng để hiệu ứng aos chỉ kích hoạt 1 lần khi lướt
-          });
+          window.AOS.init({ once: true });
         }
-    };
+      };
+    }
     insertJS("slick-js", "/assets/js/slick.min.js");
     insertJS("select2-js", "/assets/js/select2.min.js");
     insertJS("emasi-main", "/assets/js/main.js");
-    // insertJS("emasi-core", "/assets/js/emasi.js");
   });
 }
-// ------------------------------------------------------------------
 
-// Tách component ra để code rõ ràng
+// --- COMPONENT BỔ TRỢ HỆ THỐNG ---
 const GlobalProvider = ({ children }) => {
-  // Kích hoạt hook lắng nghe click toàn cục
-  useGlobalInternalLinks();
-
+  useGlobalInternalLinks(); // Kích hoạt hook lắng nghe click toàn cục
   return <>{children}</>;
 };
-
+// --- HÀM BAO BỌC PHÍA GATSBY CLIENT ---
 export const wrapRootElement = ({ element }) => {
-  console.log("wrapRootElement called", React.version);
   return (
     <LocalizationProvider dateAdapter={AdapterMoment}>
       <StoreProvider>

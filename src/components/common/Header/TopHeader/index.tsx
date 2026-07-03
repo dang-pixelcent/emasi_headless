@@ -1,30 +1,54 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
 import './TopHeader.css';
+import { useStoreContext } from '@context/StoreContext'; // Import hàm chuẩn hóa
 
-const TopHeader: React.FC = () => {
+interface TopHeaderProps {
+  currentLang: string;     
+  switchUri?: string | null;
+  data?: any;              
+  menu?: any;              
+}
+
+const TopHeader: React.FC<TopHeaderProps> = ({ currentLang, switchUri, data, menu }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
 
-  // Danh sách các ngôn ngữ có trong web
+  const [logoSrc, setLogoSrc] = useState('/assets/images/EMASI-LOGO-GRADIENT.png');
+  const [mobileLogoSrc, setMobileLogoSrc] = useState('/assets/images/logo-footer.svg');
+  const [headerMobileData, setHeaderMobileData] = useState<any>(null);
+  const [topMenuData, setTopMenuData] = useState<any>(null);
+
+  // Lấy hàm chuẩn hóa đường dẫn
+  const { normalizePath } = useStoreContext();
+
+  useEffect(() => {
+    if (data) {
+      const logo = data.logo?.node?.sourceUrl;
+      if (logo) setLogoSrc(logo);
+
+      const mobileLogo = data.logomobile?.node?.sourceUrl;
+      if (mobileLogo) setMobileLogoSrc(mobileLogo);
+
+      const mobileData = data?.headermobile?.list;
+      setHeaderMobileData(mobileData);
+    }
+
+    if (menu) {
+      const topMenu = menu?.topVi?.topPanel;
+      setTopMenuData(topMenu);
+    }
+  }, [data, menu]);
+
   const LANGUAGES = [
-    { code: 'vi', label: 'VI', flag: '/assets/images/flag-vi.png' }, // Đã đổi lại tên file cờ theo list bạn gửi
+    { code: 'vi', label: 'VI', flag: '/assets/images/flag-vi.png' }, 
     { code: 'en', label: 'EN', flag: '/assets/images/flag-us.png' },
   ];
+  const currentLangObj = LANGUAGES.find(l => l.code === currentLang) || LANGUAGES[0];
 
-  // Mặc định ngôn ngữ ban đầu là tiếng Việt
-  const [currentLang, setCurrentLang] = useState(LANGUAGES[0]);
-
-  // Hàm xử lý khi người dùng click chọn ngôn ngữ
-  const handleSelectLang = (lang: any, e: React.MouseEvent) => {
-    e.preventDefault();
-    setCurrentLang(lang);
-    setIsLangOpen(false);
-  };
-
-  // Bắt sự kiện cuộn trang
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -33,58 +57,99 @@ const TopHeader: React.FC = () => {
         setIsScrolled(false);
       }
     };
-
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  if (!data || !menu || !headerMobileData || !topMenuData || !logoSrc || !mobileLogoSrc) {
+    return null;
+  }
+
+  // Helper để Render link trên Mobile (phân loại Action, External, Internal)
+  const RenderMobileItem = ({ item, onClick }: { item: any, onClick?: (e: React.MouseEvent) => void }) => {
+    const url = item.link?.url;
+    const isSearch = item.title?.toLowerCase().includes("tìm kiếm");
+    const isAction = !url || url === '#' || isSearch;
+
+    const content = (
+      <>
+        {item.icon?.node?.sourceUrl && (
+          <img src={item.icon.node.sourceUrl} alt={item.title || "Icon"} />
+        )}
+        <span>{item.title}</span>
+      </>
+    );
+
+    // Nếu là nút Chức năng (Tìm kiếm)
+    if (isAction) {
+      return (
+        <a 
+          className="d-flex align-items-center" 
+          style={{ gap: '0.6vw', cursor: 'pointer' }}
+          onClick={(e) => {
+            e.preventDefault();
+            if (isSearch) setIsMobileSearchOpen(!isMobileSearchOpen);
+            if (onClick) onClick(e);
+          }}
+        >
+          {content}
+        </a>
+      );
+    }
+
+    // Nếu là đường dẫn
+    const href = normalizePath(url);
+    const isExternal = href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:');
+
+    if (isExternal) {
+      return (
+        <a href={href} target="_blank" rel="noreferrer" className="d-flex align-items-center" style={{ gap: '0.6vw' }}>
+          {content}
+        </a>
+      );
+    }
+
+    return (
+      <Link to={href} target={item.link?.target || "_self"} className="d-flex align-items-center" style={{ gap: '0.6vw' }}>
+        {content}
+      </Link>
+    );
+  };
+
 
   return (
     <header id="header" className={`sticky-header d-flex align-items-center ${isScrolled ? 'header-scrolled' : ''}`}>
       <div className="inner-container">
         <div className="primary-header-inner d-flex align-items-center justify-content-between">
-          
+
           {/* KHỐI LOGO */}
           <div className="logo">
             <Link to="/">
-              <img className="only-desktop" src="/assets/images/EMASI-LOGO-GRADIENT.png" alt="EMASI" />
-              <img className="only-mobile" src="/assets/images/logo-footer.svg" alt="EMASI" />
+              <img className="only-desktop" src={logoSrc} alt="EMASI" />
+              <img className="only-mobile" src={mobileLogoSrc} alt="EMASI" />
             </Link>
           </div>
 
           {/* KHỐI MENU VÀ NGÔN NGỮ */}
           <div className="header-nav d-flex flex-column align-items-end">
-            
+
             {/* Bộ chuyển đổi ngôn ngữ */}
             <div className="language" onMouseLeave={() => setIsLangOpen(false)}>
-              
               <div className="current-lang" onClick={() => setIsLangOpen(!isLangOpen)}>
                 <a className="lang-text d-flex align-items-center" style={{ gap: '3px', cursor: 'pointer' }}>
-                  <img src={currentLang.flag} alt={currentLang.label} style={{ width: '16px' }} />
-                  {currentLang.label}
-                  <img
-                    src="/assets/images/arrow-down.svg"
-                    alt="arrow"
-                    className="lang-icon"
-                    style={{
-                      width: '15px',
-                      marginLeft: '2px',
-                      transition: 'transform 0.3s',
-                      transform: isLangOpen ? 'rotate(180deg)' : 'rotate(0deg)'
-                    }}
-                  />
+                  <img src={currentLangObj.flag} alt={currentLangObj.label} style={{ width: '16px' }} />
+                  {currentLangObj.label}
+                  <span className="lang-icon"></span>
                 </a>
               </div>
-
               <div className={`lang-lists ${isLangOpen ? 'active' : ''}`}>
-                {LANGUAGES.filter(lang => lang.code !== currentLang.code).map((lang) => (
+                {LANGUAGES.filter(lang => lang.code !== currentLangObj.code).map((lang) => (
                   <a
                     key={lang.code}
-                    href="#"
-                    onClick={(e) => handleSelectLang(lang, e)}
+                    href={switchUri || (lang.code === 'vi' ? '/' : '/en/')}
                     className="d-flex align-items-center"
                     style={{ gap: '5px', cursor: 'pointer', padding: '5px' }}
+                    onClick={() => setIsLangOpen(false)}
                   >
                     <img src={lang.flag} alt={lang.label} style={{ width: '16px' }} />
                     {lang.label}
@@ -93,10 +158,10 @@ const TopHeader: React.FC = () => {
               </div>
             </div>
 
-            {/* Navbar Chính */}
+            {/* Navbar Chính (Desktop) */}
             <nav id="navbar" className={`navbar ${isMobileMenuOpen ? 'navbar-mobile' : ''}`}>
               <div className="navbar-inner">
-                
+
                 <div className="m-logo position-relative">
                   <img className="m-nav-logo" src="/assets/images/mobile_logo.png" alt="EMASI" />
                   <div
@@ -115,15 +180,30 @@ const TopHeader: React.FC = () => {
                 </div>
 
                 <ul className="nav">
-                  <li><Link to="/emasi" className="nav-link"><span>EMASI</span></Link></li>
-                  <li><Link to="/co-so" className="nav-link"><span>Cơ sở</span></Link></li>
-                  <li><Link to="/chuong-trinh" className="nav-link"><span>Chương trình</span></Link></li>
-                  <li><Link to="/hoc-sinh" className="nav-link"><span>Học sinh</span></Link></li>
-                  <li><Link to="/phu-huynh" className="nav-link"><span>Phụ huynh</span></Link></li>
-                  <li><Link to="/tuyen-sinh" className="nav-link"><span>Tuyển sinh</span></Link></li>
-                  <li><Link to="/lien-he" className="nav-link"><span>Liên hệ</span></Link></li>
+                  {topMenuData && topMenuData.map((item: any, index: number) => {
+                    const hasSubMenu = item.subMenu && item.subMenu.length > 0;
+                    return (
+                      <li key={index} className={hasSubMenu ? "dropdown" : ""}>
+                        <Link to={normalizePath(item.linkPage?.url)} className="nav-link">
+                          <span>{item.title}</span>
+                          {hasSubMenu && <span className="arrow-down"></span>}
+                        </Link>
+                        {hasSubMenu && <span className="m-arrow-down"></span>}
+                        {hasSubMenu && (
+                          <ul className="sub-menu">
+                            {item.subMenu.map((sub: any, subIndex: number) => (
+                              <li key={subIndex}>
+                                <Link to={normalizePath(sub.linkPage?.url)} target={sub.linkPage?.target || "_self"} className="nav-link">
+                                  {sub.title}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
-
               </div>
             </nav>
           </div>
@@ -133,39 +213,18 @@ const TopHeader: React.FC = () => {
         <div className="only-mobile">
           <hr className="hr-custom" />
           <div className="bellow-header-inner d-flex align-items-center justify-content-between gap-2">
-            
-            <div className="icon-item btn-search-bw" onClick={() => setIsMobileSearchOpen(!isMobileSearchOpen)}>
-              <img src="/assets/images/icon-s.svg" alt="Search" />
-              <span>TÌM KIẾM</span>
-            </div>
 
-            <div className="icon-item">
-              <a href="/co-so" className="d-flex align-items-center" style={{ gap: '0.6vw' }}>
-                <img src="/assets/images/icon-location.svg" alt="Cơ sở" />
-                <span>CƠ SỞ</span>
-              </a>
-            </div>
-
-            <div className="icon-item">
-              <a href="https://zalo.me" target="_blank" rel="noreferrer" className="d-flex align-items-center" style={{ gap: '0.6vw' }}>
-                <img src="/assets/images/icon-zl.svg" alt="Zalo" />
-                <span>ZALO</span>
-              </a>
-            </div>
-
-            <div className="icon-item">
-              <a href="https://m.me" target="_blank" rel="noreferrer" className="d-flex align-items-center" style={{ gap: '0.6vw' }}>
-                <img src="/assets/images/icon-messenger.svg" alt="Messenger" />
-                <span>MESSENGER</span>
-              </a>
-            </div>
-
-            <div className="icon-item">
-              <a href="/tham-quan" className="d-flex align-items-center" style={{ gap: '0.6vw' }}>
-                <img src="/assets/images/icon-thamquan.svg" alt="Tham quan" />
-                <span>THAM QUAN</span>
-              </a>
-            </div>
+            {/* Render danh sách linh hoạt từ WP */}
+            {headerMobileData && headerMobileData.map((item: any, index: number) => {
+              // Thêm class đặc thù nếu nó là nút tìm kiếm (để giữ CSS cũ nếu có)
+              const isSearch = item.title?.toLowerCase().includes("tìm kiếm");
+              
+              return (
+                <div key={index} className={`icon-item ${isSearch ? 'btn-search-bw' : ''}`}>
+                  <RenderMobileItem item={item} />
+                </div>
+              );
+            })}
 
           </div>
 

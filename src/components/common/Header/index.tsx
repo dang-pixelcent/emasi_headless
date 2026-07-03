@@ -1,12 +1,28 @@
-// src/components/common/Header/index.tsx
 import React, { useEffect } from 'react';
 import LeftPanel from './LeftPanel';
 import TopHeader from './TopHeader';
 
-const Header = ({ children }: { children: React.ReactNode }) => {
-  
-  // Logic Vanilla JS Cookie UTM chuyển đổi thành React useEffect
+// Định nghĩa props mới
+interface HeaderProps {
+  currentLang: string;
+  switchUri?: string | null;
+  headerData?: any;
+  topMenuData?: any;
+  leftPanelData?: any;
+  children?: React.ReactNode;
+}
+
+const Header = ({
+  currentLang,
+  switchUri,
+  headerData,
+  topMenuData,
+  leftPanelData,
+  children
+}: HeaderProps) => {
+
   useEffect(() => {
+    // Logic UTM cũ của bạn...
     const hasUTMParams = (url: string) => /[?&]utm_/.test(url);
     const saveURLWithUTM = () => {
       const currentURL = window.location.href;
@@ -22,10 +38,17 @@ const Header = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div className="main-wrapper">
-      <LeftPanel />
+      {/* Truyền dữ liệu vào các component con nếu cần */}
+      <LeftPanel leftData={leftPanelData} />
+
       <div className="main-panel">
-        <TopHeader />
-        
+        <TopHeader
+          data={headerData}
+          menu={topMenuData}
+          currentLang={currentLang}
+          switchUri={switchUri}
+        />
+
         <main id="main">
           {children}
         </main>

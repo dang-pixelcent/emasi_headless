@@ -1,84 +1,21 @@
-// import React, { ComponentProps, useEffect } from "react";
-// import Header from "../Header";
-// import { ScriptItem, ThemeOption } from "@/types/general";
-// import { extractScripts, injectHtml } from "@/utils/string";
-// import { Helmet } from "react-helmet";
-// import Footer from "../Footer";
-// import AOS from 'aos';
-// import 'aos/dist/aos.css' ;
-// const Container = ({ ...props }: ComponentProps<"div">) => {
-//   return (
-//     <div
-//       className="flex flex-col min-h-screen h-screen w-full max-w-wrapper mx-auto"
-//       {...props}
-//     />
-//   );
-// };
-
-// interface LayoutProps {
-//   children: React.ReactNode;
-//   themeOption: ThemeOption;
-// }
-
-// const Layout = ({ children, themeOption, ...props }: LayoutProps) => {
-//   const { headerFooterTracking } = themeOption || {};
-//   console.log("headerFooterTracking:", headerFooterTracking);
-//   const [scripts, setScripts] = React.useState<ScriptItem[]>([]);
-//   useEffect(() => {
-//     const { scripts } = extractScripts(headerFooterTracking?.header || "");
-//     const { noscripts: bodyNoscripts, scripts: bodyScripts } = extractScripts(
-//       headerFooterTracking?.body || "",
-//     );
-//     setScripts(scripts);
-//     console.log("Extracted scripts:", bodyNoscripts, bodyScripts);
-//     const { noscripts: footerNoscripts, scripts: footerScripts } =
-//       extractScripts(headerFooterTracking?.footer || "");
-//     injectHtml("start", bodyScripts, bodyNoscripts);
-//     injectHtml("end", footerScripts, footerNoscripts);
-//   }, []);
-//   useEffect(() => {
-//     // Lệnh này đảm bảo AOS chỉ chạy trên trình duyệt (tránh lỗi Vercel)
-//     AOS.init({
-//       duration: 800, // Thời gian chạy hiệu ứng (0.8s)
-//       once: true,    // Chỉ chạy hiệu ứng 1 lần khi cuộn xuống
-//       offset: 50,    // Cuộn quá phần tử 50px mới bắt đầu chạy
-//     });
-//   }, []);
-//   console.log("scripts in layout:", scripts);
-//   console.log("header:", themeOption?.headerGroup);
-//   console.log("footer:", themeOption?.footerGroup);
-//   return (
-//     <>
-//       <Helmet>
-//         {scripts.map((s, i) =>
-//           s.src ? (
-//             <script key={i} src={s.src} async={s.async} />
-//           ) : (
-//             <script key={i}>{s.content}</script>
-//           ),
-//         )}
-//       </Helmet>
-//       <Container>
-//         <Header />
-//         <main className="mt-40 lg:mt-25 grow">{children}</main>
-//         <Footer />
-//       </Container>
-//     </>
-//   );
-// };
-
-// export default Layout;
-
 
 import React, { ComponentProps, useEffect } from "react";
-import Header from "../Header";
-import Footer from "../Footer";
 import { Helmet } from "react-helmet";
-import { ScriptItem, ThemeOption } from "@/types/general";
-import { extractScripts, injectHtml } from "@/utils/string";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Banner from "@/components/pages/home/banner";
+
+// Components
+import Header from "../Header";
+import Footer from "../Footer";
+// import Banner from "@/components/pages/home/banner";
+
+// Types & Utils
+import { ScriptItem, ThemeOption } from "@/types/general";
+import { extractScripts, injectHtml } from "@/utils/string";
+
+// =============================
+// STYLED CONTAINER
+// =============================
 const Container = ({ ...props }: ComponentProps<"div">) => {
   return (
     <div
@@ -88,45 +25,78 @@ const Container = ({ ...props }: ComponentProps<"div">) => {
   );
 };
 
+// =============================
+// INTERFACES
+// =============================
 interface LayoutProps {
   children: React.ReactNode;
-  // Đặt dấu ? để Layout không báo lỗi nếu tạm thời WPPage chưa truyền themeOption xuống
-  themeOption?: ThemeOption; 
+  currentLang: string;             // Nhận "VIE" hoặc "ENG" từ WPPage
+  switchUri?: string | null;       // Link của trang đối ứng
+  themeOption?: ThemeOption | any; // Dữ liệu theme tổng từ context
 }
 
-const Layout = ({ children, themeOption }: LayoutProps) => {
-  // Dùng giá trị mặc định {} để tránh lỗi "Cannot destructure property" khi themeOption bị null/undefined
-  const { headerFooterTracking, headerGroup, footerGroup } = themeOption || {};
-  
+// =============================
+// HELPER: PROCESS THEME DATA
+// =============================
+// Xử lý đệ quy để tự động lấy đúng layout Vn/En tùy theo ngôn ngữ
+export const processThemeData = (data: any, isVIE: boolean): any => {
+  if (!data || typeof data !== 'object') return data;
+
+  // Nếu là mảng, tìm khối chứa hậu tố ngôn ngữ tương ứng
+  if (Array.isArray(data)) {
+    const localized = data.find(item =>
+      item?.__typename?.includes(isVIE ? "Vn" : "En")
+    );
+    if (localized) return processThemeData(localized, isVIE);
+    return data.map(item => processThemeData(item, isVIE));
+  }
+
+  // Nếu là object, duyệt sâu vào các key
+  return Object.keys(data).reduce((acc, key) => {
+    acc[key] = processThemeData(data[key], isVIE);
+    return acc;
+  }, {} as any);
+};
+
+// =============================
+// MAIN COMPONENT
+// =============================
+const Layout = ({ children, currentLang, switchUri, themeOption }: LayoutProps) => {
+  const isVIE = currentLang === "vi";
+
+  // 1. Lọc toàn bộ Theme Option theo ngôn ngữ hiện tại
+  const processedTheme = processThemeData(themeOption || {}, isVIE) || {};
+
+  // 2. Destructure dữ liệu đã lọc để truyền xuống dưới
+  const { header, footer, topMenu, leftPanel } = processedTheme;
   const [scripts, setScripts] = React.useState<ScriptItem[]>([]);
 
   useEffect(() => {
-    // Chỉ chạy extract khi headerFooterTracking có tồn tại
-    if (!headerFooterTracking) return;
-
-    const { scripts } = extractScripts(headerFooterTracking.header || "");
-    const { noscripts: bodyNoscripts, scripts: bodyScripts } = extractScripts(
-      headerFooterTracking.body || ""
-    );
-    
-    setScripts(scripts);
-    
-    const { noscripts: footerNoscripts, scripts: footerScripts } = extractScripts(
-      headerFooterTracking.footer || ""
-    );
-    
-    injectHtml("start", bodyScripts, bodyNoscripts);
-    injectHtml("end", footerScripts, footerNoscripts);
-  }, [headerFooterTracking]); // Thêm dependency để useEffect biết khi nào dữ liệu tracking thay đổi
-
-  useEffect(() => {
+    // Khởi tạo hiệu ứng AOS
     AOS.init({
-      duration: 800, 
-      once: true,    
-      offset: 50,    
+      duration: 800,
+      once: true,
+      offset: 50,
     });
-  }, []);
 
+    // --- (TÙY CHỌN) LẤY SCRIPT TỪ WP THEME OPTIONS NẾU CÓ ---
+    /*
+    if (headerFooterTracking) {
+      const { scripts: headScripts } = extractScripts(headerFooterTracking.header || "");
+      const { noscripts: bodyNoscripts, scripts: bodyScripts } = extractScripts(headerFooterTracking.body || "");
+      const { noscripts: footerNoscripts, scripts: footerScripts } = extractScripts(headerFooterTracking.footer || "");
+      
+      setScripts(headScripts);
+      injectHtml("start", bodyScripts, bodyNoscripts);
+      injectHtml("end", footerScripts, footerNoscripts);
+    }
+    */
+  }, []); // headerFooterTracking có thể đưa vào dependency array nếu cần
+
+  // Chặn render nếu không có themeOption để tránh sụp UI
+  if (!themeOption) return null;
+  console.log("=== LAYOUT RENDER ===");
+  console.log("footer:" , footer);
   return (
     <>
       <Helmet>
@@ -138,16 +108,25 @@ const Layout = ({ children, themeOption }: LayoutProps) => {
           ),
         )}
       </Helmet>
-      
+
       <Container>
-        {/* HEADER TĨNH: Hiện tại nó sẽ tự render dữ liệu cứng bên trong component Header của bạn */}
-        <Header />
+
+        {/* Truyền các props cần thiết xuống Header */}
+        <Header
+          currentLang={currentLang}
+          switchUri={switchUri}
+          headerData={header}
+          topMenuData={topMenu}
+          leftPanelData={leftPanel}
+        />
+
         {/* <Banner/> */}
-        <main className="mt-40 lg:mt-25 grow">{children}</main>
-        
-        
-        {/* FOOTER TĨNH: Tương tự, nó tự render dữ liệu cứng của bạn */}
-        <Footer />
+        <main className="mt-40 lg:mt-25 grow">
+          {children}
+        </main>
+
+        {/* Truyền dữ liệu Footer tương ứng xuống */}
+        <Footer footerData={footer} />
       </Container>
     </>
   );

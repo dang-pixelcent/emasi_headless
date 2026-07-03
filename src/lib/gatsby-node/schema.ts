@@ -11,6 +11,8 @@ export const createSchemaCustomization = ({
 
   // Định nghĩa schema cho các custom nodes
   const typeDefs = `
+    type WpLanguage { code: String }
+    type WpTranslation { uri: String, language: WpLanguage }
     # =============================
     # BASE INTERFACE
     # =============================
@@ -28,7 +30,7 @@ export const createSchemaCustomization = ({
     # =============================
     # MAIN SITE NODES
     # =============================
-    type WpCustomPage implements Node & WpCustomContent @dontInfer {
+    type WpCustomPage implements Node & WpCustomContent{
       id: ID!
       wpId: String!
       uri: String
@@ -38,6 +40,8 @@ export const createSchemaCustomization = ({
       flexibleContentMain: JSON
       pageBuilder: JSON
       getRankMathSEO: String
+      language: WpLanguage
+      translations: [WpTranslation]
     }
 
     type WpCustomPost implements Node & WpCustomContent @dontInfer{
@@ -73,21 +77,6 @@ export const createSchemaCustomization = ({
       getRankMathSEO: String
     }
 
-    # =============================
-    # GEO SITE NODES
-    # =============================
-    type WpGeoLocation implements Node & WpCustomContent @dontInfer{
-      id: ID!
-      wpId: String!
-      uri: String
-      slug: String
-      title: String
-      nodeType: String!
-      flexibleContentMain: JSON
-      getRankMathSEO: String
-      isGeosite: Boolean
-      customPath: String
-    }
 
     # =============================
     # THEME OPTIONS (Global)
@@ -95,9 +84,10 @@ export const createSchemaCustomization = ({
     type WpThemeOptions implements Node {
       id: ID!
       siteId: String!
-      headerGroup: JSON
-      footerGroup: JSON
-      headerFooterTracking: JSON
+      header: JSON
+      footer: JSON
+      topMenu: JSON
+      leftPanel: JSON
     }
   `;
 

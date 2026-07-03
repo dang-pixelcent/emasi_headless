@@ -5,7 +5,6 @@ import {
   API_CONFIG,
   TEMPLATES,
   CONTENT_TYPES_CONFIG,
-  GEO_TYPES_CONFIG,
 } from "./config";
 import {
   getAllPages,
@@ -37,9 +36,6 @@ export const runCreatePagesV2 = async ({
   const result = await graphql<{
     allWpCustomPage: { nodes: any[] };
     allWpCustomPost: { nodes: any[] };
-    allWpCustomService: { nodes: any[] };
-    allWpCustomTeam: { nodes: any[] };
-    allWpGeoLocation: { nodes: any[] };
     allWpThemeOptions: { nodes: any[] };
   }>(`
     query AllContentNodes {
@@ -51,6 +47,25 @@ export const runCreatePagesV2 = async ({
           slug
           title
           pageBuilder
+          language {
+            code
+          }
+          # PHẢI CÓ SUBFIELDS Ở ĐÂY
+          translations {
+            uri
+            language {
+              code
+            }
+          }
+        }
+      }
+      allWpThemeOptions {
+        nodes {
+          siteId
+          header
+          footer
+          topMenu
+          leftPanel
         }
       }
     }
@@ -62,21 +77,13 @@ export const runCreatePagesV2 = async ({
   }
 
   const data = result.data!;
-  // Dùng fallback an toàn (|| { nodes: [] })
   const pages = data.allWpCustomPage?.nodes || [];
-  // const posts = data.allWpCustomPost?.nodes || []; // Nếu không query Post, nó sẽ lấy mảng rỗng
-  // const services = data.allWpCustomService?.nodes || [];
-  // const teams = data.allWpCustomTeam?.nodes || [];
-  const geoLocations = data.allWpGeoLocation?.nodes || [];
   const themeOptionsNodes = data.allWpThemeOptions?.nodes || [];
 
-  // Get theme options node IDs
-  const mainThemeId = themeOptionsNodes.find((n) => n.siteId === "main")?.id;
-  const geoThemeId = themeOptionsNodes.find((n) => n.siteId === "geo")?.id;
+  const globalThemeData = themeOptionsNodes.find((n) => n.siteId === "main") || null;
 
   console.log(`📊 NODES from Gatsby Data Layer:`);
   console.log(`   - Pages: ${pages.length}`);
-  console.log(`   - Geo Locations: ${geoLocations.length}`);
 
   // =============================
   // 2. GENERATE SEARCH INDEX
@@ -127,114 +134,17 @@ export const runCreatePagesV2 = async ({
       path: pagePath,
       component: TEMPLATES.PAGE,
       context: {
-        // 👇 CHỈ TRUYỀN ID - Template sẽ query full data
         id: page.id,
-        themeOptionsId: mainThemeId,
+        themeOptions: globalThemeData,
         type: "page",
         pageBuilder: page.pageBuilder,
       },
       defer: false,
     });
   });
+
   console.log(`✅ Created ${pages.length} Pages`);
-
-  // // --- POSTS ---
-  // posts.forEach((node) => {
-  //   const nodePath = normalizePath(node.uri);
-  //   if (!nodePath) return;
-
-  //   createPage({
-  //     path: nodePath,
-  //     component: TEMPLATES.POST,
-  //     context: {
-  //       id: node.id,
-  //       themeOptionsId: mainThemeId,
-  //       type: "post",
-  //     },
-  //     defer: false,
-  //   });
-  // });
-  // console.log(`✅ Created ${posts.length} Posts`);
-
-  // // --- SERVICES ---
-  // services.forEach((node) => {
-  //   const nodePath = normalizePath(node.uri);
-  //   if (!nodePath) return;
-
-  //   createPage({
-  //     path: nodePath,
-  //     component: TEMPLATES.POST,
-  //     context: {
-  //       id: node.id,
-  //       themeOptionsId: mainThemeId,
-  //       type: "service",
-  //     },
-  //     defer: false,
-  //   });
-  // });
-  // console.log(`✅ Created ${services.length} Services`);
-
-  // // --- TEAMS ---
-  // teams.forEach((node) => {
-  //   const nodePath = normalizePath(node.uri);
-  //   if (!nodePath) return;
-
-  //   createPage({
-  //     path: nodePath,
-  //     component: TEMPLATES.POST,
-  //     context: {
-  //       id: node.id,
-  //       themeOptionsId: mainThemeId,
-  //       type: "team",
-  //     },
-  //     defer: false,
-  //   });
-  // });
-  // console.log(`✅ Created ${teams.length} Teams`);
-
-  // --- GEO LOCATIONS ---
-  if (API_CONFIG.GEO_SITE.enabled && geoLocations.length > 0) {
-    geoLocations.forEach((node) => {
-      const geoPath = normalizePath(node.customPath || node.uri);
-      if (!geoPath) return;
-
-      createPage({
-        path: geoPath,
-        component: TEMPLATES.GEO_POST,
-        context: {
-          id: node.id,
-          themeOptionsId: geoThemeId,
-          type: "geolocation",
-          isGeosite: true,
-        },
-        defer: false,
-      });
-    });
-    console.log(`✅ Created ${geoLocations.length} Geo Locations`);
-  }
-
-  // --- PREVIEW PAGES ---
-  createPage({
-    path: "/preview",
-    matchPath: "/preview/*",
-    component: TEMPLATES.PREVIEW,
-    context: { themeOptionsId: mainThemeId, type: "preview" },
-  });
-
-  if (API_CONFIG.GEO_SITE.enabled) {
-    createPage({
-      path: "/locations/preview",
-      matchPath: "/locations/preview/*",
-      component: TEMPLATES.PREVIEW,
-      context: {
-        themeOptionsId: geoThemeId,
-        type: "preview-geo",
-        geoApiUrl: API_CONFIG.GEO_SITE.url,
-      },
-    });
-    console.log("✅ Created Geosite Preview at /locations/preview");
-  }
-
+  // console.log("page: " + JSON.stringify(pages, null, 2));
   activity.end();
   console.log("✅ FINISHED creating all pages (V2 Optimized).\n");
 };
@@ -248,10 +158,6 @@ export const runCreatePages = async ({ actions }: { actions: Actions }) => {
 
   console.log("\n🚀 --- START MULTI-BE FETCHING (ENGINE MODE) ---");
   console.log(`📡 Main API: ${API_CONFIG.MAIN_SITE.url}`);
-  console.log(
-    `🌍 Geo API: ${API_CONFIG.GEO_SITE.enabled ? API_CONFIG.GEO_SITE.url : "DISABLED"
-    }`,
-  );
 
   const startTime = Date.now();
 
@@ -261,13 +167,8 @@ export const runCreatePages = async ({ actions }: { actions: Actions }) => {
     return acc;
   }, {} as Record<string, string>);
 
-  const geoFragmentsMap = GEO_TYPES_CONFIG.reduce((acc, item) => {
-    item.graphqlTypes.forEach((t) => (acc[t] = item.fragment));
-    return acc;
-  }, {} as Record<string, string>);
-
   // 2. PARALLEL FETCHING
-  const [mainData, geoData] = await Promise.all([
+  const [mainData] = await Promise.all([
     Promise.all([
       getAllPages(API_CONFIG.MAIN_SITE.url),
       ...CONTENT_TYPES_CONFIG.map((config) =>
@@ -278,21 +179,7 @@ export const runCreatePages = async ({ actions }: { actions: Actions }) => {
         ),
       ),
       getThemeOptions(API_CONFIG.MAIN_SITE.url),
-    ]),
-
-    // Geo Site
-    API_CONFIG.GEO_SITE.enabled
-      ? Promise.all([
-        ...GEO_TYPES_CONFIG.map((config) =>
-          getContentNodes(
-            API_CONFIG.GEO_SITE.url,
-            config.graphqlTypes,
-            geoFragmentsMap,
-          ),
-        ),
-        getThemeOptions(API_CONFIG.GEO_SITE.url),
-      ])
-      : Promise.resolve([[], {}]),
+    ])
   ]);
 
   // Destructure Data
@@ -309,22 +196,10 @@ export const runCreatePages = async ({ actions }: { actions: Actions }) => {
   });
   // Extract Geo Nodes
   let geoLocations: WPNode[] = [];
-  let geoThemeOptions: any = {};
-
-  if (API_CONFIG.GEO_SITE.enabled) {
-    // GeoData structure depends on Promise.all above
-    geoThemeOptions = geoData[geoData.length - 1];
-    // Collect all location nodes
-    GEO_TYPES_CONFIG.forEach((_, idx) => {
-      const nodes = geoData[idx] as WPNode[];
-      if (nodes) geoLocations.push(...nodes);
-    });
-  }
 
   console.log(`\n📊 SUMMARY (Time: ${(Date.now() - startTime) / 1000}s):`);
   console.log(`   - Main Pages: ${pages.length}`);
   console.log(`   - Main Dynamic Nodes: ${mainDynamicNodes.length}`);
-  console.log(`   - Geosite Locations: ${geoLocations.length}`);
 
   // 3. GENERATE SEARCH INDEX
   console.log("🔍 Generating Local Search Index...");
@@ -431,54 +306,6 @@ export const runCreatePages = async ({ actions }: { actions: Actions }) => {
     console.log(`✅ Created ${nodes.length} ${config.typeLabel} pages`);
   });
 
-  // 5. CREATE PAGES (GEO SITE)
-  if (API_CONFIG.GEO_SITE.enabled) {
-    GEO_TYPES_CONFIG.forEach((config, idx) => {
-      const nodes = geoData[idx] as WPNode[];
-      if (!nodes) return;
-      nodes.forEach((node) => {
-        if (!node.uri) return;
-        // Force Prefix logic (như code cũ)
-        const geoPath = normalizePath(`/${node.uri}`);
-
-        createPage({
-          path: geoPath,
-          component: config.template,
-          context: {
-            ...node,
-            customPath: geoPath,
-            defer: false,
-            themeOptions: geoThemeOptions,
-            isGeosite: true,
-          },
-        });
-      });
-    });
-  }
-
-  // 6. PREVIEW PAGES
-  createPage({
-    path: "/preview",
-    matchPath: "/preview/*",
-    component: TEMPLATES.PREVIEW,
-    context: { themeOptions, type: "preview" },
-  });
-
-  if (API_CONFIG.GEO_SITE.enabled) {
-    createPage({
-      path: "/locations/preview",
-      matchPath: "/locations/preview/*",
-      component: TEMPLATES.PREVIEW,
-      context: {
-        themeOptions: geoThemeOptions,
-        type: "preview-geo",
-        geoApiUrl: API_CONFIG.GEO_SITE.url,
-      },
-    });
-    console.log("✅ Created Geosite Preview at /locations/preview");
-  }
-
-  console.log("✅ FINISHED creating all pages.\n");
 };
 
 // --- SITEMAP LOGIC (Moved here) ---

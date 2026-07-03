@@ -1,7 +1,8 @@
 .banner-home {
-    max-height: 100vh;
     padding: 0;
     height: clamp(566px, 47.17vw, 965px);
+    width: 100%;
+    height: 100%;
 }
 
 .video-iframe {
@@ -18,8 +19,8 @@
 
 .banner-home .slide {
     position: relative;
-    
 }
+
 
 .banner-video {
     position: absolute;

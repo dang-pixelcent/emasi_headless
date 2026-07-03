@@ -6,7 +6,8 @@
       "@/*": ["src/*"],
       "$/*": ["src/images/*"],
       "%/types/*": ["src/types/*"],
-      "&/*": ["src/components/*"]
+      "&/*": ["src/components/*"],
+      "@context/*": ["src/context/*"]
     },
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
     /* Projects */

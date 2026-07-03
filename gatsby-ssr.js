@@ -2,14 +2,14 @@ import React from "react";
 import { StoreProvider } from "./src/context/StoreContext";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
-
+import { StaticQuery, graphql } from "gatsby"; // Bổ sung import
+import { GlobalThemeProvider } from "./src/context/GlobalThemeProvider";
 const GlobalProvider = ({ children }) => {
   return <>{children}</>;
 };
 
-// 1. Giữ nguyên hàm wrapRootElement của bạn
+// 1. Cập nhật wrapRootElement để bọc ThemeWrapper thay vì StoreProvider trống
 export const wrapRootElement = ({ element }) => {
-  console.log("wrapRootElement called", React.version);
   return (
     <LocalizationProvider dateAdapter={AdapterMoment}>
       <StoreProvider>
@@ -18,7 +18,19 @@ export const wrapRootElement = ({ element }) => {
     </LocalizationProvider>
   );
 };
-// 2. THÊM ĐOẠN NÀY: Dùng onRenderBody để nhúng link Font vào thẻ <head>
+// export const wrapRootElement = ({ element }) => {
+//   return (
+//     <GlobalThemeProvider>
+//       {/* StoreProvider cũ của bạn không cần gánh data theme nữa */}
+//       <StoreProvider>
+//          {/* Các wrapper khác của bạn */}
+//          {element}
+//       </StoreProvider>
+//     </GlobalThemeProvider>
+//   );
+// };
+
+// 2. Giữ nguyên onRenderBody để nhúng link Font vào thẻ <head>
 export const onRenderBody = ({ setHeadComponents }) => {
   setHeadComponents([
     <link

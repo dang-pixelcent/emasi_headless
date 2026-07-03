@@ -7,33 +7,34 @@ import { Helmet } from "react-helmet";
 import parse from "html-react-parser";
 // GraphQL Query - Query nhiều node types, chỉ 1 cái sẽ có data
 export const query = graphql`
-  query WpPostQuery($id: String!, $themeOptionsId: String!) {
-    # Post
+  query WpPostQuery($id: String!) {
     wpCustomPost(id: { eq: $id }) {
       title
       uri
       flexibleContentMain
       getRankMathSEO
     }
-    # Service
     wpCustomService(id: { eq: $id }) {
       title
       uri
       flexibleContentMain
       getRankMathSEO
     }
-    # Team
     wpCustomTeam(id: { eq: $id }) {
       title
       uri
       flexibleContentMain
       getRankMathSEO
     }
-    # Theme Options
-    wpThemeOptions(id: { eq: $themeOptionsId }) {
-      headerGroup
-      footerGroup
-      headerFooterTracking
+    # Lấy theme theo siteId: "main" (không cần themeOptionsId nữa)
+    allWpThemeOptions {
+      nodes {
+        siteId
+        header
+        footer
+        topMenu
+        leftPanel
+      }
     }
   }
 `;

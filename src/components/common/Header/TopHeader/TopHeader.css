@@ -32,6 +32,7 @@
 
 .lang-icon {
   filter: invert(1); /* Mũi tên màu trắng trên desktop */
+  color: #212529;
 }
 
 .lang-lists {

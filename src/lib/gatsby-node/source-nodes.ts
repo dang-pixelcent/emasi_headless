@@ -1,6 +1,6 @@
 import { SourceNodesArgs, NodeInput } from "gatsby";
 import { createContentDigest } from "gatsby-core-utils";
-import { API_CONFIG, CONTENT_TYPES_CONFIG, GEO_TYPES_CONFIG } from "./config";
+import { API_CONFIG, CONTENT_TYPES_CONFIG } from "./config";
 import {
   getAllPages,
   getContentNodes,
@@ -14,11 +14,9 @@ import { WPNode } from "./types";
 // Node type mapping
 const NODE_TYPE_MAP: Record<string, string> = {
   Page: "WpCustomPage",
-  // Post: "WpCustomPost",
-  // Services: "WpCustomService",
-  // Team: "WpCustomTeam",
-  // ServicesArea: "WpGeoLocation",
-  // LocationsArea: "WpGeoLocation",
+  Post: "WpCustomPost",       // Cho bài viết tin tức
+  Theme: "WpThemeOptions",    // Cho theme settings
+  Register: "WpRegister"      // Cho dữ liệu đăng ký
 };
 
 /**
@@ -57,13 +55,8 @@ export const runSourceNodes = async ({
     return acc;
   }, {} as Record<string, string>);
 
-  const geoFragmentsMap = GEO_TYPES_CONFIG.reduce((acc, item) => {
-    item.graphqlTypes.forEach((t) => (acc[t] = item.fragment));
-    return acc;
-  }, {} as Record<string, string>);
-
   // 2. PARALLEL FETCHING
-  const [mainData, geoData] = await Promise.all([
+  const [mainData] = await Promise.all([
     Promise.all([
       getAllPages(API_CONFIG.MAIN_SITE.url),
       ...CONTENT_TYPES_CONFIG.map((config) =>
@@ -75,42 +68,10 @@ export const runSourceNodes = async ({
       ),
       getThemeOptions(API_CONFIG.MAIN_SITE.url),
     ]),
-
-    // Geo Site
-    API_CONFIG.GEO_SITE.enabled
-      ? Promise.all([
-        ...GEO_TYPES_CONFIG.map((config) =>
-          getContentNodes(
-            API_CONFIG.GEO_SITE.url,
-            config.graphqlTypes,
-            geoFragmentsMap,
-          ),
-        ),
-        getThemeOptions(API_CONFIG.GEO_SITE.url),
-      ])
-      : Promise.resolve([[], {}]),
   ]);
-
-  // Destructure Data
+  // 3. TÁCH DỮ LIỆU
   const pages = mainData[0] as WPNode[];
-  const themeOptions = mainData[mainData.length - 1];
-
-  // ====================================================================
-  // 🔥 IN RA TOÀN BỘ DỮ LIỆU CỦA 44 TRANG 🔥
-  // ====================================================================
-  console.log("\n=======================================================");
-  console.log("🔥 TRẠM 1: ĐÃ LẤY ĐƯỢC DỮ LIỆU TỪ WORDPRESS VỀ MÁY 🔥");
-  console.log(`=> Tổng số trang (Pages) lấy được: ${pages?.length} trang`);
-
-  if (pages && pages.length > 0) {
-    // Dùng map để in tiêu đề và ID của tất cả trang, hoặc in toàn bộ object
-    pages.forEach((page, index) => {
-      console.log(`--- Trang ${index + 1}: ${page.title} ---`);
-      console.log(JSON.stringify(page, null, 2));
-    });
-  }
-  console.log("=======================================================\n");
-  // ====================================================================
+  const themeOptions = mainData[mainData.length - 1]; // Phần tử cuối luôn là Theme
 
   // Extract Dynamic Nodes (Posts, Services, Teams...)
   const mainDynamicNodes: WPNode[] = [];
@@ -118,19 +79,6 @@ export const runSourceNodes = async ({
     const nodes = mainData[idx + 1] as WPNode[];
     if (nodes) mainDynamicNodes.push(...nodes);
   });
-
-  // Extract Geo Nodes
-  let geoLocations: WPNode[] = [];
-  let geoThemeOptions: any = {};
-
-  if (API_CONFIG.GEO_SITE.enabled && Array.isArray(geoData)) {
-    geoThemeOptions = geoData[geoData.length - 1];
-    GEO_TYPES_CONFIG.forEach((_, idx) => {
-      const nodes = geoData[idx] as WPNode[];
-      if (nodes) geoLocations.push(...nodes);
-    });
-  }
-
   // =============================
   // 3. CREATE GATSBY NODES
   // =============================
@@ -167,6 +115,8 @@ export const runSourceNodes = async ({
       flexibleContentMain: parsedContent,
       getRankMathSEO: node.getRankMathSEO || "",
       pageBuilder: node.pageBuilder ? node.pageBuilder : { pagebuilderdata: [] },
+      language: node.language || null,
+      translations: node.translations || null,
       ...extras,
     };
 
@@ -181,14 +131,14 @@ export const runSourceNodes = async ({
   console.log(`✅ Created ${pages.length} WpCustomPage nodes`);
 
   // --- Create DYNAMIC NODES (Posts, Services, Teams) ---
-  CONTENT_TYPES_CONFIG.forEach((config, idx) => {
-    const nodes = mainData[idx + 1] as WPNode[];
-    if (!nodes) return;
+  // CONTENT_TYPES_CONFIG.forEach((config, idx) => {
+  //   const nodes = mainData[idx + 1] as WPNode[];
+  //   if (!nodes) return;
 
-    nodes.forEach((node) => {
-      createContentNode(node, config.typeLabel.toLowerCase());
-    });
-  });
+  //   nodes.forEach((node) => {
+  //     createContentNode(node, config.typeLabel.toLowerCase());
+  //   });
+  // });
 
   // =============================
   // 4. CREATE THEME OPTIONS NODES (Global)
@@ -203,9 +153,10 @@ export const runSourceNodes = async ({
       description: "Main Site Theme Options",
     },
     siteId: "main",
-    headerGroup: themeOptions?.headerGroup || {},
-    footerGroup: themeOptions?.footerGroup || {},
-    headerFooterTracking: themeOptions?.headerFooterTracking || {},
+    header: themeOptions?.header || null,
+    topMenu: themeOptions?.topMenu || null,
+    footer: themeOptions?.footer || null,
+    leftPanel: themeOptions?.leftPanel || null,
   };
   createNode(mainThemeNode);
 

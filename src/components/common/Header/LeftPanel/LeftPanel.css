@@ -85,6 +85,13 @@
     /* Hiệu ứng nảy nhẹ lên trên */
 }
 
+.left-panel-top ul.search-results-h,
+.left-panel-top .search-results-h {
+    list-style: none;
+    margin: clamp(23.44px, 1.953125vw, 40.00px) 0px 0px 0px;
+    padding: 0px;
+}
+
 .left-panel-nav li:hover .icon,
 .left-panel-nav li.active .icon {
     display: none;
@@ -106,35 +113,10 @@
 .left-panel-nav li:hover a .name,
 .left-panel-nav li.active a .name {
     font-size: 14px;
-    /* Hiện chữ ra */
     color: #bed530;
-    /* Đổi sang màu xanh lá EMASI */
     margin-top: 5px;
 }
 
-/* --- KHUNG TÌM KIẾM --- */
-.box-left-panel-search {
-    position: absolute !important;
-    top: 0 !important;
-    left: 90px !important;
-    /* Dính chặt vào mép phải thanh Left Panel (90px) */
-    width: 350px !important;
-    height: 100vh !important;
-    background: #00364d !important;
-    z-index: 100000 !important;
-
-    /* Hiệu ứng trượt ngang */
-    visibility: hidden;
-    opacity: 0;
-    transform: translateX(-20px);
-    transition: all 0.4s ease;
-}
-
-.left-panel-nav li.active .box-left-panel-search {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(0);
-}
 
 .box-search-top {
     background: #1a6e90;
@@ -149,4 +131,28 @@
     background: #00354d;
     color: #fff;
     outline: none;
+}
+/* khung tìm kiếm */
+.box-left-panel-search {
+    position: absolute !important;
+    top: 0 !important;
+    left: 70px !important; /* Đổi thành 70px cho khít mép (bằng width của left-panel) */
+    width: 350px !important;
+    height: 100vh !important;
+    background: #00364d !important;
+    z-index: 100000 !important;
+
+    /* Hiệu ứng trượt ngang */
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(-20px);
+    
+    /* CHỈ chuyển động 3 thuộc tính này, không dùng "all" để tránh giật icon */
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; 
+}
+
+.left-panel-nav li.active .box-left-panel-search {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
 }
