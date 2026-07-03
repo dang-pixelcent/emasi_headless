@@ -17,6 +17,9 @@ const TopHeader: React.FC<TopHeaderProps> = ({ currentLang, switchUri, data, men
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
 
+  // Thêm state quản lý đóng/mở menu con trên mobile
+  const [activeDropdowns, setActiveDropdowns] = useState<number[]>([]);
+
   const [logoSrc, setLogoSrc] = useState('/assets/images/EMASI-LOGO-GRADIENT.png');
   const [mobileLogoSrc, setMobileLogoSrc] = useState('/assets/images/logo-footer.svg');
   const [headerMobileData, setHeaderMobileData] = useState<any>(null);
@@ -60,6 +63,15 @@ const TopHeader: React.FC<TopHeaderProps> = ({ currentLang, switchUri, data, men
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Hàm toggle mở/đóng menu con trên mobile
+  const toggleSubMenu = (index: number, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setActiveDropdowns(prev => 
+      prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]
+    );
+  };
 
   if (!data || !menu || !headerMobileData || !topMenuData || !logoSrc || !mobileLogoSrc) {
     return null;
@@ -116,7 +128,6 @@ const TopHeader: React.FC<TopHeaderProps> = ({ currentLang, switchUri, data, men
     );
   };
 
-
   return (
     <header id="header" className={`sticky-header d-flex align-items-center ${isScrolled ? 'header-scrolled' : ''}`}>
       <div className="inner-container">
@@ -158,7 +169,7 @@ const TopHeader: React.FC<TopHeaderProps> = ({ currentLang, switchUri, data, men
               </div>
             </div>
 
-            {/* Navbar Chính (Desktop) */}
+            {/* Navbar Chính (Desktop & Mobile) */}
             <nav id="navbar" className={`navbar ${isMobileMenuOpen ? 'navbar-mobile' : ''}`}>
               <div className="navbar-inner">
 
@@ -182,18 +193,41 @@ const TopHeader: React.FC<TopHeaderProps> = ({ currentLang, switchUri, data, men
                 <ul className="nav">
                   {topMenuData && topMenuData.map((item: any, index: number) => {
                     const hasSubMenu = item.subMenu && item.subMenu.length > 0;
+                    const isSubOpen = activeDropdowns.includes(index);
+
                     return (
-                      <li key={index} className={hasSubMenu ? "dropdown" : ""}>
+                      <li 
+                        key={index} 
+                        className={`${hasSubMenu ? "dropdown" : ""} ${isSubOpen ? "dropdown-active active open" : ""}`}
+                      >
                         <Link to={normalizePath(item.linkPage?.url)} className="nav-link">
                           <span>{item.title}</span>
                           {hasSubMenu && <span className="arrow-down"></span>}
                         </Link>
-                        {hasSubMenu && <span className="m-arrow-down"></span>}
+                        
+                        {/* Mũi tên bấm để xổ sub-menu trên Mobile */}
                         {hasSubMenu && (
-                          <ul className="sub-menu">
+                          <span 
+                            className={`m-arrow-down ${isSubOpen ? 'active' : ''}`}
+                            onClick={(e) => toggleSubMenu(index, e)}
+                            style={{ cursor: 'pointer' }}
+                          ></span>
+                        )}
+
+                        {/* Menu con: Ép hiển thị display: block khi ở mobile và được bấm mở */}
+                        {hasSubMenu && (
+                          <ul 
+                            className={`sub-menu ${isSubOpen ? 'show active' : ''}`}
+                            style={isMobileMenuOpen && isSubOpen ? { display: 'block' } : undefined}
+                          >
                             {item.subMenu.map((sub: any, subIndex: number) => (
                               <li key={subIndex}>
-                                <Link to={normalizePath(sub.linkPage?.url)} target={sub.linkPage?.target || "_self"} className="nav-link">
+                                <Link 
+                                  to={normalizePath(sub.linkPage?.url)} 
+                                  target={sub.linkPage?.target || "_self"} 
+                                  className="nav-link"
+                                  onClick={() => setIsMobileMenuOpen(false)} // Bấm vào link con thì tự đóng menu mobile
+                                >
                                   {sub.title}
                                 </Link>
                               </li>
@@ -216,7 +250,6 @@ const TopHeader: React.FC<TopHeaderProps> = ({ currentLang, switchUri, data, men
 
             {/* Render danh sách linh hoạt từ WP */}
             {headerMobileData && headerMobileData.map((item: any, index: number) => {
-              // Thêm class đặc thù nếu nó là nút tìm kiếm (để giữ CSS cũ nếu có)
               const isSearch = item.title?.toLowerCase().includes("tìm kiếm");
               
               return (
