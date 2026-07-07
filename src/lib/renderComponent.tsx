@@ -3,9 +3,12 @@ import { PAGE_COMPONENT } from "@/types/general";
 // import MainTitle from "../components/pages/program/main_title";
 import MainContentPlus from "@/components/pages/sections/main_content_plus";
 import React from "react";
-import Banner from "@/components/pages/home/banner";
-
-
+// import Banner from "@/components/pages/home/banner";
+import Banner from "@/components/pages/our-schools/banner";
+import MainContentPeople from "@/components/pages/sections/main_content_people";
+import Badgets from "@/components/pages/our-schools/badgets";
+import Facilities from "@/components/pages/our-schools/facilities/facilities";
+import EducationRoute from "@/components/pages/our-schools/education_route";
 const renderComponent = (data: any, page: any) => {
   // Kiểm tra __typename từ Page Builder
   const type = data?.__typename;
@@ -42,8 +45,26 @@ const renderComponent = (data: any, page: any) => {
       });
 
       console.log("Banner truyền vào component:", bannerItems);
-      return <Banner items={bannerItems} />;
+      // return <Banner items={bannerItems} />;
+      return <Banner />;
 
+      
+    case 'PageBuilderPagebuilderdataTeacherLayout':
+      console.log("Đã vào case Teacher Layout!", data.teamTeach);
+      // Truyền trực tiếp data (chứa teamTeach) sang component MainContentPeople
+      return <MainContentPeople data={data} />;
+    
+    case 'PageBuilderPagebuilderdataBadgetsLayout':
+      console.log("Đã vào case Badgets Layout!", data.listItem);
+      // Xử lý dữ liệu cho layout Badgets
+      return <Badgets data={data} />;
+    case 'PageBuilderPagebuilderdataFacilitiesLayout':
+      console.log("Đã vào case Facilities Layout!", data.listItem);
+      return <Facilities></Facilities>
+    case 'PageBuilderPagebuilderdataEducationRouteLayout':
+      console.log("Đã vào case Education Route Layout!", data);
+      // Xử lý dữ liệu cho layout Education Route
+      return <EducationRoute data={data} />;
     default:
       console.warn("⚠️ Chưa có component cho layout:", type);
       return null;

@@ -115,6 +115,85 @@ export const getAllPages = async (
                       title
                     }
                   }
+                  ... on PageBuilderPagebuilderdataTeacherLayout {
+                      teamTeach {
+                        schoolName
+                        title
+                        listTeacher {
+                          teacher {
+                            nodes {
+                              ... on Member {
+                                __typename
+                                id
+                                title
+                                content
+                                excerpt
+                                featuredImage {
+                                  node {
+                                    sourceUrl
+                                    altText
+                                  }
+                                }
+                                memberInfo{
+                                  position
+                                }
+                              }
+                            }
+                          }
+                        }
+                          generalEducation {
+                            name
+                            members{
+                              thanhvien{
+                                nodes {
+                                  ... on Member {
+                                  __typename
+                                  id
+                                  title
+                                  content
+                                  excerpt
+                                  featuredImage {
+                                    node {
+                                      sourceUrl
+                                      altText
+                                    }
+                                  }
+                                  memberInfo{
+                                    position
+                                  }
+                                }
+                              }
+                                }
+                              }
+                            }
+                      }
+                    }
+                  ... on PageBuilderPagebuilderdataBadgetsLayout{
+                    listItem{
+                      icon{node {sourceUrl altText}}
+                      title
+                      link {url}
+                    }
+                  }
+                  ... on PageBuilderPagebuilderdataFacilitiesLayout{
+                    heading
+                    campus
+                  }
+                    ... on PageBuilderPagebuilderdataEducationRouteLayout{
+                    subTitle
+                    title
+                    decs
+                    logo{
+                      item{node{sourceUrl}}
+                    }
+                    classes {
+                      image{node{sourceUrl}}
+                      title
+                      items{title}
+                      logos{image{node{sourceUrl}}}
+                      link{url}
+                    }
+                  }
                 } 
               } 
             }

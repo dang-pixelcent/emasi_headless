@@ -1,6 +1,6 @@
 /* block 1 */
 .sc-main-content {
-    padding: clamp(28px, 2.34375vw, 48px) 0 0;
+    padding: clamp(59px, 4.8828125vw, 100px) 0 0;
     position: relative
 }
 
@@ -17,7 +17,8 @@
 
 .sc-main-content>.inner-container {
     position: relative;
-    z-index: 2
+    z-index: 2;
+    
 }
 
 .sc-main-content .breadcrumb {
@@ -395,7 +396,7 @@
 
 .school-box .box-color {
     background-image: linear-gradient(152deg, #f6f6f6 0%, #e0e0e0 100%);
-    padding: clamp(18px, 1.46484375vw, 30px) 0;
+    /* padding: clamp(18px, 1.46484375vw, 30px) 0; */
     overflow: hidden
 }
 

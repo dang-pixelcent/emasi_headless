@@ -144,7 +144,7 @@ export const runCreatePagesV2 = async ({
   });
 
   console.log(`✅ Created ${pages.length} Pages`);
-  // console.log("page: " + JSON.stringify(pages, null, 2));
+  console.log("page: " + JSON.stringify(pages, null, 2));
   activity.end();
   console.log("✅ FINISHED creating all pages (V2 Optimized).\n");
 };

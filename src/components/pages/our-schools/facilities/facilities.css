@@ -36,10 +36,33 @@
     color: #bfd730
 }
 
-.facilities-right .desc {
+/* .facilities-right .desc {
     font-size: clamp(14.0625px, 1.171875vw, 24px);
     line-height: 1.4
+    Update ngay 20/06/2024: Thay đổi line-height từ 1.4 thành 1.6 để cải thiện khả năng đọc và trải nghiệm người dùng.
+} */
+ .facilities-right .desc {
+    font-size: clamp(14.0625px, 1.171875vw, 24px);
+    line-height: 1.4;
+    
+    /* THÊM 3 DÒNG NÀY ĐỂ TẠO CUỘN */
+    max-height: clamp(120px, 14vw, 220px); /* Giới hạn chiều cao vừa vặn với layout */
+    overflow-y: auto;                      /* Kích hoạt thanh cuộn dọc khi chữ dài */
+    padding-right: 12px;                   /* Tạo khoảng cách để chữ không đè vào thanh cuộn */
 }
+
+/* Thêm định dạng thanh cuộn đẹp mắt cho riêng phần mô tả (.desc) */
+.facilities-right .desc::-webkit-scrollbar {
+    width: 3px;
+}
+.facilities-right .desc::-webkit-scrollbar-track {
+    background: transparent;
+}
+.facilities-right .desc::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: linear-gradient(to bottom, #269cc7 0%, #084b66 63%, #00364d 84%);
+}
+ 
 
 .ps-215 {
     padding-left: clamp(125.9765625px, 10.498046875vw, 215px)

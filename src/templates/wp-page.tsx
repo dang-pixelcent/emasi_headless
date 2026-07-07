@@ -1,13 +1,150 @@
-// import Layout from "@/components/common/Layout";
-// import SEO from "@/components/common/SEO";
-// import renderComponent from "@/lib/renderComponent";
-// import React, { useEffect } from "react";
+// import React from "react";
 // import { graphql, PageProps } from "gatsby";
 // import { Helmet } from "react-helmet";
-// import parse from "html-react-parser";
+
+// // Components
+// import Layout from "@/components/common/Layout";
+// import renderComponent from "@/lib/renderComponent";
 // import Sidebar from "@/components/pages/sections/sidebar";
 // import Discover from "@/components/pages/sections/discover_more";
-// import { useGlobalTheme } from "@/context/GlobalThemeProvider";
+// // import TourRegistrationForm from "@/components/common/TourRegistrationForm"; // <-- Import component Form đăng ký tham quan của bạn vào đây
+
+// interface WpPageData {
+//   wpCustomPage: {
+//     title: string;
+//     uri: string;
+//     flexibleContentMain: any[];
+//     pageBuilder: {
+//       pagebuilderdata: any[];
+//     };
+//     language: {
+//       code: string;
+//     } | null;
+//     translations: {
+//       uri: string;
+//       language: {
+//         code: string;
+//       };
+//     }[] | null;
+//   };
+// }
+
+// // =============================
+// // COMPONENT
+// // =============================
+// const WPPage = ({ data, pageContext }: PageProps<WpPageData>) => {
+//   const page = data.wpCustomPage;
+//   const { themeOptions } = pageContext as any;
+//   const currentLang = page.language?.code?.toLowerCase() || 'vi';
+
+//   // Xác định ngôn ngữ chuyển đổi
+//   const targetLang = currentLang === 'vi' ? 'en' : 'vi';
+//   const translationNode = page.translations?.find(
+//     (t) => t.language?.code?.toLowerCase() === targetLang
+//   );
+//   const switchUri = translationNode?.uri || null;
+
+//   if (!page || !themeOptions) return null;
+
+//   // --- 1. PHÂN LOẠI CÁC KHỐI DỮ LIỆU PAGE BUILDER ---
+//   const allBlocks = page.pageBuilder?.pagebuilderdata || [];
+
+//   const bannerBlocks = allBlocks.filter(
+//     (b: any) => b.__typename === 'PageBuilderPagebuilderdataBannerLayout'
+//   );
+
+//   const sidebarBlock = allBlocks.find(
+//     (b: any) => b.__typename === 'PageBuilderPagebuilderdataSidebarLayout'
+//   );
+
+//   const discoverBlock = allBlocks.find(
+//     (b: any) => b.__typename === 'PageBuilderPagebuilderdataDiscoveryLayout'
+//   );
+
+//   // Lọc lấy các khối nội dung chính (Loại bỏ Banner, Sidebar, Discover ra khỏi luồng nội dung)
+//   const contentBlocks = allBlocks.filter(
+//     (b: any) =>
+//       b.__typename !== 'PageBuilderPagebuilderdataBannerLayout' &&
+//       b.__typename !== 'PageBuilderPagebuilderdataSidebarLayout' &&
+//       b.__typename !== 'PageBuilderPagebuilderdataDiscoveryLayout'
+//   );
+
+//   // Kiểm tra xem trang này CÓ SIDEBAR hay không (chỉ cần có block và có dữ liệu list bên trong)
+//   const hasSidebar = Boolean(sidebarBlock && sidebarBlock?.list?.length > 0);
+//   console.log("Page data:", JSON.stringify(page, null, 2));
+//   console.log("sidebarBlock:", sidebarBlock);
+//   console.log("hasSidebar:", hasSidebar);
+//   // --- 2. RENDER GIAO DIỆN ---
+//   return (
+//     <>
+//       <Helmet htmlAttributes={{ lang: currentLang }}>
+//         <title>{page.title}</title>
+//         <link rel="icon" type="image/png" href="/assets/images/fav-icon/favicon.png" />
+//       </Helmet>
+
+//       <Layout
+//         currentLang={currentLang}
+//         switchUri={switchUri}
+//         themeOption={themeOptions}
+//       >
+//         {/* VÙNG 1: BANNER TRÀN VIỀN (Luôn ở trên cùng) */}
+//         {bannerBlocks.map((block: any, idx: number) => (
+//           <React.Fragment key={`banner-${idx}`}>
+//             {renderComponent(block, page)}
+//           </React.Fragment>
+//         ))}
+
+//         {/* VÙNG 2: NỘI DUNG CHÍNH & SIDEBAR (Tự động co giãn theo điều kiện hasSidebar) */}
+//         <div className="container" style={{ marginTop: '50px', marginBottom: '50px' }}>
+//           <div className="row">
+
+//             {/* CỘT TRÁI (Nội dung chính): 
+//                 - Nếu CÓ sidebar -> Chiếm 9 phần (col-lg-9)
+//                 - Nếu KHÔNG CÓ sidebar -> Chiếm trọn 12 phần (col-12) chạy dài 1 hàng dọc */}
+//             <div className={hasSidebar ? "col-12 col-lg-9 mb-4 mb-lg-0" : "col-12"}>
+
+//               {/* Render hệ thống cũ flexibleContentMain (nếu có) */}
+//               {Array.isArray(page.flexibleContentMain) &&
+//                 page.flexibleContentMain.map((section: any, index: number) => (
+//                   <React.Fragment key={`old-${index}`}>
+//                     {renderComponent(section)}
+//                   </React.Fragment>
+//                 ))}
+
+//               {/* Render danh sách các block nội dung mới */}
+//               {contentBlocks.map((block: any, idx: number) => (
+//                 <React.Fragment key={`content-${idx}`}>
+//                   {renderComponent(block, page)}
+//                 </React.Fragment>
+//               ))}
+//             </div>
+
+//             {/* CỘT PHẢI (Sidebar): CHỈ HIỂN THỊ KHI CÓ DỮ LIỆU SIDEBAR */}
+//             {hasSidebar && (
+//               <div className="col-12 col-lg-3">
+//                 <Sidebar data={sidebarBlock} />
+//               </div>
+//             )}
+
+//           </div>
+//         </div>
+
+//         {/* VÙNG 3: DISCOVER MORE (Chỉ render khi trong CMS có tạo block này) */}
+//         {discoverBlock && <Discover data={discoverBlock} />}
+
+//         {/* VÙNG 4: FORM ĐĂNG KÝ THAM QUAN (Luôn nằm ở dưới cùng, trước Footer của Layout) */}
+//         {/* <TourRegistrationForm /> */}
+
+//       </Layout>
+//     </>
+//   );
+// };
+
+// export default WPPage;
+
+// // =============================
+// // GRAPHQL QUERY
+// // =============================
 // export const query = graphql`
 //   query WpPageQuery($id: String!) {
 //     wpCustomPage(id: { eq: $id }) {
@@ -27,117 +164,6 @@
 //     }
 //   }
 // `;
-// interface WpPageData {
-//   wpCustomPage: {
-//     title: string;
-//     uri: string;
-//     flexibleContentMain: any[];
-//     pageBuilder: JSON;
-//     getRankMathSEO: string;
-//   };
-// }
-// const WPPage = ({ data, pageContext }: PageProps<WpPageData>) => {
-//   const page = data.wpCustomPage;
-//   const currentLang = page.language?.code || "null"; 
-
-//   // 2. Xác định ngôn ngữ đích (nếu đang là vi thì đích là en)
-//   const targetLang = currentLang === "vi" ? "en" : "vi";
-
-//   // 3. Tìm URI của bản dịch tương ứng
-//   const translationNode = page.translations?.find(
-//     (t: any) => t.language?.code === targetLang
-//   );
-//   const switchUri = translationNode ? translationNode.uri : null;
-//   console.log("lang hiện tại:", currentLang);
-//   // const console.log("=== DEBUG PAGE DATA ===", JSON.stringify(page, null, 2));
-//   const { themeOptions } = pageContext;
-//   if (!page) return null;
-//   if (!themeOptions) return null;
-
-//   console.log("Đây là cục Theme tôi tự gọi:", themeOptions);
-
-//   // console.log("=== DEBUG PAGE DATA ===", JSON.stringify(page, null, 2));
-//   // 1. Lấy toàn bộ mảng dữ liệu Page Builder
-//   const allBlocks = page?.pageBuilder?.pagebuilderdata || [];
-
-//   // 3. TÁCH RIÊNG KHỐI BANNER RA
-//   const bannerBlocks = allBlocks.filter(
-//     (b: any) => b.__typename === 'PageBuilderPagebuilderdataBannerLayout'
-//   );
-
-
-//   // 4. Tách riêng khối Sidebar (Cột phải)
-//   const sidebarBlock = allBlocks.find(
-//     (b: any) => b.__typename === 'PageBuilderPagebuilderdataSidebarLayout'
-//   );
-
-
-//   // TÁCH KHỐI DISCOVER RA
-//   const discoverBlock = allBlocks.find(
-//     (b: any) => b.__typename === 'PageBuilderPagebuilderdataDiscoveryLayout'
-//   );
-
-//   // 5. Các khối còn lại (Content chính - Cột trái)
-//   // Loại bỏ cả Banner và Sidebar ra khỏi danh sách khối nội dung chính
-//   const contentBlocks = allBlocks.filter(
-//     (b: any) =>
-//       b.__typename !== 'PageBuilderPagebuilderdataBannerLayout' &&
-//       b.__typename !== 'PageBuilderPagebuilderdataSidebarLayout' &&
-//       b.__typename !== 'PageBuilderPagebuilderdataDiscoveryLayout'
-//   );
-
-//   return (
-//     <>
-//       <Helmet htmlAttributes={{ lang: "en" }}>{/* SEO codes */}<title>{page.title}</title><link rel="icon" type="image/png" href="/assets/images/fav-icon/favicon.png" /></Helmet>
-//       <Layout currentLang={switchUri ? "VIE" : "ENG"} switchUri={switchUri} themeOption={themeOptions}>
-//         {/* --- VÙNG 1: BANNER TRÀN VIỀN (Nằm ngoài container) --- */}
-//         {bannerBlocks.map((block: any, idx: number) => (
-//           <React.Fragment key={`banner-${idx}`}>
-//             {renderComponent(block, page)}
-//           </React.Fragment>
-//         ))}
-//         {/* --- VÙNG 2: NỘI DUNG CHIA CỘT --- */}
-//         <div className="container" style={{ marginTop: '50px', marginBottom: '50px' }}>
-//           <div className="row">
-//             {/* CỘT TRÁI: Nội dung chính */}
-//             {/* col-12: Mobile chiếm 100% (xếp dọc) | col-lg-8: Desktop chiếm 8/12 phần */}
-//             <div className="col-12 col-lg-9 mb-4 mb-lg-0">
-
-//               {/* Render hệ thống cũ (nếu có) */}
-//               {Array.isArray(page?.flexibleContentMain) &&
-//                 page.flexibleContentMain.map((section: any, index: number) => (
-//                   <React.Fragment key={`old-${index}`}>
-//                     {renderComponent(section)}
-//                   </React.Fragment>
-//                 ))}
-
-//               {/* Render các block mới (Đã loại trừ Banner) */}
-//               {contentBlocks.map((block: any, idx: number) => (
-//                 <React.Fragment key={`content-${idx}`}>
-//                   {renderComponent(block, page)}
-//                 </React.Fragment>
-//               ))}
-
-//             </div>
-
-//             {/* CỘT PHẢI: SIDEBAR */}
-//             {/* col-12: Mobile chiếm 100% (rớt xuống dưới) | col-lg-4: Desktop chiếm 4/12 phần */}
-//             <div className="col-12 col-lg-3">
-//               {/* <Sidebar /> */}
-//               <Sidebar data={sidebarBlock} />
-//             </div>
-
-//           </div>
-//         </div>
-//         {/* <Discover /> */}
-//         <Discover data={discoverBlock} />
-//       </Layout>
-//     </>
-//   );
-// };
-
-// export default WPPage;
-
 import React from "react";
 import { graphql, PageProps } from "gatsby";
 import { Helmet } from "react-helmet";
@@ -147,8 +173,8 @@ import Layout from "@/components/common/Layout";
 import renderComponent from "@/lib/renderComponent";
 import Sidebar from "@/components/pages/sections/sidebar";
 import Discover from "@/components/pages/sections/discover_more";
-// import SEO from "@/components/common/SEO"; 
-// import parse from "html-react-parser"; 
+// import TourRegistrationForm from "@/components/common/TourRegistrationForm"; // <-- Import component Form đăng ký tham quan của bạn vào đây
+
 interface WpPageData {
   wpCustomPage: {
     title: string;
@@ -177,24 +203,16 @@ const WPPage = ({ data, pageContext }: PageProps<WpPageData>) => {
   const { themeOptions } = pageContext as any;
   const currentLang = page.language?.code?.toLowerCase() || 'vi';
 
-  // 2. Xác định ngôn ngữ đích
+  // Xác định ngôn ngữ chuyển đổi
   const targetLang = currentLang === 'vi' ? 'en' : 'vi';
-
-  // 3. Tìm URI của bản dịch tương ứng trong mảng translations
   const translationNode = page.translations?.find(
     (t) => t.language?.code?.toLowerCase() === targetLang
   );
-
   const switchUri = translationNode?.uri || null;
 
-  // 4. In log kiểm tra
-  console.log("=== DEBUG NGÔN NGỮ ===");
-  console.log("Ngôn ngữ hiện tại:", currentLang);
-  console.log("Ngôn ngữ đích:", targetLang);
-  console.log("URI chuyển đổi:", switchUri);
-  console.log("Mảng translations thô:", page.translations);
   if (!page || !themeOptions) return null;
-  // --- 2. XỬ LÝ DỮ LIỆU PAGE BUILDER ---
+
+  // --- 1. PHÂN LOẠI CÁC KHỐI DỮ LIỆU PAGE BUILDER ---
   const allBlocks = page.pageBuilder?.pagebuilderdata || [];
 
   const bannerBlocks = allBlocks.filter(
@@ -209,6 +227,7 @@ const WPPage = ({ data, pageContext }: PageProps<WpPageData>) => {
     (b: any) => b.__typename === 'PageBuilderPagebuilderdataDiscoveryLayout'
   );
 
+  // Lọc lấy các khối nội dung chính (Loại bỏ Banner, Sidebar, Discover ra khỏi luồng nội dung)
   const contentBlocks = allBlocks.filter(
     (b: any) =>
       b.__typename !== 'PageBuilderPagebuilderdataBannerLayout' &&
@@ -216,10 +235,15 @@ const WPPage = ({ data, pageContext }: PageProps<WpPageData>) => {
       b.__typename !== 'PageBuilderPagebuilderdataDiscoveryLayout'
   );
 
-  // --- 3. RENDER ---
+  // Kiểm tra xem trang này CÓ SIDEBAR hay không (chỉ cần có block và có dữ liệu list bên trong)
+  const hasSidebar = Boolean(sidebarBlock && sidebarBlock?.list?.length > 0);
+  console.log("Page data:", JSON.stringify(page, null, 2));
+  console.log("sidebarBlock:", sidebarBlock);
+  console.log("hasSidebar:", hasSidebar);
+  // --- 2. RENDER GIAO DIỆN ---
   return (
     <>
-      <Helmet htmlAttributes={{ lang: "en" }}>
+      <Helmet htmlAttributes={{ lang: currentLang }}>
         <title>{page.title}</title>
         <link rel="icon" type="image/png" href="/assets/images/fav-icon/favicon.png" />
       </Helmet>
@@ -229,23 +253,21 @@ const WPPage = ({ data, pageContext }: PageProps<WpPageData>) => {
         switchUri={switchUri}
         themeOption={themeOptions}
       >
-        {/* VÙNG 1: BANNER TRÀN VIỀN */}
+        {/* VÙNG 1: BANNER TRÀN VIỀN (Luôn ở trên cùng) */}
         {bannerBlocks.map((block: any, idx: number) => (
           <React.Fragment key={`banner-${idx}`}>
             {renderComponent(block, page)}
           </React.Fragment>
         ))}
 
-        {/* VÙNG 2: NỘI DUNG CHIA CỘT */}
-        <div className="container" style={{ marginTop: '50px', marginBottom: '50px' }}>
+        {/* <div className={hasSidebar ? "container" : "container-fluid"} style={{ marginTop: '50px', marginBottom: '50px' }}>
           <div className="row">
+            <div className={hasSidebar ? "col-12 col-lg-9 mb-4 mb-lg-0" : "col-12"}>
 
-            {/* CỘT TRÁI: Nội dung chính */}
-            <div className="col-12 col-lg-9 mb-4 mb-lg-0">
               {Array.isArray(page.flexibleContentMain) &&
                 page.flexibleContentMain.map((section: any, index: number) => (
                   <React.Fragment key={`old-${index}`}>
-                    {renderComponent(section)}
+                    {renderComponent(section, page)}
                   </React.Fragment>
                 ))}
 
@@ -256,16 +278,64 @@ const WPPage = ({ data, pageContext }: PageProps<WpPageData>) => {
               ))}
             </div>
 
-            {/* CỘT PHẢI: SIDEBAR */}
-            <div className="col-12 col-lg-3">
-              <Sidebar data={sidebarBlock} />
-            </div>
+            {hasSidebar && (
+              <div className="col-12 col-lg-3">
+                <Sidebar data={sidebarBlock} />
+              </div>
+            )}
 
           </div>
-        </div>
+        </div> */}
+        {/* VÙNG 2: NỘI DUNG CHÍNH & SIDEBAR */}
+        {hasSidebar ? (
+          /* TRƯỜNG HỢP 1: CÓ SIDEBAR -> Dùng Container & Row để chia cột 9 - 3 */
+          <div className="container" style={{ marginTop: '50px', marginBottom: '50px' }}>
+            <div className="row">
+              <div className="col-12 col-lg-9 mb-4 mb-lg-0">
+                {Array.isArray(page.flexibleContentMain) &&
+                  page.flexibleContentMain.map((section: any, index: number) => (
+                    <React.Fragment key={`old-${index}`}>
+                      {renderComponent(section, page)}
+                    </React.Fragment>
+                  ))}
 
-        {/* VÙNG 3: DISCOVER MORE */}
-        <Discover data={discoverBlock} />
+                {contentBlocks.map((block: any, idx: number) => (
+                  <React.Fragment key={`content-${idx}`}>
+                    {renderComponent(block, page)}
+                  </React.Fragment>
+                ))}
+              </div>
+
+              <div className="col-12 col-lg-3">
+                <Sidebar data={sidebarBlock} />
+              </div>
+            </div>
+          </div>
+        ) : (
+          /* TRƯỜNG HỢP 2: KHÔNG CÓ SIDEBAR -> Render trực tiếp các Section ra ngoài */
+          /* Bỏ hoàn toàn container-fluid, row, col-12 và khoảng trống 50px ép buộc */
+          <div className="main-sections-wrapper">
+            {Array.isArray(page.flexibleContentMain) &&
+              page.flexibleContentMain.map((section: any, index: number) => (
+                <React.Fragment key={`old-${index}`}>
+                  {renderComponent(section, page)}
+                </React.Fragment>
+              ))}
+
+            {contentBlocks.map((block: any, idx: number) => (
+              <React.Fragment key={`content-${idx}`}>
+                {renderComponent(block, page)}
+              </React.Fragment>
+            ))}
+          </div>
+        )}
+
+        {/* VÙNG 3: DISCOVER MORE (Chỉ render khi trong CMS có tạo block này) */}
+        {discoverBlock && <Discover data={discoverBlock} />}
+
+        {/* VÙNG 4: FORM ĐĂNG KÝ THAM QUAN (Luôn nằm ở dưới cùng, trước Footer của Layout) */}
+        {/* <TourRegistrationForm /> */}
+
       </Layout>
     </>
   );
