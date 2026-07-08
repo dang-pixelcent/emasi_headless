@@ -53,10 +53,27 @@
     height: clamp(39.84375px, 3.3203125vw, 68px)
 }
 
+.campus-slider,
+.campus-slider .slick-list,
+.campus-slider .slick-track,
+.campus-slider .slick-slide,
+.campus-slider .slick-slide>div,
+.campus-slider .inner {
+    height: 100% !important;
+}
+.campus-slider .inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Chìa khóa: Tự động zoom và cắt viền đều các bên để lấp đầy khung */
+    object-position: center; /* Luôn ưu tiên giữ lại phần trung tâm của bức ảnh */
+    display: block;
+}
+
 .campus-slider-wrap {
     position: absolute;
     width: 100%;
     height: 100%;
+    overflow: hidden;
     top: 0;
     left: 0
 }

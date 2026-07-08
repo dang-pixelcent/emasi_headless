@@ -9,6 +9,13 @@ import MainContentPeople from "@/components/pages/sections/main_content_people";
 import Badgets from "@/components/pages/our-schools/badgets";
 import Facilities from "@/components/pages/our-schools/facilities/facilities";
 import EducationRoute from "@/components/pages/our-schools/education_route";
+import Environments from "@/components/pages/our-schools/environments";
+import News from "@/components/pages/our-schools/news_events";
+import Fees from "@/components/pages/our-schools/tuition_fees";
+import PublicShare from "@/components/pages/our-schools/public_share";
+import Map from "@/components/pages/our-schools/map";
+import EmasiAbout from "@/components/pages/home/emasi_about";
+import SchoolList from "@/components/pages/home/school_list";
 const renderComponent = (data: any, page: any) => {
   // Kiểm tra __typename từ Page Builder
   const type = data?.__typename;
@@ -46,7 +53,7 @@ const renderComponent = (data: any, page: any) => {
 
       console.log("Banner truyền vào component:", bannerItems);
       // return <Banner items={bannerItems} />;
-      return <Banner />;
+      return <Banner data={data}/>;
 
       
     case 'PageBuilderPagebuilderdataTeacherLayout':
@@ -65,6 +72,27 @@ const renderComponent = (data: any, page: any) => {
       console.log("Đã vào case Education Route Layout!", data);
       // Xử lý dữ liệu cho layout Education Route
       return <EducationRoute data={data} />;
+    case 'PageBuilderPagebuilderdataEnviromentsLayout':
+      console.log("Đã vào case Environment Layout!", data);
+      return <Environments  data={data} />;
+    case 'PageBuilderPagebuilderdataNewEventLayout':
+      console.log("Đã vào case New Event Layout!", data);
+      return <News data={data} />;
+    case 'PageBuilderPagebuilderdataTuitionFeeLayout':
+      console.log("Đã vào case Tuition Fee Layout!", data);
+      return <Fees data={data} />;
+    case 'PageBuilderPagebuilderdataSharePublicLayout':
+      console.log("Đã vào case Share layout!", data);
+      return <PublicShare data={data}/>;
+    case 'PageBuilderPagebuilderdataMapLayout':
+      console.log("Map: ",data);
+      return <Map data={data}/>;
+    case 'PageBuilderPagebuilderdataProgramEmasiAboutLayout':
+      console.log("About: ",data );
+      return <EmasiAbout data={data}/>
+    case 'PageBuilderPagebuilderdataSchoolListLayout':
+      console.log('school list: ', data);
+      return <SchoolList data={data}/>;
     default:
       console.warn("⚠️ Chưa có component cho layout:", type);
       return null;

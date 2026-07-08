@@ -1,54 +1,170 @@
-import React from "react";
-import { useEffect } from "react";
-import './banner.css';
+// import React from "react";
+// import { useEffect } from "react";
+// import './banner.css';
 
-export default function Banner() {
+// export default function Banner() {
 
-    const isSlider = false; //true thì slider, false thì image
+//     const isSlider = false; //true thì slider, false thì image
 
-    const backgroundImage =
-        "https://emasi.pixelcent.com/wp-content/uploads/2025/03/our-schools-banner-21.jpg";
+//     const backgroundImage =
+//         "https://emasi.pixelcent.com/wp-content/uploads/2025/03/our-schools-banner-21.jpg";
 
-    const items = [
-        "/assets/images/banner/1_2.png",
-        "/assets/images/banner/1-2.jpg",
-    ];
-    //Slider tự động
+//     const items = [
+//         "/assets/images/banner/1_2.png",
+//         "/assets/images/banner/1-2.jpg",
+//     ];
+//     //Slider tự động
+//     useEffect(() => {
+//         const $ = (window as any).$;
+
+//         if ($?.fn?.slick) {
+//             $(".campus-slider").slick({
+//                 autoplay: true,
+//                 arrows: false,
+//                 infinite: true,
+//                 dots: false,
+//                 speed: 500,
+//                 slidesToShow: 1,
+//                 slidesToScroll: 1,
+//             });
+//         }
+//     }, []);
+
+//     return (
+//         <section
+//             className="sc-banner custom-banner"
+//             style={
+//                 !isSlider
+//                     ? {
+//                         background: `no-repeat center/cover url(${backgroundImage})`,
+//                     }
+//                     : undefined
+//             }
+//         >
+//             {/* SLIDER MODE */}
+//             {isSlider && (
+//                 <div className="campus-slider-wrap">
+//                     <div className="campus-slider">
+//                         {items.map((img, index) => (
+//                             <div className="slick-slide" key={index}>
+//                                 <div className="inner">
+//                                     <img src={img} alt={`slide-${index}`} />
+//                                 </div>
+//                             </div>
+//                         ))}
+//                     </div>
+//                 </div>
+//             )}
+
+//             {/* CONTENT */}
+//             <div className="inner-container h-100 d-flex align-items-center">
+//                 <div className="banner-content d-flex flex-column">
+//                     <h1
+//                         className="h1-title text-white f-SVN-FuturaBold"
+//                         data-aos="fade-up"
+//                     >
+//                         Trường Quốc tế <br />
+//                         Song ngữ <br />
+//                         EMASI <i>Nam Long</i>
+//                     </h1>
+
+//                     <div className="sc-btn d-flex">
+//                         <a
+//                             href="#dangky"
+//                             className="btn-bg bg-icon bg-white"
+//                             data-aos="fade-up"
+//                             target="_self"
+//                         >
+//                             Đăng ký Trải nghiệm
+//                         </a>
+//                     </div>
+//                 </div>
+//             </div>
+//         </section>
+//     );
+// }
+import React, { useEffect } from "react";
+import "./banner.css";
+import { useStoreContext } from "@/context/StoreContext";
+
+// 1. Khai báo Interface cho dữ liệu trả về từ GraphQL
+interface BannerProps {
+    data?: {
+        title?: string;
+        bannergallery?: {
+            nodes?: Array<{
+                sourceUrl?: string;
+                altText?: string;
+            }>;
+        };
+        button?: {
+            title?: string;
+            url?: string;
+            target?: string;
+        };
+    };
+}
+
+export default function Banner({ data }: BannerProps) {
+    // Tránh render nếu không có dữ liệu
+    if (!data) return null;
+    const { normalizePath } = useStoreContext();
+    // 2. Bóc tách dữ liệu
+    const gallery = data.bannergallery?.nodes || [];
+    const isSlider = gallery.length > 1;
+    const backgroundImage = gallery.length === 1 ? gallery[0].sourceUrl : "";
+    const btn = data.button;
+
+    // 3. Xử lý Slider tự động (Chỉ chạy khi có nhiều ảnh)
     useEffect(() => {
         const $ = (window as any).$;
 
-        if ($?.fn?.slick) {
-            $(".campus-slider").slick({
-                autoplay: true,
-                arrows: false,
-                infinite: true,
-                dots: false,
-                speed: 500,
-                slidesToShow: 1,
-                slidesToScroll: 1,
-            });
+        if (isSlider && $?.fn?.slick) {
+            const $slider = $(".campus-slider");
+
+            if (!$slider.hasClass("slick-initialized")) {
+                $slider.slick({
+                    autoplay: true,
+                    arrows: false,
+                    infinite: true,
+                    dots: false,
+                    speed: 500,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                });
+            }
+
+            // Cleanup slick khi unmount
+            return () => {
+                if ($slider.hasClass("slick-initialized")) {
+                    $slider.slick("unslick");
+                }
+            };
         }
-    }, []);
+    }, [isSlider, gallery.length]);
 
     return (
         <section
             className="sc-banner custom-banner"
             style={
-                !isSlider
+                !isSlider && backgroundImage
                     ? {
                         background: `no-repeat center/cover url(${backgroundImage})`,
                     }
-                    : undefined
+                    : { background: "#00364c" } // Màu nền dự phòng nếu không có ảnh
             }
         >
             {/* SLIDER MODE */}
             {isSlider && (
                 <div className="campus-slider-wrap">
                     <div className="campus-slider">
-                        {items.map((img, index) => (
+                        {gallery.map((img, index) => (
                             <div className="slick-slide" key={index}>
                                 <div className="inner">
-                                    <img src={img} alt={`slide-${index}`} />
+                                    <img
+                                        src={img.sourceUrl}
+                                        alt={img.altText || `slide-${index}`}
+                                    />
                                 </div>
                             </div>
                         ))}
@@ -59,25 +175,28 @@ export default function Banner() {
             {/* CONTENT */}
             <div className="inner-container h-100 d-flex align-items-center">
                 <div className="banner-content d-flex flex-column">
-                    <h1
-                        className="h1-title text-white f-SVN-FuturaBold"
-                        data-aos="fade-up"
-                    >
-                        Trường Quốc tế <br />
-                        Song ngữ <br />
-                        EMASI <i>Nam Long</i>
-                    </h1>
-
-                    <div className="sc-btn d-flex">
-                        <a
-                            href="#dangky"
-                            className="btn-bg bg-icon bg-white"
+                    {/* TITLE */}
+                    {data.title && (
+                        <h1
+                            className="h1-title text-white f-SVN-FuturaBold"
                             data-aos="fade-up"
-                            target="_self"
-                        >
-                            Đăng ký Trải nghiệm
-                        </a>
-                    </div>
+                            dangerouslySetInnerHTML={{ __html: data.title }}
+                        />
+                    )}
+
+                    {/* BUTTON */}
+                    {btn?.url && (
+                        <div className="sc-btn d-flex">
+                            <a
+                                href={normalizePath(btn.url)}
+                                className="btn-bg bg-icon bg-white"
+                                data-aos="fade-up"
+                                target={btn.target || "_self"}
+                            >
+                                {btn.title || "Xem thêm"}
+                            </a>
+                        </div>
+                    )}
                 </div>
             </div>
         </section>

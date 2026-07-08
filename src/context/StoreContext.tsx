@@ -59,36 +59,37 @@ export const StoreProvider: React.FC<StoreProviderProps> = ({ children, themeDat
   const normalizePath = (url: string | null | undefined): string => {
     if (!url || typeof url !== 'string') return "#";
 
-    // Danh sách các domain hoặc giao thức cần giữ nguyên (mở tab mới)
+    // 1. Kiểm tra link ngoài (External links)
     const isExternal = (u: string) => {
       return u.includes('zalo.me') ||
         u.includes('m.me') ||
         u.includes('facebook.com') ||
         u.includes('linkedin.com') ||
         u.startsWith('mailto:') ||
-        u.startsWith('tel:');
+        u.startsWith('tel:') ||
+        u.startsWith('http'); // Nếu URL bắt đầu bằng http nhưng KHÔNG phải domain của mình
     };
 
-    if (isExternal(url)) return url;
+    // 2. Định nghĩa domain chính (Nên lấy từ env hoặc config)
+    const siteDomain = 'emasi.pixelcent.com';
 
-    // Lấy domain hiện tại từ biến môi trường (mặc định là localhost cho phát triển)
-    const mainSiteUrl = process.env.GATSBY_MAIN_SITE_URL || 'http://localhost:8000';
-
-    // Nếu URL bắt đầu bằng domain chính, cắt bỏ domain để lấy path
-    if (url.startsWith(mainSiteUrl)) {
-      return url.replace(mainSiteUrl, '');
+    // Nếu là link ngoài không thuộc domain của mình thì giữ nguyên
+    if (isExternal(url) && !url.includes(siteDomain)) {
+      return url;
     }
 
-    // Nếu là URL tuyệt đối khác (trường hợp hiếm) hoặc path bình thường
-    try {
-      if (url.startsWith('http')) {
-        return new URL(url).pathname;
+    // 3. XỬ LÝ TÁCH HOST:
+    // Nếu url chứa domain, dùng URL object để tách lấy pathname
+    if (url.includes(siteDomain) || url.startsWith('http')) {
+      try {
+        const parsedUrl = new URL(url);
+        return parsedUrl.pathname; // Đây chính là phần path bạn cần (/tin-tuc/...)
+      } catch (e) {
+        return url;
       }
-    } catch (e) {
-      // Bỏ qua lỗi
     }
 
-    // Đảm bảo path luôn có dấu / ở đầu
+    // 4. Nếu đã là path (/tin-tuc/...) thì trả về luôn
     return url.startsWith('/') ? url : `/${url}`;
   };
 

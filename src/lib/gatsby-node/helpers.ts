@@ -80,6 +80,8 @@ export const getAllPages = async (
                         altText
                       }
                     }
+                    title
+                    button{title target url}
                   }
                   ... on PageBuilderPagebuilderdataSidebarLayout {
                     list {
@@ -192,6 +194,73 @@ export const getAllPages = async (
                       items{title}
                       logos{image{node{sourceUrl}}}
                       link{url}
+                    }
+                  }
+                  ... on PageBuilderPagebuilderdataEnviromentsLayout{
+                      subTitle
+                      title
+                      list{
+                        title
+                        desc
+                        link{url}
+                        image{node{sourceUrl}}
+                    
+                      }
+                    }
+                  ... on PageBuilderPagebuilderdataNewEventLayout{
+                        title
+                        subTitle
+                        link{url target title}
+                        postsItem{
+                          postTinTuc{
+                            nodes{
+                              ... on Post{
+                                id
+                                title
+                                uri
+                                featuredImage{
+                                node {
+                                sourceUrl
+                                }
+                              }
+                              }
+                            }
+                          }
+                    }
+                      
+                  }
+                  ... on PageBuilderPagebuilderdataTuitionFeeLayout{
+                    backgoundImage{node{sourceUrl}}
+                    title
+                    listImage{
+                      image{node{sourceUrl}}
+                    }
+                    button{url target title}
+                  }
+                  ... on PageBuilderPagebuilderdataSharePublicLayout{
+                    title
+                    listShare{
+                      image{node{sourceUrl}}
+                      name
+                      desc
+                    }
+                  }
+                  ... on PageBuilderPagebuilderdataMapLayout{
+                    image{node{sourceUrl}}
+                    iframe
+                  }
+                  ... on PageBuilderPagebuilderdataProgramEmasiAboutLayout{
+                    title
+                    subTitle
+                    image{node{sourceUrl}}
+                    button{url target title}
+                  }
+                  ... on PageBuilderPagebuilderdataSchoolListLayout{
+                    listSchoolItem{
+                      title
+                      subTitle
+                      image{node{sourceUrl}}
+                      link{url target title}
                     }
                   }
                 } 
