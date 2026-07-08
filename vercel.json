@@ -1,6 +1,6 @@
 {
   "installCommand": "npm install --legacy-peer-deps",
-  "buildCommand": "rm -rf .vercel/output && gatsby clean && gatsby build1",
+  "buildCommand": "rm -rf .vercel/output && gatsby clean && gatsby build",
   "outputDirectory": "public",
   "git": {
     "deploymentEnabled": {
