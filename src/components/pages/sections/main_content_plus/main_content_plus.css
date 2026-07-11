@@ -4,14 +4,17 @@ strong {
     font-weight: 600;
     color: #003e58;
 }
+
 .main-content img {
     margin-bottom: 1rem;
     margin-top: 1rem;
-    
+
     /* 2 DÒNG QUAN TRỌNG NHẤT ĐỂ ẢNH RESPONSIVE */
-    max-width: 100%; /* Ép ảnh không được rộng hơn thẻ cha (container) chứa nó */
-    height: auto;    /* Tự động tính toán chiều cao để giữ nguyên tỷ lệ khung hình gốc */
-    
+    max-width: 100%;
+    /* Ép ảnh không được rộng hơn thẻ cha (container) chứa nó */
+    height: auto;
+    /* Tự động tính toán chiều cao để giữ nguyên tỷ lệ khung hình gốc */
+
     /* Tùy chọn: Thêm dòng dưới nếu bạn muốn ảnh luôn nằm giữa và không bị khoảng trắng dư thừa ở dưới chân */
-    display: block; 
+    display: inline-block;
 }

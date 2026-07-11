@@ -65,7 +65,7 @@
 
 import React from "react";
 import "./discover_more.css";
-
+import { useStoreContext } from "@/context/StoreContext";
 // 1. Định nghĩa Interface cho dữ liệu Discover
 export interface DiscoverItem {
   image?: { node: { sourceUrl: string; altText?: string } } | null;
@@ -84,7 +84,7 @@ export interface DiscoverProps {
 export default function Discover({ data }: DiscoverProps) {
   // Nếu có data truyền vào thì dùng data.list, nếu không thì dùng mảng rỗng
   const discoverList = data?.list || [];
-  
+  const { normalizePath } = useStoreContext();
   // Nếu bạn muốn tiêu đề động theo WordPress thì dùng data.title, không thì mặc định "Khám phá thêm"
   const sectionTitle = data?.title || "Khám phá thêm";
 
@@ -115,14 +115,14 @@ export default function Discover({ data }: DiscoverProps) {
                   data-aos-delay={(index + 1) * 100}
                 >
                   <figure>
-                    <a href={itemUrl}>
+                    <a href={normalizePath(itemUrl)}>
                       <img src={imageUrl} alt={item.image?.node?.altText || title} />
                     </a>
                   </figure>
 
                   <div className="content">
                     <h3 className="h3-title text-center f-ibmplexsans fw-600 mb-0">
-                      <a href={itemUrl}>{title}</a>
+                      <a href={normalizePath(itemUrl)}>{title}</a>
                     </h3>
                   </div>
                 </div>
