@@ -27,7 +27,7 @@ import Careers from "@/components/pages/sections/careers";
 const renderComponent = (data: any, page: any) => {
   // Kiểm tra __typename từ Page Builder
   const type = data?.__typename;
-  
+
   switch (type) {
     case 'PageBuilderPagebuilderdataContentEditorLayout':
       return (
@@ -69,7 +69,7 @@ const renderComponent = (data: any, page: any) => {
       return <Badgets data={data} />;
     case 'PageBuilderPagebuilderdataFacilitiesLayout':
       console.log("Đã vào case Facilities Layout!", data.listItem);
-      return <Facilities></Facilities>
+      return <Facilities lang={page.language?.code} />;
     case 'PageBuilderPagebuilderdataEducationRouteLayout':
       console.log("Đã vào case Education Route Layout!", data);
       // Xử lý dữ liệu cho layout Education Route
@@ -111,7 +111,6 @@ const renderComponent = (data: any, page: any) => {
       console.log("fee: ", data);
       return <Fee data={data} />
     case 'PageBuilderPagebuilderdataCareerLayout':
-      
     default:
       console.warn("⚠️ Chưa có component cho layout:", type);
       return null;
