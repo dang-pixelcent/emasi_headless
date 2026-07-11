@@ -21,7 +21,9 @@
 }
 
 .sc-fees .h2-title strong {
-    color: #bfd730 !important
+    color: #bfd730 !important;
+    font-weight: 700 !important;
+    font-size: 30px !important;
 }
 
 .sc-fees .list {
@@ -80,6 +82,12 @@
 
     .sc-fees .h2-title {
         font-size: 4.0033361134279vw
+    }
+
+    .sc-fees .h2-title strong {
+        color: #bfd730 !important;
+        font-weight: 700 !important;
+        font-size: 14px !important;
     }
 
     .sc-fees .list {
