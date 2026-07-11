@@ -72,6 +72,7 @@ export const getAllPages = async (
                         textContent
                       }
                     }
+                    content
                   }
                   ... on PageBuilderPagebuilderdataBannerLayout {
                     bannergallery {
@@ -261,6 +262,89 @@ export const getAllPages = async (
                       subTitle
                       image{node{sourceUrl}}
                       link{url target title}
+                    }
+                  }
+                  ... on PageBuilderPagebuilderdataValuesLayout{
+                    title
+                    subTitle
+                    desc
+                    title2
+                    desc2
+                    title3
+                    listValues{
+                      title
+                      desc
+                    }
+                  }
+                  ... on PageBuilderPagebuilderdataProgramHocHieuEmasiLayout{
+                    title
+                    description
+                    listHocHieu{
+                      image{node{sourceUrl}}
+                      title
+                      contentDecs
+                    }
+                  }
+                  ... on PageBuilderPagebuilderdataProgramAllLayout{
+                    listProgramAll{
+                      title
+                      titleColor
+                      backgroundImagePosition
+                      backGroundImage{node{sourceUrl}}
+                      decs
+                      backgroundColor
+                      listLogoProgramAll{
+                        logo{node{sourceUrl}}
+                      }
+                      link{url target title}
+                      linkColor
+                      image{node{sourceUrl}}
+                    }
+                  }
+                  ... on PageBuilderPagebuilderdataProgramEducationalAspectsLayout{
+                    groupHeader{
+                      title
+                      subTitle
+                      desc
+                    }
+                    col3{
+                      image{node{sourceUrl}}
+                      box{
+                        backgroundImage{node{sourceUrl}}
+                        backgroundColor
+                        title
+                        titleColor
+                        link{url title target}
+                        linkColor
+                        desc
+                      }
+                      listProgrammEduExpect{
+                        image{node{sourceUrl}}
+                        backgoundColor
+                        backgroundImage{node{sourceUrl}}
+                        title
+                        desc
+                        descColor
+                        link{url target title}
+                        linkColor
+                        
+                      }
+                    }
+                  }
+                  ... on PageBuilderPagebuilderdataFeeLayout{
+                    listFee{
+                      title
+                      content
+                      file{node{sourceUrl}}
+                    }
+                  }
+                  ... on PageBuilderPagebuilderdataCareerLayout{
+                    heading
+                    listCarre{
+                      chCV
+                      thIGian
+                      moTCongViC{node{sourceUrl}}
+                      
                     }
                   }
                 } 

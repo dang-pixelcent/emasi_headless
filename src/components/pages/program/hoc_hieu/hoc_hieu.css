@@ -17,12 +17,13 @@
     z-index: 0
 }
 
+
 .sc-hoc-hieu .title {
     font-size: clamp(28.13px, 2.34375vw, 48px);
     line-height: normal;
     font-weight: 300;
     color: #bfd730;
-    margin-bottom: clamp(12.89px, 1.07422vw, 22px)
+    margin-bottom: clamp(12.89px, 1.07422vw, 22px);
 }
 
 .sc-hoc-hieu .description {
@@ -38,6 +39,18 @@
     height: clamp(127.15px, 10.5957vw, 216px);
     margin-bottom: clamp(24.61px, 2.05078vw, 42px);
     z-index: 2
+}
+
+/* Tùy chỉnh riêng cho tiêu đề EMASI */
+.sc-hoc-hieu .title strong {
+    color: #bfd730 !important;
+    /* Màu xanh lá mạ */
+    font-weight: 700 !important;
+    /* Đậm hơn */
+    font-size: 1.25em;
+    /* To hơn một chút so với chữ xung quanh */
+    display: inline-block;
+    /* Giúp thuộc tính size hoạt động tốt hơn */
 }
 
 .sc-hoc-hieu .menu {
@@ -68,7 +81,7 @@
     display: none;
     max-width: clamp(650.39px, 54.1992vw, 1110px);
     margin: 0 auto;
-    
+
 }
 
 .sc-hoc-hieu .menu-content.show {

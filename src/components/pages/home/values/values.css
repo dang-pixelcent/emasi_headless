@@ -184,7 +184,10 @@
     color: #005d83;
     font-weight: 500
 }
-
+.sc-values strong {
+    color: #ffffff !important;
+    font-size: clamp(14.0625px,1.171875vw,24px);
+}
 .environments {
     margin-top: clamp(85.546875px, 7.12890625vw, 146px);
     padding: clamp(38.671875px, 3.22265625vw, 66px) clamp(70.3125px, 5.859375vw, 120px) 0;
