@@ -106,9 +106,6 @@ export default function Banner({ data }: BannerProps) {
                                         alt={img.altText || `slide-${index}`}
                                         /* Tối ưu ngầm LCP cho Lighthouse, không làm thay đổi layout */
                                         loading={index === 0 ? "eager" : "lazy"}
-                                        fetchPriority={index === 0 ? "high" : "auto"}
-                                        width="1920"  // Thêm width/height để browser giữ chỗ (dù có CSS đè lên vẫn cần để tính aspect ratio)
-                                        height="1080"
                                     />
                                 </div>
                             </div>
