@@ -43,9 +43,12 @@
 }
 
 /* KHÓA CLS: Ép tất cả các slide chưa active phải ẩn đi trước khi JS Slick tải xong */
-.campus-slider .slick-slide:not(.slick-active) {
+/* .campus-slider .slick-slide:not(.slick-active) {
     opacity: 0;
     pointer-events: none;
+} */
+ .campus-slider:not(.slick-initialized) .slick-slide:not(:first-child) {
+    display: none !important;
 }
 
 .campus-slider .slick-slide.slick-active {
