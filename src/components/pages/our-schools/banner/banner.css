@@ -1,47 +1,116 @@
+/* ==========================================================================
+   1. KHÓA KÍCH THƯỚC KHUNG BANNER CHÍNH (PREVENT LAYOUT SHIFT)
+   ========================================================================== */
 .custom-banner {
     position: relative;
-    height: clamp(460.546875px, 38.37890625vw, 786px)
+    width: 100%;
+    /* Sử dụng clamp để khóa chiều cao linh hoạt nhưng tuyệt đối không bị xẹp */
+    height: clamp(460.546875px, 38.37890625vw, 786px);
+    overflow: hidden; /* CHÌA KHÓA: Cắt bỏ mọi thành phần tràn ra ngoài trước khi JS chạy */
 }
 
 .custom-banner .inner-container {
     position: relative;
-    z-index: 2
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
+/* ==========================================================================
+   2. TỐI ƯU SLICK SLIDER - KHÓA CHỐNG GIẬT CLS (CRITICAL FIX)
+   ========================================================================== */
+.campus-slider-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden; /* Ngăn ảnh xếp chồng dọc đẩy dài trang web */
+}
+
+.campus-slider,
+.campus-slider .slick-list,
+.campus-slider .slick-track,
+.campus-slider .slick-slide,
+.campus-slider .slick-slide > div,
+.campus-slider .inner {
+    height: 100% !important;
+    margin: 0;
+    padding: 0;
+}
+
+/* KHÓA CLS: Ép tất cả các slide chưa active phải ẩn đi trước khi JS Slick tải xong */
+.campus-slider .slick-slide:not(.slick-active) {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.campus-slider .slick-slide.slick-active {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* Tối ưu hiển thị ảnh: Đảm bảo lấp đầy khung 100% mà không bị méo */
+.campus-slider .inner img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block;
+    /* Ngăn trình duyệt tự động tính toán lại kích thước ảnh gây giật */
+    aspect-ratio: 16 / 9; 
+}
+
+/* ==========================================================================
+   3. TỐI ƯU NỘI DUNG & CHỐNG GIẬT FONT CHỮ (FONT LAYOUT SHIFT)
+   ========================================================================== */
 .banner-content {
-    gap: clamp(26.3671875px, 2.197265625vw, 45px)
+    gap: clamp(26.3671875px, 2.197265625vw, 45px);
+    display: flex;
+    flex-direction: column;
 }
 
 .banner-content .h1-title {
     font-size: clamp(49.8046875px, 4.150390625vw, 85px);
-    line-height: 1.2
+    line-height: 1.2;
+    margin: 0;
+    /* Giữ chỗ chiều cao cơ bản để tránh giật khi font custom chưa tải xong */
+    min-height: 1.2em; 
 }
 
 .banner-content .h1-title i {
-    font-family: 'SVN-Modisframe' !important;
+    font-family: 'SVN-Modisframe', sans-serif !important;
     font-size: clamp(77.9296875px, 6.494140625vw, 133px);
-    line-height: .8
+    line-height: .8;
+    font-style: normal;
+    display: inline-block;
 }
 
 .btn-bg {
     padding: clamp(11.71875px, .9765625vw, 20px) clamp(23.4375px, 1.953125vw, 40px);
     height: clamp(60.3515625px, 5.029296875vw, 103px);
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    justify-content: center;
     border-radius: 53px;
     box-shadow: -2.121px 2.121px 3px #035878;
     font-size: clamp(28.125px, 2.34375vw, 48px);
-    font-weight: 700
+    font-weight: 700;
+    width: fit-content;
+    text-decoration: none;
 }
 
 .bg-white {
     background: #fff !important;
-    color: #5bcbf5 !important
+    color: #5bcbf5 !important;
 }
 
 .bg-icon {
     position: relative;
-    gap: clamp(15.8203125px, 1.318359375vw, 27px)
+    gap: clamp(15.8203125px, 1.318359375vw, 27px);
 }
 
 .bg-icon:before {
@@ -50,64 +119,41 @@
     position: relative;
     background: no-repeat center/cover url('/assets/images/icon-fingerprint.svg');
     width: clamp(35.15625px, 2.9296875vw, 60px);
-    height: clamp(39.84375px, 3.3203125vw, 68px)
+    height: clamp(39.84375px, 3.3203125vw, 68px);
+    flex-shrink: 0; /* Ngăn icon bị bóp méo trên màn hình nhỏ */
 }
 
-.campus-slider,
-.campus-slider .slick-list,
-.campus-slider .slick-track,
-.campus-slider .slick-slide,
-.campus-slider .slick-slide>div,
-.campus-slider .inner {
-    height: 100% !important;
-}
-.campus-slider .inner img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Chìa khóa: Tự động zoom và cắt viền đều các bên để lấp đầy khung */
-    object-position: center; /* Luôn ưu tiên giữ lại phần trung tâm của bức ảnh */
-    display: block;
-}
-
-.campus-slider-wrap {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    top: 0;
-    left: 0
-}
-
-.campus-slider .inner img {
-    width: 100%
-}
-
+/* ==========================================================================
+   4. RESPONSIVE MOBILE (KHÓA CLS TRÊN MÀN HÌNH NHỎ)
+   ========================================================================== */
 @media only screen and (max-width: 1199.98px) {
     .custom-banner {
-        height: 65.554628857381vw
+        height: 65.554628857381vw;
+        /* Thêm min-height để tuyệt đối không bao giờ bị xẹp về 0 trên mobile */
+        min-height: 250px; 
     }
 
     .custom-banner .inner-container {
         padding-left: 5.0041701417848vw;
-        padding-right: 5.0041701417848vw
+        padding-right: 5.0041701417848vw;
     }
 
     .banner-content .h1-title {
-        font-size: 7.0892410341952vw
+        font-size: 7.0892410341952vw;
     }
 
     .banner-content .h1-title i {
-        font-size: 11.092577147623vw
+        font-size: 11.092577147623vw;
     }
 
     .btn-bg {
         padding: 1.6680567139283vw 3.3361134278565vw;
         height: 8.5904920767306vw;
-        font-size: 4.0033361134279vw
+        font-size: 4.0033361134279vw;
     }
 
     .bg-icon:before {
         width: 5.0041701417848vw;
-        height: 5.6713928273561vw
+        height: 5.6713928273561vw;
     }
 }
