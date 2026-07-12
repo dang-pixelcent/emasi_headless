@@ -1,3 +1,36 @@
+/* ==========================================================================
+   1. KHÓA CHỐNG PHÌNH TO ICON LÚC TẢI TRANG (ANTI-FOUC / CLS GUARD)
+   ========================================================================== */
+/* Bắt buộc tất cả các thẻ SVG và Icon không bao giờ được vượt quá kích thước cha */
+svg,
+i[class*="bi-"],
+i[class*="fa-"],
+[class*="icon"],
+.bg-icon:before {
+  max-width: 100% !important;
+  max-height: 100px !important;
+  /* Ngăn icon tự do phóng to vô cực */
+  display: inline-block;
+}
+
+/* Kìm hãm riêng cho thẻ SVG nếu có dùng SVG inline */
+svg {
+  width: 1em;
+  height: 1em;
+}
+
+/* ==========================================================================
+   2. KHÓA LỖI TÀNG HÌNH DO AOS (CRITICAL AOS FALLBACK)
+   ========================================================================== */
+/* Nếu JS của AOS chưa khởi chạy (chưa có class .aos-init trên <html> hoặc <body>), 
+   BUỘC PHẢI HIỆN tất cả nội dung, cấm để opacity: 0 làm trắng trang! */
+html:not(.aos-init) [data-aos],
+body:not(.aos-init) [data-aos] {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+
 /* Custom Style */
 @font-face {
   font-family: 'SVN-FuturaBold';
