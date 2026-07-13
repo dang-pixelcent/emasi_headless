@@ -1,5 +1,5 @@
 .sc-university {
-    padding: clamp(67.96875px, 5.6640625vw, 116px) 0px 0px;
+    padding: clamp(56.84px, 4.73vw, 97px) 0 0;
 }
 
 .color-4c4c4c {
@@ -9,40 +9,68 @@
 .color-4c4c4c span,
 .color-4c4c4c strong {
     color: #195973 !important;
+    font-size: clamp(28.12px, 2.343750vw, 48.00px);
 }
 
 .sc-university .desc {
-    margin-top: clamp(15.8203125px, 1.318359375vw, 27px);
+    margin-top: clamp(15.82px, 1.31vw, 27px);
     color: #636363;
+    font-size: clamp(14.06px, 1.17vw, 24px);
+    line-height: 1.5;
 }
 
-.sc-map {
-    margin-top: clamp(34.5703125px, 2.880859375vw, 59px);
+.sc-university .sc-map {
+    margin-top: clamp(34.57px, 2.88vw, 59px);
 }
 
-.sc-map img {
-    width: 100%;
+.sc-logos-university {
+    padding: 0;
 }
 
-@media only screen and (max-width:1199.98px) {
+.logos-university-slider {
+    overflow: hidden;
+}
+
+.logos-university-slider .slide-logo {
+    display: flex !important;
+    justify-content: center;
+}
+
+.logos-university-slider .slide-logo .logo {
+    padding: 0 0.78vw;
+}
+
+.logos-university-slider .slide-logo img {
+    height: auto;
+    max-height: 80px;
+}
+
+@media only screen and (max-width: 1199.98px) {
     .sc-university {
-        padding: 10.508757297748124vw 0px 0px;
+        padding: 10.5vw 0 0;
     }
 
     .sc-university .sc-header {
-        padding: 0px 8.006672226855713vw;
+        padding: 0 8vw;
     }
 
     .sc-university .h2-title {
         color: #a0a0a0 !important;
-        font-size: 4.0033361134278564vw;
+        font-size: 4vw;
     }
 
     .sc-university .desc {
-        font-size: 3.0025020850708923vw;
+        font-size: 3vw;
+        margin-top: 4vw;
     }
 
-    .sc-map {
-        margin-top: 3.8365304420350292vw;
+    .sc-logos-university {
+        padding: 0 0 4.5vw;
+    }
+
+    ;
+
+    .color-4c4c4c strong {
+        font-size: 4.0033361134278564vw;
     }
 }

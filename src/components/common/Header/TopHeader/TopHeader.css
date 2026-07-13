@@ -2,20 +2,25 @@
    LOGIC HEADER: KHÔNG ĐÈ BAN ĐẦU - CHỈ ĐÈ KHI CUỘN
    ============================================================== */
 #header {
-  position: relative; /* Ban đầu nằm đúng vị trí, đẩy nội dung xuống, KHÔNG đè */
+  position: relative;
+  /* Ban đầu nằm đúng vị trí, đẩy nội dung xuống, KHÔNG đè */
   width: 100%;
   z-index: 999;
-  padding: 20px 0; /* Chiều cao header lúc to */
+  padding: 20px 0;
+  /* Chiều cao header lúc to */
   transition: padding 0.3s ease-in-out;
 }
 
 #header.header-scrolled {
-  position: fixed; /* Khi cuộn sẽ rút ra khỏi dòng chảy để bám lên trên */
+  position: fixed;
+  /* Khi cuộn sẽ rút ra khỏi dòng chảy để bám lên trên */
   top: 0;
   left: 0;
-  padding: 8px 0; /* Thu nhỏ chiều cao */
+  padding: 8px 0;
+  /* Thu nhỏ chiều cao */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  animation: slideDown 0.3s ease-out; /* Hiệu ứng trượt xuống mượt mà */
+  animation: slideDown 0.3s ease-out;
+  /* Hiệu ứng trượt xuống mượt mà */
 }
 
 /* ==============================================================
@@ -26,13 +31,17 @@
 }
 
 .language a.lang-text {
-  color: #ffffff !important; /* Mặc định trên desktop nền xanh là chữ trắng */
+  color: #ffffff !important;
+  /* Mặc định trên desktop nền xanh là chữ trắng */
   font-weight: 600;
 }
 
 .lang-icon {
-  filter: invert(1); /* Mũi tên màu trắng trên desktop */
-  color: #212529;
+  width: 0;
+  height: 0;
+  /* Màu đen trên Desktop */
+  margin-left: 5px;
+  margin-bottom: 8px;
 }
 
 .lang-lists {
@@ -40,8 +49,10 @@
   position: absolute;
   top: calc(100% + 5px);
   left: 0;
-  min-width: 80px; /* Đảm bảo đủ rộng chứa Cờ + Chữ */
-  white-space: nowrap; /* Tránh rớt dòng */
+  min-width: 80px;
+  /* Đảm bảo đủ rộng chứa Cờ + Chữ */
+  white-space: nowrap;
+  /* Tránh rớt dòng */
   padding: 8px 10px;
   background: #ffffff;
   border-radius: 4px;
@@ -55,18 +66,27 @@
 }
 
 .lang-lists a {
-  color: #005d83 !important; /* Màu mặc định của list xổ xuống */
+  color: #005d83 !important;
+  /* Màu mặc định của list xổ xuống */
   text-decoration: none;
   font-weight: 600;
 }
 
 .lang-lists a:hover {
-  color: #5ec7f2 !important; /* Đổi sang xanh lơ sáng khi đưa chuột vào */
+  color: #5ec7f2 !important;
+  /* Đổi sang xanh lơ sáng khi đưa chuột vào */
 }
 
 @keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .current-lang img {
@@ -132,8 +152,13 @@
    CSS RIÊNG CHO ĐIỆN THOẠI (DƯỚI 1200PX)
    ============================================================== */
 @media only screen and (max-width: 1199.98px) {
-  .only-mobile { display: block; }
-  .only-desktop { display: none; }
+  .only-mobile {
+    display: block;
+  }
+
+  .only-desktop {
+    display: none;
+  }
 
   /* Ép Header hoàn toàn màu trắng */
   body header#header,
@@ -155,7 +180,8 @@
   body .header-nav {
     flex-direction: row !important;
     align-items: center !important;
-    gap: 20px; /* Khoảng cách giữa chữ VI và Nút Menu */
+    gap: 20px;
+    /* Khoảng cách giữa chữ VI và Nút Menu */
   }
 
   /* Gỡ bỏ các thuộc tính lơ lửng của file cũ */
@@ -171,7 +197,7 @@
     position: relative !important;
     top: 0 !important;
     right: 0 !important;
-    width: 30px; 
+    width: 30px;
     height: 30px;
     display: block;
   }
@@ -181,26 +207,35 @@
     transform: translateY(-50%);
     right: 0 !important;
   }
+
   /* --------------------------------------------------- */
 
   /* Đổi chữ ngôn ngữ thành màu xanh theo nguyên bản trên nền trắng */
   body .language a.lang-text {
-    color: #5ec7f2 !important; 
+    color: #5ec7f2 !important;
     font-weight: 600;
   }
-  
+
   /* Tắt filter để mũi tên giữ nguyên màu xanh/đen */
   body .lang-icon {
-    filter: none !important; 
+    filter: none !important;
     width: 1.5vw !important;
   }
 
-  .current-lang img { width: 4.07vw; }
+  .current-lang img {
+    width: 4.07vw;
+  }
 
   /* Đẩy menu xổ xuống qua trái để ko bị tràn viền màn hình điện thoại */
-  .lang-lists { 
-    left: unset; 
-    right: 0; 
+  /* .lang-lists {
+    left: unset;
+    right: 0;
+  } */
+   .lang-lists {
+    left: 50% !important;
+    right: unset !important;
+    transform: translateX(-50%) !important; /* Dịch chuyển chính giữa so với nút cờ */
+    min-width: 70px; /* Thu nhỏ chiều rộng một chút trên mobile cho đẹp */
   }
 
   /* Input tìm kiếm cho mobile */
@@ -222,5 +257,8 @@
 
   .m-search-bw {
     padding: 0;
+  }
+  .lang-icon{
+    margin-top: 3px;
   }
 }

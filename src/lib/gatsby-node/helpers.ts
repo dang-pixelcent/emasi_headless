@@ -347,6 +347,19 @@ export const getAllPages = async (
                       
                     }
                   }
+                  ... on PageBuilderPagebuilderdataProgramMainTitleLayout {
+                      title
+                      subTitle
+                      desc
+                  }
+                  ... on PageBuilderPagebuilderdataProgramUniversityLayout{
+                      title
+                      desc
+                      mapImage{node{sourceUrl}}
+                      partners{
+                        image{node{sourceUrl}}
+                      }
+                    }
                 } 
               } 
             }

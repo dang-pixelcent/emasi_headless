@@ -1,93 +1,52 @@
-// import React from "react";
-// import "./main_title.css";
-
-// export default function MainTitle(data) {
-//   return (
-//     <section className="sc-main-title">
-//       <div className="inner-container">
-//         <div
-//           className="header-content"
-//           data-aos="fade-up"
-//         >
-//           <div className="breadcrumb text-uppercase">
-//             <a href="/" target="_self" rel="noreferrer">
-//               Trang chủ
-//             </a>
-//             <span>-</span>
-//             <a
-//               href="{data.uri}/"
-//               target="_self"
-//               rel="noreferrer"
-//             >
-//               data.title 
-//             </a>
-//           </div>
-//         </div>
-
-//         <h4
-//           className="subtitle fw-300"
-//           data-aos="fade-up"
-//         >
-//           Tổng quan
-//         </h4>
-
-//         <h4
-//           className="title fw-bold"
-//           data-aos="fade-up"
-//         >
-//           Chương Trình Song Ngữ Quốc Tế EMASI
-//         </h4>
-
-//         <div
-//           className="blockquote fw-300"
-//           data-aos="fade-up"
-//         >
-//           <p>
-//             Chương trình đào tạo tại EMASI được biên soạn chuyên biệt với mục
-//             tiêu kiến tạo các học sinh toàn diện, xuất sắc trong học tập lẫn
-//             phát triển cá nhân thông qua nền giáo dục song ngữ Tiếng Việt và
-//             Tiếng Anh. Chương trình tích hợp độc đáo kết hợp chương trình Bộ
-//             Giáo dục & Đào tạo Việt Nam (MOET) và chương trình Quốc tế Cambridge
-//             cùng với lợi thế từ hai lộ trình học tập linh hoạt tại EMASI sẽ là
-//             hành trang vô giá cho thế hệ tiên phong thấm nhuần giá trị truyền
-//             thống Việt Nam và sở hữu tư duy toàn cầu.
-//           </p>
-
-//           <p>
-//             Với kiểm định toàn diện từ WASC (Hiệp hội các trường học và đại học
-//             miền Tây Hoa Kỳ), chương trình đào tạo tại EMASI không chỉ đảm bảo
-//             nền giáo dục theo tiêu chuẩn quốc tế mà còn mở ra nhiều cơ hội học
-//             tập và phát triển cho học sinh trong môi trường song ngữ hiện đại.
-//           </p>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
 
 import React from "react";
 import "./main_title.css";
 
-export default function MainTitle({ data, children }: { data: any, children: React.ReactNode }) {
+interface MainTitleProps {
+  data: {
+    uri: string;
+    title: string;
+    subTitle?: string;
+    desc?: string;
+  };
+  lang?: string; // Nhận thêm prop lang từ WPPage
+}
+
+export default function MainTitle({ data, lang = 'vi' }: MainTitleProps) {
+  // Bộ từ điển nhỏ cho các text tĩnh
+  const i18n = {
+    vi: { home: "Trang chủ" },
+    en: { home: "Home" }
+  };
+
+  const currentLang = (lang?.toLowerCase() === 'en' ? 'en' : 'vi') as 'vi' | 'en';
+
   return (
     <section className="sc-main-title">
       <div className="inner-container">
-        
-        {/* Phần Breadcrumb giữ nguyên */}
+        {/* Breadcrumb */}
         <div className="header-content" data-aos="fade-up">
           <div className="breadcrumb text-uppercase">
-            <a href="/" target="_self" rel="noreferrer">Trang chủ</a>
+            <a href="/" target="_self">{i18n[currentLang].home}</a>
             <span> - </span>
-            <a href={data.uri} target="_self" rel="noreferrer">{data.title}</a>
+            <a href={data.uri} target="_self">{data.title}</a>
           </div>
         </div>
 
-        {/* TRÚT TRỰC TIẾP HTML CỦA WORDPRESS VÀO ĐÂY */}
-        <div className="wp-dynamic-content" data-aos="fade-up">
-          {children}
-        </div>
-
+        {/* Nội dung chính */}
+        {data.subTitle && (
+          <h4 className="subtitle fw-300" data-aos="fade-up">{data.subTitle}</h4>
+        )}
+        
+        <h4 className="title fw-bold" data-aos="fade-up">{data.title}</h4>
+        
+        {data.desc && (
+          <div 
+            className="blockquote fw-300" 
+            data-aos="fade-up"
+            dangerouslySetInnerHTML={{ __html: data.desc }} 
+          />
+        )}
       </div>
     </section>
   );

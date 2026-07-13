@@ -23,6 +23,8 @@ import AllProgramSection from "@/components/pages/program/all_program";
 import Educational from "@/components/pages/program/educational";
 import Fee from "@/components/pages/sections/fee";
 import Careers from "@/components/pages/sections/careers";
+import MainTitle from "@/components/pages/program/main_title";
+import University from "@/components/pages/program/university";
 // import Events from "@/components/pages/sections/events";
 const renderComponent = (data: any, page: any) => {
   // Kiểm tra __typename từ Page Builder
@@ -110,7 +112,12 @@ const renderComponent = (data: any, page: any) => {
     case 'PageBuilderPagebuilderdataFeeLayout':
       console.log("fee: ", data);
       return <Fee data={data} />
-    case 'PageBuilderPagebuilderdataCareerLayout':
+    case 'PageBuilderPagebuilderdataProgramMainTitleLayout':
+      console.log("main layout: ",data);
+      return <MainTitle data={data} lang={page.language?.code}/>;
+    case 'PageBuilderPagebuilderdataProgramUniversityLayout':
+        console.log('program us: ',data);
+        return <University data={data}/>
     default:
       console.warn("⚠️ Chưa có component cho layout:", type);
       return null;
