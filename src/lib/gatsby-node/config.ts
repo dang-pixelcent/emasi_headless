@@ -15,6 +15,7 @@ export const API_CONFIG = {
 export const TEMPLATES = {
   PAGE: path.resolve("./src/templates/wp-page.tsx"),
   POST: path.resolve("./src/templates/wp-post.tsx"),
+  MEMBER: path.resolve("./src/templates/wp-member.tsx"),
 };
 
 // 3. CẤU HÌNH POST TYPES CHO MAIN SITE

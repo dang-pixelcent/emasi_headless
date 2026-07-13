@@ -8,8 +8,9 @@ import {
 } from "./config";
 import {
   getAllPages,
-  getContentNodes,
+  getAllPosts,
   getThemeOptions,
+  getAllMembers,
   normalizePath,
 } from "./helpers";
 import { WPNode } from "./types";
@@ -36,6 +37,7 @@ export const runCreatePagesV2 = async ({
   const result = await graphql<{
     allWpCustomPage: { nodes: any[] };
     allWpCustomPost: { nodes: any[] };
+    allWpCustomMember: { nodes: any[] };
     allWpThemeOptions: { nodes: any[] };
   }>(`
     query AllContentNodes {
@@ -68,6 +70,38 @@ export const runCreatePagesV2 = async ({
           leftPanel
         }
       }
+      allWpCustomPost {
+        nodes {
+          id
+          wpId
+          uri
+          slug
+          title
+          language { code }
+           translations {
+            uri
+            language {
+              code
+            }
+          }
+        }
+      }
+      allWpCustomMember {
+        nodes {
+          id
+          wpId
+          uri
+          slug
+          title
+          language { code }
+           translations {
+            uri
+            language {
+              code
+            }
+          }
+        }
+      }
     }
   `);
 
@@ -78,18 +112,22 @@ export const runCreatePagesV2 = async ({
 
   const data = result.data!;
   const pages = data.allWpCustomPage?.nodes || [];
+  const posts = data.allWpCustomPost?.nodes || [];
+  const members = data.allWpCustomMember?.nodes || [];
   const themeOptionsNodes = data.allWpThemeOptions?.nodes || [];
 
   const globalThemeData = themeOptionsNodes.find((n) => n.siteId === "main") || null;
 
-  console.log(`📊 NODES from Gatsby Data Layer:`);
-  console.log(`   - Pages: ${pages.length}`);
+  console.log(`📊 NODES loaded from Gatsby Data Layer:`);
+  console.log(`   - Pages:   ${pages.length}`);
+  console.log(`   - Posts:   ${posts.length}`);
+  console.log(`   - Members: ${members.length}`);
 
   // =============================
   // 2. GENERATE SEARCH INDEX
   // =============================
   console.log("🔍 Generating Local Search Index...");
-  const allSearchNodes = [...pages];
+  const allSearchNodes = [...pages, ...posts, ...members];
 
   const searchIndex = allSearchNodes
     .filter((node) => node.title && (node.uri || node.slug))
@@ -142,11 +180,42 @@ export const runCreatePagesV2 = async ({
       defer: false,
     });
   });
-
   console.log(`✅ Created ${pages.length} Pages`);
-  console.log("page: " + JSON.stringify(pages, null, 2));
+  // console.log("page: " + JSON.stringify(pages, null, 2));
   activity.end();
   console.log("✅ FINISHED creating all pages (V2 Optimized).\n");
+
+  posts.forEach((post) => {
+    const postPath = normalizePath(post.uri || `/tin-tuc/${post.slug}/`);
+    createPage({
+      path: postPath,
+      component: TEMPLATES.POST, // Đảm bảo trong config.ts của bạn đã định nghĩa TEMPLATES.POST
+      context: {
+        id: post.id,
+        themeOptions: globalThemeData,
+        type: "post",
+      },
+      defer: false,
+    });
+  });
+  console.log(`✅ Created ${posts.length} Post pages`);
+
+  // --- B. TẠO MEMBER PAGES (Nhân sự) ---
+  // Giả sử bạn đã có file template tại src/templates/MemberTemplate.tsx
+  members.forEach((member) => {
+    const memberPath = normalizePath(member.uri || `/nhan-su/${member.slug}/`);
+    createPage({
+      path: memberPath,
+      component: TEMPLATES.MEMBER, // Đảm bảo trong config.ts của bạn đã định nghĩa TEMPLATES.MEMBER
+      context: {
+        id: member.id,
+        themeOptions: globalThemeData,
+        type: "member",
+      },
+      defer: false,
+    });
+  });
+  console.log(`✅ Created ${members.length} Member pages`);
 };
 
 // =============================

@@ -40,7 +40,6 @@ const renderComponent = (data: any, page: any) => {
 
     // Thêm các case khác khi bạn có thêm các layout mới từ Page Builder
     case 'PageBuilderPagebuilderdataBannerLayout':
-      console.log("Đã vào case Banner!", data.bannergallery);
 
       // 1. Tách mảng nodes ra một biến riêng để chắc chắn không sai chính tả
       const rawNodes = data.bannergallery?.nodes || [];
@@ -54,69 +53,50 @@ const renderComponent = (data: any, page: any) => {
         };
       });
 
-      console.log("Banner truyền vào component:", bannerItems);
       // return <Banner items={bannerItems} />;
       return <Banner data={data} />;
     // return <BannerPlus></BannerPlus>
 
 
     case 'PageBuilderPagebuilderdataTeacherLayout':
-      console.log("Đã vào case Teacher Layout!", data.teamTeach);
       // Truyền trực tiếp data (chứa teamTeach) sang component MainContentPeople
       return <MainContentPeople data={data} />;
 
     case 'PageBuilderPagebuilderdataBadgetsLayout':
-      console.log("Đã vào case Badgets Layout!", data.listItem);
       // Xử lý dữ liệu cho layout Badgets
       return <Badgets data={data} />;
     case 'PageBuilderPagebuilderdataFacilitiesLayout':
-      console.log("Đã vào case Facilities Layout!", data.listItem);
       return <Facilities lang={page.language?.code} />;
     case 'PageBuilderPagebuilderdataEducationRouteLayout':
-      console.log("Đã vào case Education Route Layout!", data);
       // Xử lý dữ liệu cho layout Education Route
       return <EducationRoute data={data} />;
     case 'PageBuilderPagebuilderdataEnviromentsLayout':
-      console.log("Đã vào case Environment Layout!", data);
       return <Environments data={data} />;
     case 'PageBuilderPagebuilderdataNewEventLayout':
-      console.log("Đã vào case New Event Layout!", data);
       return <News data={data} />;
     case 'PageBuilderPagebuilderdataTuitionFeeLayout':
-      console.log("Đã vào case Tuition Fee Layout!", data);
       return <Fees data={data} />;
     case 'PageBuilderPagebuilderdataSharePublicLayout':
-      console.log("Đã vào case Share layout!", data);
       return <PublicShare data={data} />;
     case 'PageBuilderPagebuilderdataMapLayout':
-      console.log("Map: ", data);
       return <Map data={data} />;
     case 'PageBuilderPagebuilderdataProgramEmasiAboutLayout':
-      console.log("About: ", data);
       return <EmasiAbout data={data} />
     case 'PageBuilderPagebuilderdataSchoolListLayout':
-      console.log('school list: ', data);
       return <SchoolList data={data} />;
     case 'PageBuilderPagebuilderdataValuesLayout':
-      console.log('values: ', data);
       return <Values data={data} />;
     case 'PageBuilderPagebuilderdataProgramHocHieuEmasiLayout':
-      console.log("hoc hieu: ", data);
       return <HocHieu data={data} />;
     case 'PageBuilderPagebuilderdataProgramAllLayout':
-      console.log("pro all: ", data);
       return <AllProgramSection data={data} />;
     case 'PageBuilderPagebuilderdataProgramEducationalAspectsLayout':
-      console.log("expect: ", data);
       return <Educational data={data} />;
     case 'PageBuilderPagebuilderdataFeeLayout':
-      console.log("fee: ", data);
       return <Fee data={data} />
     case 'PageBuilderPagebuilderdataProgramMainTitleLayout':
-      console.log("main layout: ",data);
       return <MainTitle data={data} lang={page.language?.code}/>;
     case 'PageBuilderPagebuilderdataProgramUniversityLayout':
-        console.log('program us: ',data);
         return <University data={data}/>
     default:
       console.warn("⚠️ Chưa có component cho layout:", type);

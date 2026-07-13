@@ -130,7 +130,7 @@ const WPPage = ({ data, pageContext }: PageProps<WpPageData>) => {
         )}
 
         {/* VÙNG 3: DISCOVER MORE (Chỉ render khi trong CMS có tạo block này) */}
-        {discoverBlock && <Discover data={discoverBlock} />}
+        {discoverBlock && <Discover data={discoverBlock} lang={targetLang} />}
 
         {/* VÙNG 4: FORM ĐĂNG KÝ THAM QUAN (Luôn nằm ở dưới cùng, trước Footer của Layout) */}
         {/* <TourRegistrationForm /> */}
