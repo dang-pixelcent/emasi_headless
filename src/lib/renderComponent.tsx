@@ -81,6 +81,7 @@ const renderComponent = (data: any, page: any) => {
     case 'PageBuilderPagebuilderdataMapLayout':
       return <Map data={data} />;
     case 'PageBuilderPagebuilderdataProgramEmasiAboutLayout':
+      console.log(data);
       return <EmasiAbout data={data} />
     case 'PageBuilderPagebuilderdataSchoolListLayout':
       return <SchoolList data={data} />;

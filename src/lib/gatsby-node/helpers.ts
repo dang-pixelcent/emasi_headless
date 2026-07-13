@@ -252,6 +252,7 @@ export const getAllPages = async (
                   }
                   ... on PageBuilderPagebuilderdataProgramEmasiAboutLayout{
                     title
+                    desc
                     subTitle
                     image{node{sourceUrl}}
                     button{url target title}
