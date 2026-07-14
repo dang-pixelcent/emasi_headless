@@ -20,10 +20,55 @@ export default function RegisterSection() {
   };
 
   // Xử lý bấm nút Gửi
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   if (!formData.name || !formData.phone || !formData.email) {
+  //     alert("Vui lòng điền đầy đủ Họ tên, Số điện thoại và Email!");
+  //     return;
+  //   }
+
+  //   setStatus({ loading: true, success: false, error: "" });
+
+  //   try {
+  //     const res = await fetch("/api/send-email", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify(formData),
+  //     });
+
+  //     const result = await res.json();
+  //     if (res.ok && result.success) {
+  //       setStatus({ loading: false, success: true, error: "" });
+  //       // Xóa trắng form sau khi gửi thành công
+  //       setFormData({ name: "", grade: "Mẫu giáo", campus: "EMASI Nam Long", phone: "", email: "", message: "" });
+  //     } else {
+  //       setStatus({ loading: false, success: false, error: result.message || "Có lỗi xảy ra!" });
+  //     }
+  //   } catch (err) {
+  //     setStatus({ loading: false, success: false, error: "Không thể kết nối đến máy chủ." });
+  //   }
+  // };
+  // Xử lý bấm nút Gửi
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // 1. Kiểm tra rỗng
     if (!formData.name || !formData.phone || !formData.email) {
-      alert("Vui lòng điền đầy đủ Họ tên, Số điện thoại và Email!");
+      setStatus({ loading: false, success: false, error: "Vui lòng điền đầy đủ Họ tên, Số điện thoại và Email!" });
+      return;
+    }
+
+    // 2. Kiểm tra định dạng Email bằng Regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setStatus({ loading: false, success: false, error: "Email không đúng định dạng (VD: ten@gmail.com)." });
+      return;
+    }
+
+    // 3. Kiểm tra định dạng Số điện thoại VN bằng Regex (10 số, bắt đầu bằng 03, 05, 07, 08, 09)
+    const phoneRegex = /^(0[3|5|7|8|9])+([0-9]{8})\b$/;
+    if (!phoneRegex.test(formData.phone)) {
+      setStatus({ loading: false, success: false, error: "Số điện thoại không hợp lệ (Vui lòng nhập 10 số hợp lệ)." });
       return;
     }
 
@@ -48,7 +93,6 @@ export default function RegisterSection() {
       setStatus({ loading: false, success: false, error: "Không thể kết nối đến máy chủ." });
     }
   };
-
   return (
     <section id="dangky" className="sc-register">
       <div className="bg-gray-ems">
@@ -75,7 +119,7 @@ export default function RegisterSection() {
 
                 <form className="ninja-forms-form" onSubmit={handleSubmit}>
                   <div className="ninja-forms-all-fields-wrap">
-                    
+
                     {/* Họ tên */}
                     <div className="field-wrap">
                       <div className="nf-field-element">
@@ -143,9 +187,9 @@ export default function RegisterSection() {
                     {/* Submit Button */}
                     <div className="field-wrap submit-wrap">
                       <div className="nf-field-element">
-                        <input 
-                          type="submit" 
-                          value={status.loading ? "ĐANG GỬI..." : "ĐĂNG KÝ"} 
+                        <input
+                          type="submit"
+                          value={status.loading ? "ĐANG GỬI..." : "ĐĂNG KÝ"}
                           disabled={status.loading}
                           style={{ opacity: status.loading ? 0.7 : 1, cursor: status.loading ? "not-allowed" : "pointer" }}
                         />
