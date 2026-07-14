@@ -1,45 +1,4 @@
-// import React from "react";
-// import { graphql, PageProps } from "gatsby";
 
-// export default function MemberTemplate({ data }: PageProps<any>) {
-//   const member = data.wpCustomMember;
-
-//   return (
-//     <div style={{ padding: "50px", fontFamily: "sans-serif" }}>
-//       <h1>{member.title}</h1>
-//       <p><strong>Chức vụ:</strong> {member.memberInfo?.position}</p>
-      
-//       <hr />
-//       <h3>Ảnh đại diện:</h3>
-//       {member.featuredImage?.node?.sourceUrl && (
-//         <img src={member.featuredImage.node.sourceUrl} alt={member.title} style={{ width: "200px" }} />
-//       )}
-      
-//       <hr />
-//       <h3>Toàn bộ dữ liệu RAW:</h3>
-//       <pre style={{ background: "#f4f4f4", padding: "10px" }}>
-//         {JSON.stringify(member, null, 2)}
-//       </pre>
-//     </div>
-//   );
-// }
-
-// export const query = graphql`
-//   query GetSingleMember($id: String!) {
-//     wpCustomMember(id: { eq: $id }) {
-//       uri
-//       title
-//       content
-//       featuredImage
-//       memberInfo
-//       language { code }
-//       translations {
-//         uri
-//         language { code }
-//       }
-//     }
-//   }
-// `;
 import React from "react";
 import { graphql, PageProps } from "gatsby";
 import { Helmet } from "react-helmet";
