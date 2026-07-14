@@ -82,7 +82,7 @@ const WPPage = ({ data, pageContext }: PageProps<WpPageData>) => {
     <>
       <Helmet htmlAttributes={{ lang: currentLang }}>
         <title>{page.title}</title>
-        <link rel="icon" type="image/png" href="/assets/images/fav-icon/favicon.png" />
+        <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
       </Helmet>
 
       <Layout
