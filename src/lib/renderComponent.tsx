@@ -72,6 +72,7 @@ const renderComponent = (data: any, page: any) => {
       return <EducationRoute data={data} />;
     case 'PageBuilderPagebuilderdataEnviromentsLayout':
       return <Environments data={data} />;
+      // return <Environments/>
     case 'PageBuilderPagebuilderdataNewEventLayout':
       return <News data={data} />;
     case 'PageBuilderPagebuilderdataTuitionFeeLayout':
