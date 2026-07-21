@@ -65,7 +65,7 @@ interface MainContentPlusProps {
 }
 
 export default function MainContentPlus({ data, children }: MainContentPlusProps) {
-  console.log("page ", children);
+  // console.log("page ", children);
 
   return (
     <section className="sc-main-content">

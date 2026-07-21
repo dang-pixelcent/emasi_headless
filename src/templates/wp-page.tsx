@@ -76,9 +76,9 @@ const WPPage = ({ data, pageContext }: PageProps<WpPageData>) => {
 
   // Kiểm tra xem trang này CÓ SIDEBAR hay không (chỉ cần có block và có dữ liệu list bên trong)
   const hasSidebar = Boolean(sidebarBlock && sidebarBlock?.list?.length > 0);
-  console.log("Page data:", JSON.stringify(page, null, 2));
-  console.log("sidebarBlock:", sidebarBlock);
-  console.log("hasSidebar:", hasSidebar);
+  // console.log("Page data:", JSON.stringify(page, null, 2));
+  // console.log("sidebarBlock:", sidebarBlock);
+  // console.log("hasSidebar:", hasSidebar);
   // --- 2. RENDER GIAO DIỆN ---
   return (
     <>
