@@ -56,6 +56,17 @@ export const getAllPages = async (
               language {
                 code
               }
+              seo {
+                title
+                metaDesc
+                focuskw
+                canonical
+                opengraphTitle
+                opengraphDescription
+                opengraphImage {
+                  mediaItemUrl
+                }
+              }
               translations {
                 uri
                 language {
@@ -524,6 +535,17 @@ export const getAllPosts = async (
                   code
                 }
               }
+              seo {
+              title
+              metaDesc
+              focuskw
+              canonical
+              opengraphTitle
+              opengraphDescription
+              opengraphImage {
+                mediaItemUrl
+                }
+              }
             }
           }
           pageInfo {
@@ -602,6 +624,17 @@ export const getAllMembers = async (
                 language {
                   code
                 }
+              }
+              seo {
+              title
+              metaDesc
+              focuskw
+              canonical
+              opengraphTitle
+              opengraphDescription
+              opengraphImage {
+                mediaItemUrl
+              }
               }
             }
           }

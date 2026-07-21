@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet";
 import Layout from "@/components/common/Layout";
 import RegisterSection from "@/components/pages/home/register";
 import MainContentPlus from "@/components/pages/sections/main_content_plus";
-
+import SEO from "@/components/common/SEO";
 interface MemberData {
   wpCustomMember: {
     title: string;
@@ -17,6 +17,7 @@ interface MemberData {
     memberInfo: any;    // JSON
     language: { code: string } | null;
     translations: { uri: string; language: { code: string } }[] | null;
+    seo: JSON
   };
 }
 
@@ -38,11 +39,12 @@ const MemberTemplate = ({ data, pageContext }: PageProps<MemberData>) => {
 
   return (
     <>
-      <Helmet htmlAttributes={{ lang: currentLang }}>
+      {/* <Helmet htmlAttributes={{ lang: currentLang }}>
         <title>{member.title}</title>
-      </Helmet>
+      </Helmet> */}
 
       <Layout currentLang={currentLang} switchUri={switchUri} themeOption={themeOptions}>
+        <SEO metaHtml={member.seo} fallbackTitle={member.title} lang={currentLang} />
         <div className="container" style={{ marginTop: '50px', marginBottom: '50px' }}>
           <div className="row">
             {/* Cột Nội dung chính (Chức vụ + Ảnh + Nội dung) */}
@@ -87,6 +89,7 @@ export const query = graphql`
         uri
         language { code }
       }
+      seo
     }
   }
 `;

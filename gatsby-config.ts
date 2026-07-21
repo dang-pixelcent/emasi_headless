@@ -23,7 +23,7 @@ const config: GatsbyConfig = {
     // PARALLEL_SOURCING: true,
   },
   siteMetadata: {
-    title: `prcpb`,
+    title: `emasi`,
     siteUrl: MAIN_SITE_URL,
   },
 
@@ -81,8 +81,8 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `PRCPB`,
-        short_name: `PRCPB`,
+        name: `EMASI`,
+        short_name: `EMASI`,
         start_url: `/`,
         display: `standalone`,
         icon: `static/favicon.png`,

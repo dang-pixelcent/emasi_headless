@@ -9,7 +9,7 @@ import Sidebar from "@/components/pages/sections/sidebar";
 import Discover from "@/components/pages/sections/discover_more";
 import RegisterSection from "@/components/pages/home/register";
 import MainContentPlus from "@/components/pages/sections/main_content_plus";
-
+import SEO from "@/components/common/SEO";
 interface PostData {
   wpCustomPost: {
     title: string;
@@ -18,6 +18,7 @@ interface PostData {
     language: { code: string } | null;
     translations: { uri: string; language: { code: string } }[] | null;
     // Nếu bạn muốn lấy sidebar từ post, có thể cần thêm field sidebar hoặc dùng config cố định
+    seo:JSON
   };
 }
 
@@ -35,11 +36,12 @@ const PostTemplate = ({ data, pageContext }: PageProps<PostData>) => {
 
   return (
     <>
-      <Helmet htmlAttributes={{ lang: currentLang }}>
+      {/* <Helmet htmlAttributes={{ lang: currentLang }}>
         <title>{post.title}</title>
-      </Helmet>
+      </Helmet> */}
 
       <Layout currentLang={currentLang} switchUri={switchUri} themeOption={themeOptions}>
+        <SEO metaHtml={post.seo} fallbackTitle={post.title} lang={currentLang} />
         <div className="container" style={{ marginTop: '50px', marginBottom: '50px' }}>
           <div className="row">
             {/* Cột Nội dung chính */}
@@ -78,6 +80,7 @@ export const query = graphql`
         uri
         language { code }
       }
+      seo
     }
   }
 `;

@@ -23,9 +23,9 @@ export const createPages: GatsbyNode["createPages"] = async (args) => {
   await runCreatePagesV2(args);
 };
 
-export const onPostBuild: GatsbyNode["onPostBuild"] = async (args) => {
-  await generateGeoSitemap(args);
-};
+// export const onPostBuild: GatsbyNode["onPostBuild"] = async (args) => {
+//   await generateGeoSitemap(args);
+// };
 //
 export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({
   actions,

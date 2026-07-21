@@ -10,6 +10,7 @@ import Sidebar from "@/components/pages/sections/sidebar";
 import Discover from "@/components/pages/sections/discover_more";
 import Careers from "@/components/pages/sections/careers";
 import RegisterSection from "@/components/pages/home/register";
+import SEO from "@/components/common/SEO";
 // import TourRegistrationForm from "@/components/common/TourRegistrationForm"; // <-- Import component Form đăng ký tham quan của bạn vào đây
 
 interface WpPageData {
@@ -29,6 +30,7 @@ interface WpPageData {
         code: string;
       };
     }[] | null;
+    seo?: string;
   };
 }
 
@@ -80,16 +82,16 @@ const WPPage = ({ data, pageContext }: PageProps<WpPageData>) => {
   // --- 2. RENDER GIAO DIỆN ---
   return (
     <>
-      <Helmet htmlAttributes={{ lang: currentLang }}>
+      {/* <Helmet htmlAttributes={{ lang: currentLang }}>
         <title>{page.title}</title>
         <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
-      </Helmet>
-
+      </Helmet> */}
       <Layout
         currentLang={currentLang}
         switchUri={switchUri}
         themeOption={themeOptions}
       >
+        <SEO metaHtml={page.seo} fallbackTitle={page.title} lang={currentLang} />
         {/* VÙNG 1: BANNER TRÀN VIỀN (Luôn ở trên cùng) */}
         {bannerBlocks.map((block: any, idx: number) => (
           <React.Fragment key={`banner-${idx}`}>
@@ -107,7 +109,6 @@ const WPPage = ({ data, pageContext }: PageProps<WpPageData>) => {
                       {renderComponent(block, page)}
                     </React.Fragment>
                   ))
-
                 }
               </div>
 
@@ -117,8 +118,6 @@ const WPPage = ({ data, pageContext }: PageProps<WpPageData>) => {
             </div>
           </div>
         ) : (
-          /* TRƯỜNG HỢP 2: KHÔNG CÓ SIDEBAR -> Render trực tiếp các Section ra ngoài */
-          /* Bỏ hoàn toàn container-fluid, row, col-12 và khoảng trống 50px ép buộc */
           <div className="main-sections-wrapper">
 
             {contentBlocks.map((block: any, idx: number) => (
@@ -129,12 +128,9 @@ const WPPage = ({ data, pageContext }: PageProps<WpPageData>) => {
           </div>
         )}
 
-        {/* VÙNG 3: DISCOVER MORE (Chỉ render khi trong CMS có tạo block này) */}
         {discoverBlock && <Discover data={discoverBlock} lang={targetLang} />}
 
-        {/* VÙNG 4: FORM ĐĂNG KÝ THAM QUAN (Luôn nằm ở dưới cùng, trước Footer của Layout) */}
-        {/* <TourRegistrationForm /> */}
-        <RegisterSection/>
+        <RegisterSection />
       </Layout>
     </>
   );
@@ -161,6 +157,7 @@ export const query = graphql`
           code
         }
       }
+      seo
     }
   }
 `;
