@@ -95,8 +95,8 @@ const Layout = ({ children, currentLang, switchUri, themeOption }: LayoutProps) 
 
   // Chặn render nếu không có themeOption để tránh sụp UI
   if (!themeOption) return null;
-  console.log("=== LAYOUT RENDER ===");
-  console.log("footer:" , footer);
+  // console.log("=== LAYOUT RENDER ===");
+  // console.log("footer:" , footer);
   return (
     <>
       <Helmet>
