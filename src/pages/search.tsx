@@ -20,7 +20,6 @@ interface PaginationProps {
 const Pagination = ({ totalPages, currentPage, onPageChange }: PaginationProps) => {
     const pages: (number | string)[] = [];
 
-    // Logic tự động thu gọn số trang thành dấu "..." (ví dụ: 1 2 3 4 ... 33)
     for (let i = 1; i <= totalPages; i++) {
         if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
             pages.push(i);
@@ -47,12 +46,12 @@ const Pagination = ({ totalPages, currentPage, onPageChange }: PaginationProps) 
                     onClick={() => typeof page === "number" && onPageChange(page)}
                     disabled={page === "..."}
                     style={{
-                        background: "transparent",                   // Không có màu nền (khớp ảnh)
-                        border: "none",                              // Không có khung viền (khớp ảnh)
+                        background: "transparent",
+                        border: "none",
                         outline: "none",
-                        color: page === currentPage ? "#57cbf5" : "#003e58", // Màu xanh sáng cho trang hiện tại, màu xanh đậm cho trang khác
+                        color: page === currentPage ? "#57cbf5" : "#003e58",
                         cursor: page === "..." ? "default" : "pointer",
-                        fontSize: "22px",                            // Chữ số to rõ giống ảnh
+                        fontSize: "22px",
                         fontWeight: page === currentPage ? "700" : "500",
                         padding: "5px 10px",
                         transition: "all 0.2s ease"
@@ -73,16 +72,23 @@ const SearchPage = () => {
     const [results, setResults] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 5; // Hiển thị 5 bài mỗi trang
+    const [isMobile, setIsMobile] = useState(false); // State kiểm tra mobile
+    const itemsPerPage = 5;
 
-    // Lấy từ khóa từ URL (ví dụ: ?s=f)
     const query = new URLSearchParams(location.search).get("s") || "";
-
-    // Tự động phát hiện tiếng Anh hay tiếng Việt dựa vào đường dẫn hoặc mặc định 'vi'
     const isEn = location.pathname.includes("/en");
     const currentLang = isEn ? "en" : "vi";
 
-    // Bộ từ điển nhỏ cho nút bấm và thông báo
+    // Theo dõi kích thước màn hình an toàn trên client-side
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     const i18n = {
         vi: {
             title: `Kết quả tìm kiếm cho: ${query}`,
@@ -101,7 +107,6 @@ const SearchPage = () => {
     };
 
     useEffect(() => {
-        // Đọc dữ liệu từ file search-data.json trong folder public
         fetch("/search-data.json")
             .then((res) => res.json())
             .then((data) => {
@@ -121,13 +126,11 @@ const SearchPage = () => {
             });
     }, [query]);
 
-    // Logic cắt mảng để phân trang
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = results.slice(indexOfFirstItem, indexOfLastItem);
     const totalPages = Math.ceil(results.length / itemsPerPage);
 
-    // Xử lý khi chuyển trang -> Tự động cuộn mượt lên đầu danh sách
     const handlePageChange = (pageNumber: number) => {
         setCurrentPage(pageNumber);
         window.scrollTo({ top: 300, behavior: "smooth" });
@@ -157,7 +160,7 @@ const SearchPage = () => {
                                     : (currentLang === 'vi' ? 'Tìm kiếm' : 'Search')}
                             </title>
                         </Helmet>
-                        {/* Banner Tiêu đề trang */}
+
                         <MainTitle
                             data={{
                                 uri: "/search",
@@ -167,15 +170,16 @@ const SearchPage = () => {
                             lang={currentLang}
                         />
 
-                        {/* Khu vực kết quả tìm kiếm */}
+                        {/* Khu vực kết quả tìm kiếm đã fix chuẩn lề cho Mobile */}
                         <div className="container" style={{
-                            // Trên máy tính margin-left là 250px, trên điện thoại (dưới 768px) thì là 0 hoặc 15px
-                            marginLeft: typeof window !== 'undefined' && window.innerWidth < 768 ? "15px" : "250px",
-                            marginRight: "15px",
+                            marginLeft: isMobile ? "15px" : "250px",
+                            marginRight: isMobile ? "15px" : "auto",
+                            width: isMobile ? "calc(100% - 30px)" : "auto", // Tự co giãn vừa khít màn hình điện thoại
                             marginTop: "60px",
                             marginBottom: "60px",
                             minHeight: "50vh",
-                            maxWidth: "960px"
+                            maxWidth: "960px",
+                            boxSizing: "border-box"
                         }}>
                             {loading ? (
                                 <p style={{ fontSize: "18px", color: "#666" }}>{i18n[currentLang].searching}</p>
@@ -189,7 +193,6 @@ const SearchPage = () => {
                                                 style={{ marginBottom: "45px" }}
                                                 data-aos="fade-up"
                                             >
-                                                {/* Tiêu đề bài viết - Màu xanh đậm #003e58 */}
                                                 <h3 className="f-ibmplexsans fw-600" style={{ fontSize: "24px", marginBottom: "12px" }}>
                                                     <a
                                                         href={item.uri}
@@ -201,14 +204,12 @@ const SearchPage = () => {
                                                     </a>
                                                 </h3>
 
-                                                {/* Đoạn văn mô tả (Nếu có trong search index) */}
                                                 {item.excerpt && (
                                                     <p style={{ color: "#555", lineHeight: "1.6", marginBottom: "12px", fontSize: "16px" }}>
                                                         {item.excerpt}
                                                     </p>
                                                 )}
 
-                                                {/* Nút Xem thêm - Màu xanh sáng #57cbf5 */}
                                                 <a
                                                     href={item.uri}
                                                     style={{
@@ -226,7 +227,6 @@ const SearchPage = () => {
                                         ))}
                                     </div>
 
-                                    {/* Thanh Phân Trang (Chỉ hiện khi tổng số bài > 5) */}
                                     {totalPages > 1 && (
                                         <Pagination
                                             totalPages={totalPages}

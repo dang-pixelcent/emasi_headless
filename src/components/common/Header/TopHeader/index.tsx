@@ -1,14 +1,14 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'gatsby';
+import { Link, navigate } from 'gatsby';
 import './TopHeader.css';
 import { useStoreContext } from '@context/StoreContext'; // Import hàm chuẩn hóa
 
 interface TopHeaderProps {
-  currentLang: string;     
+  currentLang: string;
   switchUri?: string | null;
-  data?: any;              
-  menu?: any;              
+  data?: any;
+  menu?: any;
 }
 
 const TopHeader: React.FC<TopHeaderProps> = ({ currentLang, switchUri, data, menu }) => {
@@ -30,7 +30,17 @@ const TopHeader: React.FC<TopHeaderProps> = ({ currentLang, switchUri, data, men
 
   // Lấy hàm chuẩn hóa đường dẫn
   const { normalizePath } = useStoreContext();
-
+  // Hàm xử lý khi bấm tìm kiếm trên Mobile/Menu
+  const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const input = form.elements.namedItem('s') as HTMLInputElement;
+    if (input && input.value.trim()) {
+      setIsMobileMenuOpen(false); // Đóng menu mobile nếu đang mở
+      setIsMobileSearchOpen(false); // Đóng khung search mobile
+      navigate(`/search?s=${encodeURIComponent(input.value.trim())}`);
+    }
+  };
   useEffect(() => {
     if (data) {
       const logo = data.logo?.node?.sourceUrl;
@@ -50,7 +60,7 @@ const TopHeader: React.FC<TopHeaderProps> = ({ currentLang, switchUri, data, men
   }, [data, menu]);
 
   const LANGUAGES = [
-    { code: 'vi', label: 'VI', flag: '/assets/images/flag-vi.png' }, 
+    { code: 'vi', label: 'VI', flag: '/assets/images/flag-vi.png' },
     { code: 'en', label: 'EN', flag: '/assets/images/flag-us.png' },
   ];
   const currentLangObj = LANGUAGES.find(l => l.code === currentLang) || LANGUAGES[0];
@@ -84,7 +94,7 @@ const TopHeader: React.FC<TopHeaderProps> = ({ currentLang, switchUri, data, men
   const toggleSubMenu = (index: number, e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setActiveDropdowns(prev => 
+    setActiveDropdowns(prev =>
       prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]
     );
   };
@@ -111,8 +121,8 @@ const TopHeader: React.FC<TopHeaderProps> = ({ currentLang, switchUri, data, men
     // Nếu là nút Chức năng (Tìm kiếm)
     if (isAction) {
       return (
-        <a 
-          className="d-flex align-items-center" 
+        <a
+          className="d-flex align-items-center"
           style={{ gap: '0.6vw', cursor: 'pointer' }}
           onClick={(e) => {
             e.preventDefault();
@@ -198,7 +208,7 @@ const TopHeader: React.FC<TopHeaderProps> = ({ currentLang, switchUri, data, men
                 </div>
 
                 <div className="m-search">
-                  <form action="/">
+                  <form onSubmit={handleSearchSubmit}>
                     <div className="r-item">
                       <input type="text" name="s" placeholder="Tìm kiếm" />
                       <button type="submit" className="btn-search"></button>
@@ -212,18 +222,18 @@ const TopHeader: React.FC<TopHeaderProps> = ({ currentLang, switchUri, data, men
                     const isSubOpen = activeDropdowns.includes(index);
 
                     return (
-                      <li 
-                        key={index} 
+                      <li
+                        key={index}
                         className={`${hasSubMenu ? "dropdown" : ""} ${isSubOpen ? "dropdown-active active open" : ""}`}
                       >
                         <Link to={normalizePath(item.linkPage?.url)} className="nav-link">
                           <span>{item.title}</span>
                           {hasSubMenu && <span className="arrow-down"></span>}
                         </Link>
-                        
+
                         {/* Mũi tên bấm để xổ sub-menu trên Mobile */}
                         {hasSubMenu && (
-                          <span 
+                          <span
                             className={`m-arrow-down ${isSubOpen ? 'active' : ''}`}
                             onClick={(e) => toggleSubMenu(index, e)}
                             style={{ cursor: 'pointer' }}
@@ -232,15 +242,15 @@ const TopHeader: React.FC<TopHeaderProps> = ({ currentLang, switchUri, data, men
 
                         {/* Menu con: Ép hiển thị display: block khi ở mobile và được bấm mở */}
                         {hasSubMenu && (
-                          <ul 
+                          <ul
                             className={`sub-menu ${isSubOpen ? 'show active' : ''}`}
                             style={isMobileMenuOpen && isSubOpen ? { display: 'block' } : undefined}
                           >
                             {item.subMenu.map((sub: any, subIndex: number) => (
                               <li key={subIndex}>
-                                <Link 
-                                  to={normalizePath(sub.linkPage?.url)} 
-                                  target={sub.linkPage?.target || "_self"} 
+                                <Link
+                                  to={normalizePath(sub.linkPage?.url)}
+                                  target={sub.linkPage?.target || "_self"}
                                   className="nav-link"
                                   onClick={() => setIsMobileMenuOpen(false)} // Bấm vào link con thì tự đóng menu mobile
                                 >
@@ -267,7 +277,7 @@ const TopHeader: React.FC<TopHeaderProps> = ({ currentLang, switchUri, data, men
             {/* Render danh sách linh hoạt từ WP */}
             {headerMobileData && headerMobileData.map((item: any, index: number) => {
               const isSearch = item.title?.toLowerCase().includes("tìm kiếm");
-              
+
               return (
                 <div key={index} className={`icon-item ${isSearch ? 'btn-search-bw' : ''}`}>
                   <RenderMobileItem item={item} />
@@ -278,7 +288,7 @@ const TopHeader: React.FC<TopHeaderProps> = ({ currentLang, switchUri, data, men
           </div>
 
           <div className={`m-search-bw ${isMobileSearchOpen ? 'active' : ''}`}>
-            <form action="/">
+            <form onSubmit={handleSearchSubmit}>
               <div className="r-item">
                 <input type="text" name="s" placeholder="Tìm kiếm" />
                 <button type="submit" className="btn-search"></button>
