@@ -2,7 +2,6 @@
 import React from "react";
 import { graphql, PageProps } from "gatsby";
 import { Helmet } from "react-helmet";
-
 // Components
 import Layout from "@/components/common/Layout";
 import renderComponent from "@/lib/renderComponent";
@@ -11,7 +10,6 @@ import Discover from "@/components/pages/sections/discover_more";
 import Careers from "@/components/pages/sections/careers";
 import RegisterSection from "@/components/pages/home/register";
 import SEO from "@/components/common/SEO";
-// import TourRegistrationForm from "@/components/common/TourRegistrationForm"; // <-- Import component Form đăng ký tham quan của bạn vào đây
 
 interface WpPageData {
   wpCustomPage: {
@@ -31,6 +29,7 @@ interface WpPageData {
       };
     }[] | null;
     seo?: string;
+    
   };
 }
 
@@ -76,10 +75,6 @@ const WPPage = ({ data, pageContext }: PageProps<WpPageData>) => {
 
   // Kiểm tra xem trang này CÓ SIDEBAR hay không (chỉ cần có block và có dữ liệu list bên trong)
   const hasSidebar = Boolean(sidebarBlock && sidebarBlock?.list?.length > 0);
-  // console.log("Page data:", JSON.stringify(page, null, 2));
-  // console.log("sidebarBlock:", sidebarBlock);
-  // console.log("hasSidebar:", hasSidebar);
-  // --- 2. RENDER GIAO DIỆN ---
   return (
     <>
       {/* <Helmet htmlAttributes={{ lang: currentLang }}>
